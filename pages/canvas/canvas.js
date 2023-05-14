@@ -9,7 +9,7 @@ Page({
     canvas: null,
     windowWidth: 0,
     pixelRatio: 0,
-
+    drawHeight:0
   },
 
   /**
@@ -74,9 +74,11 @@ Page({
         height
       } = image
       const drawHeight = (windowWidth / (width / height)) * pixelRatio
+      this.setData({drawHeight})
       ctx.drawImage(image, 0, 0, width, height, 0, 0, canvas.width, drawHeight)
     }
-    image.src = 'https://img95.699pic.com/photo/40019/3927.jpg_wh300.jpg'
+    // image.src = 'https://img95.699pic.com/photo/40019/3927.jpg_wh300.jpg'
+    image.src = 'https://wallpapercave.com/wp/wp4633360.jpg'
   },
   tapCanvas(event) {
     const {
@@ -85,18 +87,22 @@ Page({
     } = event.detail
     const {
       ctx,
-      pixelRatio
+      pixelRatio,
+      drawHeight
     } = this.data
-    ctx.strokeStyle = "#ff0000"
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.arc(x * pixelRatio, y * pixelRatio, 50, 0, 2 * Math.PI);
-    ctx.stroke();
-    wx.showToast({
-      title: '画了一个圈',
-      icon: 'none',
-      mask: true
-    })
+    // 在图片高度区域内
+    if(y * pixelRatio <= drawHeight){
+      ctx.strokeStyle = "#ff0000"
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(x * pixelRatio, y * pixelRatio, 50, 0, 2 * Math.PI);
+      ctx.stroke();
+      wx.showToast({
+        title: '画了一个圈',
+        icon: 'none',
+        mask: true
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示
