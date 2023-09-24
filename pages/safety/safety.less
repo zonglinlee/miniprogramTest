@@ -1,0 +1,78 @@
+@import "assets/css/common";
+
+.container {
+  .top {
+
+    height: 735rpx;
+    background-image: url('http://s1dkzsmpj.hb-bkt.clouddn.com/outer/safety_banner.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    padding-top: 400rpx;
+    position: relative;
+
+    .back {
+      width: 16rpx;
+      position: absolute;
+      left: 35rpx;
+      top: 103rpx;
+    }
+
+    .box {
+      position: relative;
+      height: 472rpx;
+      margin: 0 37rpx 0 37rpx;
+      border-radius: 16rpx;
+      background: #ffffff;
+
+      .title-wrapper {
+        padding: 38rpx 0 0 38rpx;
+        display: flex;
+        align-items: center;
+
+        .safety-tool {
+          width: 29rpx;
+          margin-right: 8rpx;
+        }
+      }
+
+      .content-wrapper {
+        padding: 38rpx;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        .item {
+          width: 280rpx;
+          height: 128rpx;
+          border-radius: 16rpx;
+          background: @page-bg-gray;
+          padding: 35rpx 35rpx 35rpx 35rpx;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-sizing: border-box;
+          margin-bottom: 30rpx;
+
+          .left {
+
+            .t {
+              font-size: 30rpx;
+            }
+
+            .b {
+              color: @text-color-gray;
+            }
+          }
+          .right {
+            width: 38rpx;
+          }
+
+        }
+      }
+    }
+  }
+}

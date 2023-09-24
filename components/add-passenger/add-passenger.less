@@ -1,0 +1,123 @@
+@import "assets/css/common";
+
+.pop-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 10rpx;
+}
+
+.container {
+  .title {
+    padding-top: 32rpx;
+    padding-left: 56rpx;
+    padding-bottom: 16rpx;
+    font-size: 30rpx;
+  }
+
+  .sub-title {
+    padding-left: 56rpx;
+    padding-right: 100rpx;
+    margin-bottom: 22rpx;
+    color: red;
+  }
+
+  .people {
+    border-radius: 16rpx;
+    margin: 22rpx 24rpx 36rpx 24rpx;
+    background: @page-bg-gray;
+    padding: 30rpx 50rpx 50rpx 50rpx;
+
+    .item {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 100rpx;
+      border-bottom: 1rpx solid #e5e9eb;
+      padding-bottom: 25rpx;
+
+      .left {
+        height: 75rpx;
+        display: flex;
+        align-items: center;
+
+        .l {
+          transform: scale(0.8);
+
+          .check-blue {
+            width: 27rpx;
+            margin-right: 15rpx;
+          }
+        }
+
+        .r {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .t1 {
+            color: @text-color-default;
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 10rpx;
+
+            .name {
+              font-size: 30rpx;
+              margin-right: 10rpx;
+            }
+
+            .type {
+              border-radius: 6rpx;
+              background-image: linear-gradient(-20deg, rgb(6, 128, 252) 0%, rgb(3, 162, 253) 98%);
+              width: 61rpx;
+              height: 31rpx;
+              line-height: 31rpx;
+              color: #ffffff;
+              font-size: 16rpx;
+              text-align: center;
+            }
+          }
+
+          .t2 {
+            color: @text-color-gray;
+          }
+
+        }
+      }
+
+      .right {
+        .edit {
+          width: 31rpx;
+        }
+      }
+    }
+
+
+  }
+
+  .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 90rpx 60rpx 90rpx;
+
+    .add-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .add-blue {
+        width: 29rpx;
+        margin-right: 16rpx;
+      }
+
+      .add-text {
+        font-size: 30rpx;
+      }
+    }
+
+  }
+
+  .confirm-btn {
+    margin-bottom: 44rpx;
+  }
+}

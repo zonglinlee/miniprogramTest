@@ -1,0 +1,53 @@
+<view class="pop-wrapper">
+    <van-popup show="{{ show }}" bind:close="onClose" round position="bottom" safe-area-tab-bar="{{false}}">
+        <view class="container">
+            <view class="title">请确认乘车人</view>
+            <view class="sub-title">温馨提示:儿童票需1.2米以下才能购买，若有携带婴儿也需计入乘客人数。</view>
+
+
+            <view class="people">
+                <scroll-view scroll-y="true" style="height: 460rpx;">
+                    <view class="item" wx:for="{{4}}">
+                        <view class="left">
+                            <view class="l">
+                                <radio value="r1" checked="{{false}}" color="#1a87f6"/>
+                            </view>
+
+                            <view class="r">
+                                <view class="t1">
+                                    <view class="name">收到发</view>
+                                    <view class="type">成人票</view>
+                                </view>
+                                <view class="t2">身份证：640106201708487878</view>
+                            </view>
+
+                        </view>
+                        <view class="right">
+                            <image class="edit" src="../../assets/images/edit.png" mode="widthFix"></image>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+
+            <view class="btn-group">
+                <view class="add-btn">
+                    <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
+                    <view class="add-text">添加乘客</view>
+                </view>
+                <view class="add-btn">
+                    <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
+                    <view class="add-text">添加儿童票</view>
+                </view>
+            </view>
+
+            <button class="confirm-btn" type="primary">确定</button>
+            <!--            <van-button type="info">信息按钮</van-button>-->
+
+
+            <slot></slot>
+        </view>
+    </van-popup>
+</view>
+
+
+

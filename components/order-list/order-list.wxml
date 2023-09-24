@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="header">
+        <view class="[item,{{currentSelect==='1'?'item-selected':''}}]" bind:tap="itemClick" data-item="1">全部</view>
+        <view class="[item,{{currentSelect==='2'?'item-selected':''}}]" bind:tap="itemClick" data-item="2">待支付
+        </view>
+        <view class="[item,{{currentSelect==='3'?'item-selected':''}}]" bind:tap="itemClick" data-item="3">待出行
+        </view>
+        <view class="[item,{{currentSelect==='4'?'item-selected':''}}]" bind:tap="itemClick" data-item="4">待评价
+        </view>
+        <view class="[item,{{currentSelect==='5'?'item-selected':''}}]" bind:tap="itemClick" data-item="5">退款/售后
+        </view>
+    </view>
+
+
+    <view wx:if="{{orderList.length === 0}}" class="empty-wrapper">
+        <image class="empty" src="../../assets/images/empty_order_list.png"></image>
+    </view>
+    <slot></slot>
+</view>

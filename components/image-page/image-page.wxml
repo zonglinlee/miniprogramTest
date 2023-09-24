@@ -1,0 +1,5 @@
+<view class="container">
+    <view>
+        <image class="img" src="{{imageUrl}}" mode="widthFix"></image>
+    </view>
+</view>

@@ -1,0 +1,17 @@
+<view class="container">
+    <van-nav-bar
+            title="石嘴山出行"
+            left-arrow
+            bind:click-left="onClickLeft"
+    />
+
+    <van-tabs active="cjcx" color="#1a87f6" line-width="20px">
+        <van-tab title="城际出行" name="cjcx" title-style="font-size:30rpx;">
+            <order-list bind:item-click="orderListClick" orderType="cjcx"></order-list>
+        </van-tab>
+        <van-tab title="定制班线" name="dzbx" title-style="font-size:30rpx;">
+            <order-list bind:item-click="orderListClick" orderType="dzbx"></order-list>
+        </van-tab>
+    </van-tabs>
+
+</view>

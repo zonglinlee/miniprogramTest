@@ -27,8 +27,8 @@
     "useApiHook": true,
     "useApiHostProcess": true,
     "showShadowRootInWxmlPanel": true,
-    "packNpmManually": false,
     "enableEngineNative": false,
+    "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
     "showES6CompileOption": false,
@@ -38,7 +38,10 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "condition": false
+    "condition": false,
+    "useCompilerPlugins": [
+      "less"
+    ]
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",

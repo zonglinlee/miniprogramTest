@@ -1,0 +1,36 @@
+@import "assets/css/common";
+
+.container {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-top: 8rpx;
+    background: #ffffff;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 24rpx;
+
+    .item {
+      color: @text-color-gray;
+      text-align: center;
+    }
+
+    .item.item-selected {
+      color: @text-color-default;
+    }
+  }
+
+  .empty-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .empty {
+      margin-top: 230rpx;
+      width: 184rpx;
+      height: 168rpx;
+    }
+  }
+}

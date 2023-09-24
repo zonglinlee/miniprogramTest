@@ -1,15 +1,54 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/order/order",
+    "pages/me/me",
     "pages/logs/logs",
-    "pages/canvas/canvas"
+    "pages/canvas/canvas",
+    "pages/imagePage/imagePage",
+    "pages/safety/safety"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Canvas Test",
+    "navigationBarTitleText": "网约车",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#0e83f7",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "出行",
+        "iconPath": "assets/images/tab_car.png",
+        "selectedIconPath": "assets/images/tab_car_blue.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "我的订单",
+        "iconPath": "assets/images/tab_order.png",
+        "selectedIconPath": "assets/images/tab_order_blue.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "个人中心",
+        "iconPath": "assets/images/tab_me.png",
+        "selectedIconPath": "assets/images/tab_me_blue.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "custom-nav": "./components/custom-nav/custom-nav",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

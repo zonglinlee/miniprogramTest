@@ -1,0 +1,40 @@
+<view class="container">
+    <view class="top">
+        <view class="avatar-wrapper">
+            <view class="avatar">
+                <image src="../../assets/images/temp/avatar.png"></image>
+
+            </view>
+            <view class="info">
+                <view class="line1">天涯有蔷薇</view>
+                <view class="line2">132****9316</view>
+            </view>
+
+        </view>
+
+
+    </view>
+    <view class="order-wrapper">
+        <view class="title">我的订单</view>
+        <view class="items">
+            <!--            <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="()=>{orderItemClick(item)};">-->
+            <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="orderItemClick" data-item="{{item}}">
+                <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
+                <text>{{item.label}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="tools-wrapper">
+        <view class="title">我的工具</view>
+        <view class="items">
+            <!--            <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="()=>{orderItemClick(item)};">-->
+            <view class="item" wx:for="{{tools}}" wx:key="key" bindtap="orderItemClick" data-item="{{item}}">
+                <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
+                <text>{{item.label}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="ad">
+        <image src="http://s1dkzsmpj.hb-bkt.clouddn.com/outer/me_ad.png" mode="aspectFit"></image>
+    </view>
+</view>

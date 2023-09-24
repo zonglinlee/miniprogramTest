@@ -1,0 +1,4 @@
+<view>
+    <custom-nav navTitle="{{navTitle}}"></custom-nav>
+    <image-page imageUrl="{{imageUrl}}"></image-page>
+</view>
