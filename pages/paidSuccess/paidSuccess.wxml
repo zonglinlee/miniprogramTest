@@ -1,0 +1,43 @@
+<view class="container">
+    <custom-nav class="custom-nav" leftText="石嘴山出行"></custom-nav>
+    <view class="sec sec1">
+        <view class="item">
+            <image class="img-clock img" mode="widthFix" src="../../assets/images/depart_clock.png"></image>
+            <text class="t1">出发时间: 2023-09-13 11：30</text>
+        </view>
+        <view class="des">大武口汽车站</view>
+        <view class="des">银川河东机场</view>
+        <view class="item">
+            <image class="img" mode="widthFix" src="../../assets/images/passenger_orange.png"></image>
+            <text class="t1">成人票1张、儿童票0张、行程价格:33元</text>
+        </view>
+        <view class="item">
+            <image class="img-clock img" mode="widthFix" src="../../assets/images/license.png"></image>
+            <text class="t1">车牌号: 宁A1111 </text>
+        </view>
+        <view class="item">
+            <image class="img-clock img" mode="widthFix" src="../../assets/images/wechat.png"></image>
+            <text class="t1">打发打发反对法士大夫</text>
+        </view>
+
+    </view>
+    <view class="sec sec2">
+        <view class="title">订单支付成功</view>
+        <view class="success-wrapper">
+            <view class="l1">
+                <image class="img-wechat-pay img" mode="widthFix" src="../../assets/images/wechat_pay.png"></image>
+                <text class="t">支付成功</text>
+            </view>
+            <view class="l2">￥ 75.00</view>
+        </view>
+    </view>
+    <view class="sec sec3">
+        <view class="title">检票码</view>
+
+        <view class="l1">
+            <text class="t">亲，请在上车后向司机出检票码完成上车检票</text>
+            <image class="qr-img" mode="widthFix" src="http://s1dkzsmpj.hb-bkt.clouddn.com/outer/quick_response_code.png"></image>
+        </view>
+
+    </view>
+</view>

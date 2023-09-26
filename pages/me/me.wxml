@@ -20,7 +20,7 @@
             <!--            <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="()=>{orderItemClick(item)};">-->
             <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="orderItemClick" data-item="{{item}}">
                 <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
-                <text>{{item.label}}</text>
+                <text class="t">{{item.label}}</text>
             </view>
         </view>
     </view>
@@ -30,7 +30,7 @@
             <!--            <view class="item" wx:for="{{orders}}" wx:key="key" bindtap="()=>{orderItemClick(item)};">-->
             <view class="item" wx:for="{{tools}}" wx:key="key" bindtap="orderItemClick" data-item="{{item}}">
                 <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
-                <text>{{item.label}}</text>
+                <text class="t">{{item.label}}</text>
             </view>
         </view>
     </view>

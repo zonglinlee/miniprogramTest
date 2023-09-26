@@ -6,11 +6,11 @@
 
 
             <view class="people">
-                <scroll-view scroll-y="true" style="height: 460rpx;">
-                    <view class="item" wx:for="{{4}}">
+                <scroll-view scroll-y="true" style="height: 460rpx;" show-scrollbar="{{false}}" enhanced="{{true}}">
+                    <view class="item" wx:for="{{1}}" wx:key="index">
                         <view class="left">
                             <view class="l">
-                                <radio value="r1" checked="{{false}}" color="#1a87f6"/>
+                                <radio checked="{{false}}" color="#1a87f6"/>
                             </view>
 
                             <view class="r">

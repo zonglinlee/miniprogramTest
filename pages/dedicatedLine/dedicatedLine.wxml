@@ -1,0 +1,45 @@
+<view class="container">
+
+    <view class="top">
+        <image class="back" src="../../assets/images/back_white.png" mode="widthFix" bind:tap="goBack"></image>
+        <view class="tab">定制班线</view>
+        <view class="box">
+
+            <view class="content-wrapper">
+                <view class="item" wx:for="{{2}}">
+                    <view class="l1">
+                        <view class="loc">大武口城东长途汽车站</view>
+                        <image class="img" src="../../assets/images/arrow_right.png" mode="widthFix"></image>
+                        <view class="loc">银川金凤区火车站-高铁东站</view>
+                    </view>
+                    <view class="l2">
+                        <text>出发时间 : 2023-08-31 12:00~13:30 </text>
+                    </view>
+                    <view class="l3">
+                        <view class="m">
+                            <text class="red">￥ 75.00</text>
+                        </view>
+                        <view class="btn">进入</view>
+                    </view>
+                </view>
+
+                <view class="item" wx:for="{{1}}">
+                    <view class="l1">
+                        <view class="loc">大武口汽车站</view>
+                        <image class="img" src="../../assets/images/arrow_right.png" mode="widthFix"></image>
+                        <view class="loc">银川金凤区火车站</view>
+                    </view>
+                    <view class="l2">
+                        <text>出发时间 : 2023-08-31 12:00~13:30 </text>
+                    </view>
+                    <view class="l3">
+                        <view class="m">
+                            <text class="red">￥ 75.00</text>
+                        </view>
+                        <view class="btn">进入</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

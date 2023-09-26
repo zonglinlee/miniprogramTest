@@ -4,6 +4,15 @@ page {
   .top {
     position: relative;
 
+    .swiper-wrapper {
+      //margin-bottom: 20rpx;
+      box-sizing: border-box;
+
+      .swiper-image {
+        width: 100%;
+      }
+    }
+
     .gf {
       /*background-image: url("../../assets/images/gift_box_bg.png");*/
       background-image: url('http://s1dkzsmpj.hb-bkt.clouddn.com/outer/gift_box_bg.png');
@@ -21,7 +30,6 @@ page {
       .info {
         padding-left: 63rpx;
         padding-top: 33rpx;
-        font-size: 30rpx;
 
         .l {
           color: #fc7305;
@@ -42,16 +50,17 @@ page {
         text-align: center;
         background: #2096fb;
         border-radius: 16rpx;
-        font-size: 24rpx;
       }
     }
 
     .map {
       width: 750rpx;
-      height: 800rpx;
+      height: 500rpx;
     }
 
     .shield {
+      background: #ffffff;
+      border-radius: 16rpx;
       position: absolute;
       right: 22rpx;
       top: 500rpx;
@@ -60,16 +69,25 @@ page {
     }
 
     .position {
+      background: #ffffff;
+      border-radius: 16rpx;
       position: absolute;
       right: 22rpx;
       top: 580rpx;
       width: 64rpx;
       height: 62rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    image {
+    .img {
       width: 100%;
       height: 100%;
+    }
+
+    .img-position {
+      width: 40rpx;
     }
   }
 
@@ -92,7 +110,6 @@ page {
 
       .item {
         width: 33%;
-        font-size: 30rpx;
         text-align: center;
       }
     }
@@ -113,7 +130,7 @@ page {
         display: flex;
         align-items: center;
         padding-left: 68rpx;
-        font-size: 26rpx;
+        font-size: @font-28;
 
         .dot {
           margin-right: 24rpx;
@@ -123,11 +140,15 @@ page {
 
         .item2 {
           color: @blue-font;
-          margin-right: 24rpx;
-          font-size: 24rpx;
+          font-size: @font-26;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
         }
 
         .item3 {
+          margin-left: 24rpx;
+          margin-right: 34rpx;
           width: 11rpx;
           height: 21rpx;
         }
@@ -144,7 +165,7 @@ page {
         margin: 0 40rpx;
         background: #e9effd;
         border-radius: 8rpx;
-        font-size: 26rpx;
+        font-size: @font-26;
 
         .dot {
           width: 25rpx;

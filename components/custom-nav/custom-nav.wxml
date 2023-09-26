@@ -1,5 +1,8 @@
 <van-nav-bar
             title="{{navTitle}}"
+            left-text="{{leftText}}"
+            right-text="{{rightText}}"
             left-arrow
+            class="custom-nav"
             bind:click-left="defaultCustomNavClick"
     />

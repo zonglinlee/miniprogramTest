@@ -1,0 +1,210 @@
+@import "assets/css/common";
+
+.container {
+  padding-bottom: 50rpx;
+
+  .sec1 {
+    margin: 22rpx 24rpx 0 24rpx;
+    min-height: 754rpx;
+    padding-bottom: 20rpx;
+
+    .destination {
+      display: flex;
+      align-items: center;
+      padding: 42rpx 0 0 36rpx;
+
+      .l {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 22rpx;
+        height: 90rpx;
+
+        .dash-line {
+          width: 22rpx;
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAALCAYAAAC6ezfSAAAACXBIWXMAAAuJAAALiQE3ycutAAAANElEQVQImWP8//8/AwywHDtxWpqBgaGOgYHhDgsDA4MQAwNDGgMDwxEmBiRAMYcR2VIUGQBU0gsdg3ZW9QAAAABJRU5ErkJggg==');
+          background-repeat: repeat-y;
+          background-position: top center;
+          background-size: 3rpx 11rpx;
+          flex-grow: 1;
+          margin: 2rpx 0;
+        }
+
+        .mark {
+          width: 26rpx;
+          height: 26rpx;
+          border-radius: 50%;
+        }
+
+        .mark-blue {
+          background: @blue-bg;
+        }
+
+        .mark-orange {
+          background: #f7a10c;
+        }
+      }
+
+      .r {
+        margin-left: 24rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 90rpx;
+
+        .loc {
+          font-size: @font-30;
+        }
+      }
+    }
+
+    .tip {
+      font-size: @font-26;
+      margin: 30rpx 0 45rpx 42rpx;
+    }
+
+    .time-l {
+      color: @text-color-gray;
+      padding-left: 42rpx;
+      display: flex;
+      align-items: center;
+      margin-bottom: 34rpx;
+
+      .time {
+        font-size: @font-26;
+      }
+
+      .clock {
+        margin-right: 22rpx;
+        width: 26rpx;
+      }
+
+    }
+
+    .pas {
+      padding-left: 42rpx;
+      margin-bottom: 16rpx;
+      font-size: @font-28;
+    }
+
+    .pas-wrapper {
+      background: @page-bg-gray;
+      border-radius: 16rpx;
+      margin: 0 35rpx;
+
+      padding: 0 30rpx 20rpx 30rpx;
+
+      .item {
+        border-bottom: 1rpx solid @border-gray;
+        padding-top: 20rpx;
+
+        .l1 {
+          display: flex;
+          align-items: center;
+          margin-bottom: 12rpx;
+
+          .circle {
+            width: 24rpx;
+            height: 24rpx;
+            border: 1px solid #71dfbb;
+            border-radius: 50%;
+            margin-right: 12rpx;
+          }
+
+          .name {
+            font-size: @font-30;
+          }
+        }
+
+        .l2 {
+          font-size: @font-26;
+          margin-left: 36rpx;
+          color: @text-color-gray;
+          margin-bottom: 16rpx;
+        }
+      }
+    }
+
+    .add {
+      padding-left: 60rpx;
+      display: flex;
+      align-items: center;
+      margin: 26rpx 0;
+
+      .add-orange {
+        width: 36rpx;
+        margin-right: 12rpx;
+      }
+
+      .add-txt {
+        font-size: @font-30;
+      }
+    }
+
+    .remark-wrapper {
+      background: @page-bg-gray;
+      border-radius: 16rpx;
+      margin: 0 35rpx 0 35rpx;
+      padding: 16rpx;
+      min-height: 95rpx;
+      box-sizing: border-box;
+
+      textarea {
+        height: 75rpx;
+        width: 100%;
+      }
+    }
+  }
+
+  .sec2 {
+    margin-top: 22rpx;
+    padding: 40rpx;
+    height: 260rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .confirm {
+      display: flex;
+      align-items: center;
+
+      .r1 {
+        transform: scale(0.8);
+      }
+
+      .t {
+        margin-left: 12rpx;
+        font-size: @font-26;
+      }
+    }
+
+    .line {
+      border-bottom: 1rpx solid @border-gray;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .gross {
+        .red {
+          color: red;
+          font-size: @font-34;
+        }
+      }
+
+      .btn {
+        border-radius: 8rpx;
+        background-image: linear-gradient(80deg, rgb(255, 160, 75) 0%, rgb(255, 202, 75) 100%);
+        width: 157rpx;
+        height: 56rpx;
+        line-height: 56rpx;
+        text-align: center;
+        color: #ffffff;
+        font-size: @font-30;
+      }
+    }
+  }
+}

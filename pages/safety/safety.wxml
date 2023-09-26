@@ -1,5 +1,4 @@
 <view class="container">
-
     <view class="top">
         <image class="back" src="../../assets/images/back_white.png" mode="widthFix" bind:tap="goBack"></image>
         <view class="box">
@@ -41,5 +40,8 @@
                 </view>
             </view>
         </view>
+    </view>
+    <view class="bottom">
+        <image class="img-110" src="../../assets/images/110.png" mode="widthFix"></image>
     </view>
 </view>

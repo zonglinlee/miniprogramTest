@@ -1,0 +1,61 @@
+<view class="container">
+    <custom-nav class="custom-nav" leftText="石嘴山出行"></custom-nav>
+    <view class="sec sec1">
+        <view class="destination">
+            <view class="l">
+                <view class="mark mark-blue"></view>
+                <view class="dash-line"></view>
+                <view class="mark mark-orange"></view>
+            </view>
+            <view class="r">
+                <view class="loc">大武口汽车站</view>
+                <view class="loc">银川河东机场</view>
+            </view>
+        </view>
+        <view class="tip">请在04分37秒内完成订单，超时未支付订单将被取消</view>
+        <view class="time-l">
+            <image class="clock" src="../../assets/images/depart_clock.png" mode="widthFix"></image>
+            <text class="time">出发时间: 2023-09-13</text>
+        </view>
+        <view class="time-l">
+            <image class="clock" src="../../assets/images/ali_pay_clock.png" mode="widthFix"></image>
+            <text class="time">出发时间: 2023-09-13</text>
+        </view>
+        <view class="pas">乘客</view>
+        <view class="pas-wrapper">
+            <view class="item" wx:for="{{1}}">
+
+                <view class="l1">
+                    <view class="circle"/>
+                    <view class="name">李先生</view>
+                </view>
+
+                <view class="l2">
+                    手机号：17809527290
+                </view>
+            </view>
+        </view>
+        <view class="add">
+            <image class="add-orange" src="../../assets/images/add_orange.png" mode="widthFix"></image>
+            <text class="add-txt">添加乘客</text>
+        </view>
+        <view class="remark-wrapper">
+            <textarea placeholder-style="color:black;font-size:28rpx;" maxlength="{{140}}" show-confirm-bar="{{false}}"
+                      confirm-type="done" cursor-spacing="{{50}}" placeholder="备注"/>
+        </view>
+    </view>
+    <view class="sec sec2">
+        <view class="confirm">
+            <radio class="r1" checked="{{false}}" color="#1a87f6"/>
+            <view class="t">我已认真阅读读【乘车、退票须知】并同意协议</view>
+        </view>
+        <view class="line"></view>
+        <view class="bottom">
+            <view>明细</view>
+            <view class="gross">
+                <text>合计：</text><text class="red">￥ 75.00</text>
+            </view>
+            <view class="btn">提交订单</view>
+        </view>
+    </view>
+</view>

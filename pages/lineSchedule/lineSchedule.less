@@ -1,0 +1,146 @@
+@import "assets/css/common";
+
+.container {
+  background-image: linear-gradient(107deg, rgb(229, 239, 251) 0%, rgb(185, 216, 254) 100%);
+  background-repeat: no-repeat;
+  background-size: 750rpx 454rpx;
+  background-position: 0 0;
+  display: flow-root;
+  padding-bottom: 36rpx;
+
+  .nav {
+    margin-top: 118rpx;
+    padding-left: 36rpx;
+    padding-right: 36rpx;
+    padding-bottom: 20rpx;
+    line-height: 38rpx;
+    display: flex;
+    align-items: center;
+
+    .back {
+      width: 15rpx;
+    }
+
+    .nav-title {
+      flex-grow: 1;
+      text-align: center;
+      font-size: @font-30;
+      text-indent: -15rpx;
+    }
+  }
+
+  .days {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 36rpx;
+
+    .item {
+      width: 74rpx;
+      height: 70rpx;
+      margin-bottom: 36rpx;
+      border-radius: 6rpx;
+      padding: 10rpx;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+
+      .day, .date {
+        color: @blue-font;
+      }
+    }
+
+    .item.selected {
+      background: @blue-bg;
+
+      .day, .date {
+        color: #ffffff;
+      }
+    }
+
+  }
+
+  .buses {
+    margin: 0 16rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .item {
+      box-sizing: border-box;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 16rpx;
+      height: 258rpx;
+      margin-bottom: 12rpx;
+      padding: 0 50rpx 0 50rpx;
+      width: 100%;
+      box-sizing: border-box;
+
+      .l1 {
+        font-size: @font-32;
+        color: @text-color-gray;
+        padding-top: 24rpx;
+        padding-bottom: 18rpx;
+        border-bottom: 1rpx solid @border-gray;
+
+      }
+
+      .l2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 24rpx;
+        padding-bottom: 10rpx;
+
+
+        .time {
+          font-size: @font-36;
+          font-weight: bold;
+        }
+
+        .des-wrapper {
+          display: flex;
+          align-items: center;
+          margin-left: 6rpx;
+          margin-right: 6rpx;
+
+          .icon {
+            width: 25rpx;
+            margin-right: 10rpx;
+          }
+
+          .des {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .from, .to {
+              font-size: @font-30;
+            }
+
+            .from {
+              margin-bottom: 10rpx;
+            }
+          }
+        }
+
+        .m {
+          color: @text-color-orange;
+          font-size: @font-36;
+          font-weight: bold;
+        }
+      }
+
+      .l3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: @text-color-gray;
+      }
+    }
+  }
+
+}
