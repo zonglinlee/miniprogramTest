@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "add-passenger": "../../components/add-passenger/add-passenger"
+    "add-passenger": "../../components/add-passenger/add-passenger",
+    "selectPosition": "../../components/selectPosition/selectPosition"
   },
   "navigationStyle": "custom"
 }

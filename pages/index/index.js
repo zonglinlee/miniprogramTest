@@ -1,10 +1,14 @@
 const app = getApp()
 import Toast from '@vant/weapp/toast/toast';
 
+const mapBehavior = require("../../assets/js/qqmap-wx-jssdk1.2/mapBehavior")
+
 
 Page({
+    behaviors: [mapBehavior],
     data: {
         showPopup: false,
+        showSelectPositionPopup: false,
         motto: 'canvas test',
         userInfo: {},
         hasUserInfo: false,
@@ -17,7 +21,10 @@ Page({
             longitude: 116.40,
         },
         locationAdd: "正在获取当前位置中...",
-        polyline: []
+        polyline: [],
+        includePoints: [],
+        markers: [],
+        selectStart: false,
     },
     // 事件处理函数
     navigateTo(e) {
@@ -52,14 +59,9 @@ Page({
         try {
             this.setData({locationAdd: '正在获取当前位置中...'})
             const res = await wx.getLocation({type: 'gcj02'})
-            // console.log(res)
-            // const latitude = res.latitude
-            // const longitude = res.longitude
-            // const speed = res.speed
-            // const accuracy = res.accuracy
             await this.getAddress(res)
         } catch (e) {
-            Toast('位置获取失败，请重新获取位置');
+            Toast({duration: 0, message: '位置获取失败，请重新获取'});
             console.error(e)
         }
     },
@@ -88,7 +90,35 @@ Page({
             Toast.fail('位置获取失败，请重新获取位置');
         }
     },
-    getDrivingLine(e) {
+    async getDrivingLine2() {
+        const pl = await this.getDrivingLine()
+        this.setData({
+            latitude: pl[0].latitude,
+            longitude: pl[0].longitude,
+            polyline: [{
+                points: pl,
+                color: '#FF0000DD',
+                width: 3
+            }],
+            includePoints: pl,
+            markers: [{
+                id: 1,
+                latitude: pl[0].latitude,
+                longitude: pl[0].longitude,
+                title: 'start',
+                // iconPath: '../../assets/images/start_position.png',
+                iconPath: '../../assets/images/start_position.svg',
+            }, {
+                id: 2,
+                latitude: pl[pl.length - 1].latitude,
+                longitude: pl[pl.length - 1].longitude,
+                title: 'end',
+                // iconPath: '../../assets/images/end_position.png',
+                iconPath: '../../assets/images/end_position.svg',
+            }]
+        })
+    },
+    getDrivingLine1(e) {
         //调用距离计算接口
         const mapSdk = app.globalData.mapSdk
         const _this = this
@@ -118,7 +148,23 @@ Page({
                     polyline: [{
                         points: pl,
                         color: '#FF0000DD',
-                        width: 4
+                        width: 3
+                    }],
+                    includePoints: pl,
+                    markers: [{
+                        id: 1,
+                        latitude: pl[0].latitude,
+                        longitude: pl[0].longitude,
+                        title: 'start',
+                        // iconPath: '../../assets/images/start_position.png',
+                        iconPath: '../../assets/images/start_position.svg',
+                    }, {
+                        id: 2,
+                        latitude: pl[pl.length - 1].latitude,
+                        longitude: pl[pl.length - 1].longitude,
+                        title: 'end',
+                        // iconPath: '../../assets/images/end_position.png',
+                        iconPath: '../../assets/images/end_position.svg',
                     }]
                 })
             },
@@ -147,5 +193,17 @@ Page({
         })
     },
     confirmOrder() {
+    },
+    focusInput1() {
+        this.setData({selectStart: false, showSelectPositionPopup: true})
+    },
+    closeSelectPositionPopup() {
+        this.setData({showSelectPositionPopup: false})
+    },
+    selectStartPos() {
+        this.setData({selectStart: true, showSelectPositionPopup: true})
+        // wx.nextTick(()=>{
+        //
+        // })
     }
 })

@@ -1,0 +1,123 @@
+@import "assets/css/common";
+
+
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+
+  .custom-nav {
+    --nav-bar-text-color: init;
+    --nav-bar-icon-color: init;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    padding-top: 30rpx;
+    padding-left: 24rpx;
+
+    .back {
+      width: 15rpx;
+      margin-right: 12rpx;
+    }
+
+    .t {
+      font-size: @font-32;
+    }
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 22rpx;
+    border-bottom: 1rpx solid @border-gray;
+
+    .l {
+      display: flex;
+      align-items: center;
+      border-right: 1rpx solid @border-gray;
+      padding-right: 12rpx;
+
+      .city {
+        margin-right: 10rpx;
+        font-size: @font-32;
+      }
+
+      .img-triangle {
+        width: 16rpx;
+      }
+    }
+
+    .m {
+      flex-grow: 1;
+      padding: 0 16rpx;
+
+      .input {
+        font-size: @font-32;
+      }
+
+      .placeholder-style {
+        font-size: @font-32;
+        color: @text-color-gray;
+      }
+    }
+
+    .r {
+      padding-left: 12rpx;
+      border-left: 1rpx solid @border-gray;
+      font-size: @font-32;
+    }
+  }
+
+  .content-wrapper {
+    position: relative;
+  }
+
+  .map {
+    width: 100%;
+  }
+
+  .list-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 0 26rpx;
+
+    .item {
+      display: flex;
+      align-items: center;
+      padding: 12rpx 0;
+
+      .img-position {
+        width: 30rpx;
+        margin-right: 16rpx;
+      }
+
+      .r {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .title {
+          font-size: @font-32;
+          margin-bottom: 8rpx;
+        }
+
+        .add {
+          font-size: @font-26;
+          color: @text-color-gray;
+        }
+      }
+    }
+  }
+}
