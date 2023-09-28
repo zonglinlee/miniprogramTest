@@ -1,0 +1,64 @@
+<view class="container">
+    <van-nav-bar
+            left-text="石嘴山出行"
+            left-arrow
+            class="custom-nav"
+            bind:click-left="goBack"
+    />
+    <view class="content">
+        <map class="map" markers="{{markers}}" latitude="{{destination.latitude}}"
+             longitude="{{destination.longitude}}">
+            <cover-view slot="callout">
+                <cover-view marker-id="{{200}}"
+                            style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
+                    银川河东机场 >
+                </cover-view>
+            </cover-view>
+        </map>
+        <view class="con">
+            <view class="sec sec1">
+                <view class="destination">
+                    <view class="l">
+                        <view class="mark mark-blue"></view>
+                        <view class="dash-line"></view>
+                        <view class="mark mark-orange"></view>
+                    </view>
+                    <view class="r">
+                        <view class="loc">大武口汽车站</view>
+                        <view class="loc">银川河东机场</view>
+                    </view>
+                </view>
+                <view class="tip">请在04分37秒内完成订单，超时未支付订单将被取消</view>
+                <view class="time-l">
+                    <image class="clock" src="../../assets/images/depart_clock.png" mode="widthFix"></image>
+                    <text class="time">出发时间: 2023-09-13</text>
+                </view>
+                <view class="time-l">
+                    <image class="tickets" src="../../assets/images/tickets.png" mode="widthFix"></image>
+                    <text class="time">剩余35张票</text>
+                </view>
+            </view>
+            <view class="sec sec2">
+                <view class="title">费用明细</view>
+                <view class="l">
+                    <view class="left">订单价格</view>
+                    <view class="right">订单总价
+                        <text class="orange">33元</text>
+                    </view>
+                </view>
+                <view class="l">
+                    <view class="left">优惠券</view>
+                    <view class="right">
+                        <text class="orange">选择优惠券 ></text>
+                    </view>
+                </view>
+                <view class="sum">33.00元</view>
+            </view>
+            <view class="btn-group">
+                <view class="btn gray-btn">取消订单</view>
+                <view class="btn primary-btn">立即支付</view>
+            </view>
+        </view>
+    </view>
+
+</view>

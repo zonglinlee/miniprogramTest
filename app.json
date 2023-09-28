@@ -10,7 +10,9 @@
     "pages/confirmOrder/confirmOrder",
     "pages/dedicatedLine/dedicatedLine",
     "pages/lineSchedule/lineSchedule",
-    "pages/paidSuccess/paidSuccess"
+    "pages/paidSuccess/paidSuccess",
+    "pages/confirmPay/confirmPay",
+    "pages/busStop/busStop"
   ],
   "window": {
     "backgroundTextStyle": "light",

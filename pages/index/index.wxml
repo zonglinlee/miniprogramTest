@@ -11,7 +11,7 @@
                 </block>
             </swiper>
         </view>
-        <map class="map" latitude="{{currentPosition.latitude}}" longitude="{{currentPosition.longitude}}"
+        <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
         <view class="shield" bind:tap="navigateTo" data-url="/pages/safety/safety">
@@ -30,44 +30,17 @@
         <view class="content">
             <view class="line1" bind:tap="selectStartPos">
                 <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
-                <text class="item2">{{locationAdd}}</text>
+                <text class="item2">{{locationAddStart}}</text>
                 <image class="item3" src="../../assets/images/next.png"></image>
             </view>
             <view class="line2">
-                <input class="des" disabled="{{true}}" placeholder="请输入打车目的地" bind:blur="getDrivingLine2"
+                <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}" placeholder="请输入打车目的地"
+                       bind:blur="getDrivingLine2"
                        bind:focus="focusInput1" bind:tap="focusInput1"/>
                 <image class="dot item1" src="../../assets/images/green_dot.png"></image>
             </view>
         </view>
 
-    </view>
-
-
-    <!--    <view class="gf" style="background-image: url('../../assets/images/gift_box_bg.png');">
-            <view class="info">
-                <text class="l">免费领取10元 </text>
-                <text class="r">打车立减券</text>
-            </view>
-            <view class="btn">
-                    立即领取
-            </view>
-        </view>-->
-
-
-    <view style="display:flex;flex-direction:column;align-items:center">
-        <button type="primary" style="margin-bottom:15rpx;" bind:tap="openPopup">乘车人信息</button>
-        <button type="primary" style="margin-bottom:15rpx;" bind:tap="navigateTo"
-                data-url="/pages/confirmOrder/confirmOrder">订单支付
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;" bind:tap="navigateTo"
-                data-url="/pages/dedicatedLine/dedicatedLine">定制专线
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;" bind:tap="navigateTo"
-                data-url="/pages/lineSchedule/lineSchedule">选择班次
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;" bind:tap="navigateTo"
-                data-url="/pages/paidSuccess/paidSuccess">支付成功
-        </button>
     </view>
 
     <add-passenger show="{{showPopup}}"></add-passenger>
@@ -83,4 +56,27 @@
                         bind:closeSelectPositionPopup="closeSelectPositionPopup"></selectPosition>
     </page-container>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
+
+
+    <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;">
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="openPopup">乘车人信息</button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/confirmOrder/confirmOrder">订单支付
+        </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/dedicatedLine/dedicatedLine">定制专线
+        </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/lineSchedule/lineSchedule">选择班次
+        </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/paidSuccess/paidSuccess">支付成功
+        </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/confirmPay/confirmPay">支付订单
+        </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
+                data-url="/pages/busStop/busStop">站点选择
+        </button>
+    </view>
 </view>

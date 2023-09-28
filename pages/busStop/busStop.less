@@ -1,0 +1,137 @@
+@import "assets/css/common";
+
+@semi-transparent: #607d8b85;
+.container {
+  position: relative;
+
+
+  .content {
+    position: relative;
+
+    .map {
+      width: 100%;
+    }
+  }
+
+  .card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: @semi-transparent;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .item {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin-left: auto;
+      margin-right: auto;
+
+      .left {
+        background: #ffffff;
+        padding: 10rpx 20rpx;
+        border-radius: 10rpx;
+        width: 50%;
+      }
+
+      .left.even {
+        visibility: hidden;
+      }
+
+      .right {
+        background: #ffffff;
+        padding: 10rpx;
+        border-radius: 12rpx;
+        width: 50%;
+      }
+
+      .right.odd {
+        visibility: hidden;
+      }
+
+      .middle:last-child {
+        .line {
+          display: none
+        }
+      }
+
+      .middle {
+        position: relative;
+        width: 60rpx;
+        height: 100rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        .line {
+          position: absolute;
+          left: 50%;
+          right: 0;
+          top: calc(50% + 15rpx);
+          bottom: calc(-50% + 21rpx);
+          width: 1rpx;
+          background: white;
+          transform: translateX(-50%);
+        }
+
+
+        .outer {
+          border-radius: 50%;
+          border: dashed 1rpx @border-gray;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20rpx;
+          height: 20rpx;
+
+          .inner {
+            width: 10rpx;
+            height: 10rpx;
+            background: @border-gray;
+            border-radius: 50%;
+          }
+        }
+      }
+
+
+      .outer.selected {
+        border: solid 2rpx @border-blue;
+
+        .inner {
+          background: @border-blue;
+        }
+      }
+
+
+    }
+  }
+
+  .btn-wrapper {
+    background: @semi-transparent;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 10rpx;
+    left: 0;
+    right: 0;
+  }
+
+  .btn {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: @font-34;
+    font-weight: bold;
+    background: @blue-bg;
+    color: white;
+    border-radius: 30rpx;
+  }
+}

@@ -86,6 +86,24 @@ module.exports = Behavior({
             }
             //设置polyline属性，将路线显示出来,将解压坐标第一个数据作为起点
             return pl
+        },
+        async latToAddress({latitude, longitude}) {
+            const mapSdk = app.globalData.mapSdk
+            return new Promise((resolve, reject) => {
+                mapSdk.reverseGeocoder({
+                    location: {latitude, longitude}, //获取表单传入的位置坐标,不填默认当前位置,示例为string格式
+                    //get_poi: 1, //是否返回周边POI列表：1.返回；0不返回(默认),非必须参数
+                    success: function (res) {//成功后的回调
+                        resolve(res)
+                    },
+                    fail: function (error) {
+                        reject(error)
+                    },
+                    complete: function (res) {
+                        resolve(res)
+                    }
+                })
+            })
         }
     }
 })

@@ -13,25 +13,26 @@ Component({
                 id: 100,
                 latitude: 39.90,
                 longitude: 116.40,
-                title: '上车点',
                 // iconPath: '../../assets/images/start_position.png',
-                iconPath: '../../assets/images/select_position.svg',
-                callout: {
-                    content: "上车点",
-                    bgColor: "#ffffff",
-                    textAlign: 'center',
-                    borderRadius: '4rpx',
-                    padding: '4rpx'
+                // iconPath: '../../assets/images/select_position.svg',
+                iconPath: 'http://s1dkzsmpj.hb-bkt.clouddn.com/select_position.png',
+                width: 20,
+                height: 20,
+                customCallout: {
+                    display: 'ALWAYS'
                 }
             }
         ],
         currentPosition: {
             latitude: 39.90,
             longitude: 116.40,
+            locationAdd: '获取位置中...',
+            markerAdd: '获取位置中...'
         },
         mapHeight: 200,
         suggestList: [],
         currentCity: '银川市',
+        searchKeyword: '银川市',
     },
     lifetimes: {
         async created() {
@@ -48,43 +49,99 @@ Component({
         }
     },
     observers: {
-        'show': async function (show) {
+        'show': function (show) {
             if (show) {
                 this.computeHeight()
-                if (this.data.isStart) {
-                    const res = await wx.getLocation({type: 'gcj02'})
-                    this.setData({currentPosition: res})
-                    const marker = this.data.markers[0]
-                    marker.latitude = res.latitude
-                    marker.longitude = res.longitude
-                    this.setData({markers: [marker]})
-                }
+                wx.nextTick(async () => {
+                    if (this.data.isStart) {
+                        const pos = await wx.getLocation({type: 'gcj02'})
+                        const res = await this.latToAddress(pos)
+                        if (res.status === 0) {
+                            const {location: {lat, lng}, formatted_addresses: {recommend}, address} = res.result
+                            const marker = this.data.markers[0]
+                            marker.latitude = lat
+                            marker.longitude = lng
+                            this.setData({
+                                currentPosition: {
+                                    latitude: lat,
+                                    longitude: lng,
+                                    locationAdd: recommend,
+                                    markerAdd: recommend
+                                },
+                                markers: [marker]
+                            })
+                        }
+                    } else {
+                        const res = await this.suggest(this.data.currentCity, this.data.currentCity)
+                        this.setData({suggestList: res})
+                    }
+                })
             }
         }
     },
     methods: {
-        onClose() {
-            this.triggerEvent('closeSelectPositionPopup', {})
-        },
         goBack() {
-            this.triggerEvent('closeSelectPositionPopup', {})
+            this.setData({suggestList: [], searchKeyword: ''})
+            this.triggerEvent('closeSelectPositionPopup')
         },
-        getClickPoint(res) {
-            console.log("点击地图:", res)
-            const marker = this.data.markers[0]
-            marker.latitude = res.detail.latitude
-            marker.longitude = res.detail.longitude
-            this.setData({markers: [marker]})
+        confirmStartPosition() {
+            const {latitude, longitude} = this.data.markers[0]
+            const detail = {
+                latitude,
+                longitude,
+                markerAdd: this.data.currentPosition.markerAdd,
+                isStart: this.data.isStart
+            }
+            this.setData({suggestList: []})
+            this.triggerEvent('closeSelectPositionPopup', detail)
+        },
+        async getClickPoint(pos) {
+            console.log("点击地图:", pos)
+            try {
+                const res = await this.latToAddress(pos.detail)
+                if (res.status === 0) {
+                    const {location: {lat, lng}, formatted_addresses: {recommend}, address} = res.result
+                    const marker = this.data.markers[0]
+                    marker.latitude = lat
+                    marker.longitude = lng
+                    this.setData({
+                        markers: [marker],
+                        currentPosition: Object.assign({}, this.data.currentPosition, {markerAdd: recommend})
+                    })
+                }
+            } catch (e) {
+                console.error(e)
+            }
         },
         async bindKeyInput(e) {
             const val = e.detail.value
-            if (val) {
-                const res = await this.suggest(val, this.data.currentCity)
-                console.log(res)
-                this.setData({suggestList: res})
-            } else {
-                this.setData({suggestList: []})
+            try {
+                if (val) {
+                    const res = await this.suggest(val, this.data.currentCity)
+                    console.log(res)
+                    this.setData({suggestList: res})
+                } else {
+                    this.setData({suggestList: []})
+                }
+            } catch (e) {
+                console.error(e)
             }
+
+        },
+        chooseRecommendPosition(e) {
+            const pos = e.currentTarget.dataset.pos
+            const {latitude, longitude, title, addr, city} = pos
+            const detail = {
+                latitude,
+                longitude,
+                isStart: this.data.isStart
+            }
+            if (this.data.isStart) {
+                detail.markerAdd = title
+            } else {
+                detail.locationAddEnd = title
+            }
+            this.triggerEvent('closeSelectPositionPopup', detail)
         },
         computeHeight() {
             // const query = wx.createSelectorQuery()
