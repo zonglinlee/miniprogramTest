@@ -52,7 +52,7 @@
             show="{{showSelectPositionPopup}}"
     >
 
-        <selectPosition show="{{showSelectPositionPopup}}" isStart="{{selectStart}}"
+        <selectPosition show="{{showSelectPositionPopup}}" isStart="{{selectStart}}" cityName="{{currentCity}}"
                         bind:closeSelectPositionPopup="closeSelectPositionPopup"></selectPosition>
     </page-container>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>

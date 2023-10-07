@@ -2,7 +2,8 @@ const mapBehavior = require("../../assets/js/qqmap-wx-jssdk1.2/mapBehavior")
 Component({
     properties: {
         show: Boolean,
-        isStart: Boolean
+        isStart: Boolean,
+        cityName: String
     },
     behaviors: [mapBehavior],
     data: {
@@ -31,8 +32,8 @@ Component({
         },
         mapHeight: 200,
         suggestList: [],
-        currentCity: '银川市',
-        searchKeyword: '银川市',
+        currentCity: '定位中',
+        searchKeyword: '',
         showCityList: false
     },
     lifetimes: {
@@ -55,8 +56,7 @@ Component({
                 this.computeHeight()
                 wx.nextTick(async () => {
                     if (this.data.isStart) {
-                        const pos = await wx.getLocation({type: 'gcj02'})
-                        const res = await this.latToAddress(pos)
+                        const res = await this.getLocationCity()
                         if (res.status === 0) {
                             const {location: {lat, lng}, formatted_addresses: {recommend}, address} = res.result
                             const marker = this.data.markers[0]
@@ -73,7 +73,17 @@ Component({
                             })
                         }
                     } else {
-                        const res = await this.suggest(this.data.currentCity, this.data.currentCity)
+                        console.log("this.cityName:", this.data.cityName)
+                        if (this.data.cityName) {
+                            this.setData({currentCity: this.data.cityName})
+                        } else {
+                            const res = await this.getLocationCity()
+                            if (res.status === 0) {
+                                const city = res.result.ad_info.city
+                                this.setData({currentCity: city})
+                            }
+                        }
+                        const res = await this.suggest(this.data.cityName || city || '北京', this.data.cityName || city || '北京')
                         this.setData({suggestList: res})
                     }
                 })
@@ -81,6 +91,11 @@ Component({
         }
     },
     methods: {
+        async getLocationCity() {
+            const pos = await wx.getLocation({type: 'gcj02'})
+            const res = await this.latToAddress(pos)
+            return res
+        },
         goBack() {
             this.setData({suggestList: [], searchKeyword: ''})
             this.triggerEvent('closeSelectPositionPopup')
@@ -169,7 +184,7 @@ Component({
                 this.setData({
                     showCityList: false,
                     currentCity: city.city,
-                    searchKeyword: city.city
+                    searchKeyword: ""
                 })
                 const res = await this.suggest(city.city, city.city)
                 this.setData({suggestList: res})

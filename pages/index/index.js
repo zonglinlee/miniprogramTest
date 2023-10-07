@@ -25,6 +25,7 @@ Page({
             longitude: null,
         },
         locationAddStart: "正在获取当前位置中...",
+        currentCity: "",
         locationAddEnd: "",
         polyline: [],
         includePoints: [],
@@ -72,10 +73,14 @@ Page({
     },
     async getAddress({latitude, longitude}) {
         const res = await this.latToAddress({latitude, longitude})
-        console.log(4234234234, res)
+        // console.log(4234234234, res)
         if (res.status === 0) {
-            const {location: {lat, lng}, formatted_addresses: {recommend}, address} = res.result
-            this.setData({currentPositionStart: {latitude: lat, longitude: lng}, locationAddStart: recommend})
+            const {location: {lat, lng}, formatted_addresses: {recommend}, address, ad_info: {city}} = res.result
+            this.setData({
+                currentPositionStart: {latitude: lat, longitude: lng},
+                locationAddStart: recommend,
+                currentCity: city
+            })
         } else {
             Toast.fail('位置获取失败，请重新获取位置');
         }
