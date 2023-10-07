@@ -1,0 +1,34 @@
+<van-popup show="{{ show }}" bind:close="cancel" round="{{false}}" position="top" duration="{{20}}"
+           bind:after-enter="computeHeight"
+           safe-area-tab-bar="{{false}}">
+    <view class="container">
+        <van-nav-bar
+                title="选择城市"
+                left-arrow
+                class="custom-nav city-nav"
+                bind:click-left="cancel"
+        />
+        <view class="search-wrapper">
+            <view class="input">
+                <input class="des" disabled="{{false}}" model:value="{{cityInput}}" placeholder="请输入城市名称"/>
+            </view>
+            <view class="vertical-divider"></view>
+            <view class="cancel" bind:tap="cancel">取消</view>
+        </view>
+
+        <view class="city-list">
+            <scroll-view scroll-y="true" style="height: {{cityHeight}}px" show-scrollbar="{{false}}"
+                         enhanced="{{true}}">
+                <block wx:for="{{letters}}" wx:for-item="letter" wx:for-index="letterIndex" wx:key="*this">
+                    <view class="item title">{{letter}}</view>
+                    <view class="item city" wx:for="{{cityGroupByLetters[letterIndex]}}" data-city="{{city}}" bind:tap="tapCity"
+                          wx:for-item="city" wx:key="id">
+                        {{city.city}}
+                    </view>
+                </block>
+
+            </scroll-view>
+        </view>
+        <slot></slot>
+    </view>
+</van-popup>

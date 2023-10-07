@@ -18,26 +18,52 @@
         </map>
 
         <view class="card" style="height:{{cardHeight}}px;">
-            <view style="display:flex;align-items:center;justify-content:center;">
-                <scroll-view scroll-y="true" style="height: {{cardHeight-30}}px;width:fit-content;"
-                             show-scrollbar="{{false}}"
-                             enhanced="{{true}}">
-                    <view class="item" wx:for="{{15}}" wx:key="index">
-                        <view class="left {{index%2 === 0 ? 'even' : 'odd'}}">站点1站点1站点1站点1</view>
-                        <view class="middle">
+            <scroll-view scroll-y enable-flex="{{false}}"
+                         style="height: {{cardHeight-30}}px;"
+                         show-scrollbar="{{false}}"
+                         enhanced="{{true}}">
+                <!--  上车点 -->
+                <view class="wrapper" wx:if="{{showStop1}}">
+                    <view class="item" wx:for="{{stop1List}}"
+                          wx:key="index" bind:tap="clickStop" data-up data-stop="{{item}}">
+                        <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}">
+                            {{item.title}}
+                        </view>
+                        <view class="middle {{stop1.title === item.title ? 'item-selected' : ''}}">
                             <view class="outer">
                                 <view class="inner"></view>
                             </view>
                             <view class="line"></view>
                         </view>
-                        <view class="right {{index%2 === 0 ? 'even' : 'odd'}}">站点2站点2站点2站点2站点2站点2站点2站点2</view>
+                        <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}">
+                            {{item.title}}
+                        </view>
                     </view>
-                </scroll-view>
-            </view>
+                </view>
+                <!--下车点-->
+                <view class="wrapper" wx:else>
+                    <view class="item" wx:for="{{stop2List}}"
+                          wx:key="index" bind:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
+                        <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}">
+                            {{item.title}}
+                        </view>
+                        <view class="middle {{stop2.title === item.title ? 'item-selected' : ''}}">
+                            <view class="outer">
+                                <view class="inner"></view>
+                            </view>
+                            <view class="line"></view>
+                        </view>
+                        <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}">
+                            {{item.title}}
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
 
         </view>
     </view>
     <view class="btn-wrapper">
-        <view class="btn">确认上车点</view>
+        <view class="btn" wx:if="{{showStop1}}" bind:tap="confirmStop1">确认上车点</view>
+        <view class="btn" wx:else bind:tap="confirmStop2">确认下车点</view>
     </view>
 </view>

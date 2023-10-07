@@ -1,0 +1,54 @@
+@import "assets/css/common";
+
+@height: 100rpx;
+.container {
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    border-bottom: 1rpx solid @border-gray;
+    height: @height;
+    line-height: @height;
+
+    .input {
+      flex-grow: 1;
+      padding-left: 40rpx;
+    }
+
+    .vertical-divider {
+      width: 1rpx;
+      height: 40rpx;
+      background: @border-gray;
+      margin-left: 10rpx;
+      margin-right: 10rpx;
+    }
+
+    .cancel {
+      width: 100rpx;
+      text-align: center;
+    }
+  }
+
+  .city-list {
+    .current-city {
+
+    }
+
+    .item {
+      height: @height;
+      line-height: @height;
+      font-size: @font-32;
+      padding-left: 40rpx;
+    }
+
+    .title {
+      background: @page-bg-gray;
+    }
+
+    .city {
+      border-bottom: 1rpx solid @border-gray;
+      background: #ffffff;
+    }
+  }
+}

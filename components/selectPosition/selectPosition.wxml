@@ -7,14 +7,17 @@
     />
     <view class="search-container c-height">
         <view class="l">
-            <view class="city">{{currentCity}}</view>
+            <view class="city" bind:tap="openCityList">{{currentCity}}</view>
             <image class="img-triangle" mode="widthFix" src="../../assets/images/triangle.png"></image>
         </view>
+        <view class="vertical-divider"></view>
         <view class="m">
-            <input class="input" confirm-type="search" model:value="{{searchKeyword}}" placeholder-class="placeholder-style" placeholder="您要去哪里"
+            <input class="input" confirm-type="search" model:value="{{searchKeyword}}"
+                   placeholder-class="placeholder-style" placeholder="您要去哪里"
                    cursor-spacing="{{50}}"
                    bind:confirm="bindKeyInput"/>
         </view>
+        <view class="vertical-divider"></view>
         <view class="r" bind:tap="goBack">取消</view>
     </view>
     <view class="content-wrapper">
@@ -43,7 +46,8 @@
         <view class="list-container" wx:if="{{suggestList.length>0}}">
             <scroll-view scroll-y="true" style="height: {{mapHeight}}px;" show-scrollbar="{{false}}"
                          enhanced="{{true}}">
-                <view class="item" wx:for="{{suggestList}}" wx:key="title" data-pos="{{item}}" bind:tap="chooseRecommendPosition">
+                <view class="item" wx:for="{{suggestList}}" wx:key="title" data-pos="{{item}}"
+                      bind:tap="chooseRecommendPosition">
                     <image class="img-position" mode="widthFix" src="../../assets/images/position.png"></image>
                     <view class="r">
                         <view class="title">{{item.title}}</view>
@@ -53,7 +57,8 @@
             </scroll-view>
         </view>
     </view>
-
+    <city-list show="{{showCityList}}"
+               bind:closeCity="closeCityList"></city-list>
     <slot></slot>
 </view>
 

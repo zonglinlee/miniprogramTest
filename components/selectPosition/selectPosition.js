@@ -33,6 +33,7 @@ Component({
         suggestList: [],
         currentCity: '银川市',
         searchKeyword: '银川市',
+        showCityList: false
     },
     lifetimes: {
         async created() {
@@ -157,6 +158,26 @@ Component({
                 console.log(res, sysInfo, res[2].height - total)
                 that.setData({mapHeight: res[2].height - total})
             })
+        },
+        openCityList() {
+            this.setData({showCityList: true})
+        },
+        async closeCityList(e) {
+            const city = e.detail
+            console.log(e)
+            if (city) {
+                this.setData({
+                    showCityList: false,
+                    currentCity: city.city,
+                    searchKeyword: city.city
+                })
+                const res = await this.suggest(city.city, city.city)
+                this.setData({suggestList: res})
+            } else {
+                this.setData({
+                    showCityList: false
+                })
+            }
         }
     }
 });
