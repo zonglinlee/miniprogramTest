@@ -15,7 +15,8 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.png'}, {url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper2.jpg'}],
+        // swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}, {url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper2.jpg'}],
+        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
             longitude: 116.40,
@@ -47,6 +48,51 @@ Page({
             })
         }
         this.getCurrentPosition()
+    },
+    testAPI() {
+        // console.log(wx.getMenuButtonBoundingClientRect())
+        // wx.hideTabBar({})
+        // wx.showTabBarRedDot({index: 0})
+        // wx.startPullDownRefresh()
+        // wx.openSetting({})
+        // wx.startSoterAuthentication({
+        //     requestAuthModes: ['fingerPrint'],
+        //     challenge: '123456',
+        //     authContent: '请用指纹解锁',
+        //     success(res) {
+        //         console.log(res)
+        //     }
+        // })
+        // wx.openBluetoothAdapter({})
+        // wx.startWifi({})
+        // setTimeout(() => {
+        //     wx.stopWifi({
+        //         success(res) {
+        //             console.log(res.errMsg)
+        //         },
+        //         fail(res) {
+        //             console.log(res)
+        //         }
+        //     })
+        //     wx.closeBluetoothAdapter({})
+        // }, 3000)
+        // wx.makePhoneCall({
+        //     phoneNumber: '67414' //仅为示例，并非真实的电话号码
+        // })
+        // wx.vibrateShort({
+        //     style: 'light', success(res) {
+        //         console.log(res)
+        //     }, fail(err) {
+        //         console.log(err)
+        //     }
+        // })
+
+        console.log("wx.getWindowInfo():", wx.getWindowInfo());
+        wx.getSystemInfo({
+            success(res) {
+                console.log(res)
+            }
+        })
     },
     getUserProfile(e) {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -85,7 +131,7 @@ Page({
             Toast.fail('位置获取失败，请重新获取位置');
         }
     },
-    async getDrivingLine2(from, to) {
+    async getDrivingLine(from, to) {
         const pl = await this.getDrivingLine(from, to)
         this.setData({
             latitude: pl[0].latitude,
@@ -116,64 +162,6 @@ Page({
                 height: 20
             }]
         })
-    },
-    getDrivingLine1(e) {
-        //调用距离计算接口
-        const mapSdk = app.globalData.mapSdk
-        const _this = this
-        mapSdk.direction({
-            mode: 'driving',//可选值：'driving'（驾车）、'walking'（步行）、'bicycling'（骑行），不填默认：'driving',可不填
-            //from参数不填默认当前地址
-            // from: e.detail.value.start,
-            to: "38.495004711800874,106.24666087190383",
-            success: function (res) {
-                console.log(res);
-                const ret = res;
-                let coors = ret.result.routes[0].polyline, pl = [];
-                //坐标解压（返回的点串坐标，通过前向差分进行压缩）
-                let kr = 1000000;
-                for (let i = 2; i < coors.length; i++) {
-                    coors[i] = Number(coors[i - 2]) + Number(coors[i]) / kr;
-                }
-                //将解压后的坐标放入点串数组pl中
-                for (let i = 0; i < coors.length; i += 2) {
-                    pl.push({latitude: coors[i], longitude: coors[i + 1]})
-                }
-                console.log(231313, pl)
-                //设置polyline属性，将路线显示出来,将解压坐标第一个数据作为起点
-                _this.setData({
-                    latitude: pl[0].latitude,
-                    longitude: pl[0].longitude,
-                    polyline: [{
-                        points: pl,
-                        color: '#FF0000DD',
-                        width: 3
-                    }],
-                    includePoints: pl,
-                    markers: [{
-                        id: 1,
-                        latitude: pl[0].latitude,
-                        longitude: pl[0].longitude,
-                        title: 'start',
-                        // iconPath: '../../assets/images/start_position.png',
-                        iconPath: '../../assets/images/start_position.svg',
-                    }, {
-                        id: 2,
-                        latitude: pl[pl.length - 1].latitude,
-                        longitude: pl[pl.length - 1].longitude,
-                        title: 'end',
-                        // iconPath: '../../assets/images/end_position.png',
-                        iconPath: '../../assets/images/end_position.svg',
-                    }]
-                })
-            },
-            fail: function (error) {
-                console.error(error);
-            },
-            complete: function (res) {
-                console.log(res);
-            }
-        });
     },
     getClickPoint(res) {
         console.log("点击地图:", res)
@@ -215,7 +203,7 @@ Page({
             }
             const {currentPositionStart, currentPositionEnd} = this.data
             if (currentPositionEnd.latitude) {
-                this.getDrivingLine2(currentPositionStart, currentPositionEnd)
+                this.getDrivingLine(currentPositionStart, currentPositionEnd)
             }
         } else {
             this.setData({

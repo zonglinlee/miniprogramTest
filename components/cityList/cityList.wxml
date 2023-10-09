@@ -10,7 +10,7 @@
         />
         <view class="search-wrapper">
             <view class="input">
-                <input class="des" disabled="{{false}}" model:value="{{cityInput}}" placeholder="请输入城市名称"/>
+                <input class="des" disabled="{{false}}" model:value="{{cityInput}}" placeholder="请输入城市名称或拼音"/>
             </view>
             <view class="vertical-divider"></view>
             <view class="cancel" bind:tap="cancel">取消</view>
@@ -21,7 +21,8 @@
                          enhanced="{{true}}">
                 <block wx:for="{{letters}}" wx:for-item="letter" wx:for-index="letterIndex" wx:key="*this">
                     <view class="item title">{{letter}}</view>
-                    <view class="item city" wx:for="{{cityGroupByLetters[letterIndex]}}" data-city="{{city}}" bind:tap="tapCity"
+                    <view class="item city" wx:for="{{cityGroupByLetters[letterIndex]}}" data-city="{{city}}"
+                          bind:tap="tapCity"
                           wx:for-item="city" wx:key="id">
                         {{city.city}}
                     </view>

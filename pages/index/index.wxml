@@ -2,7 +2,7 @@
 <view class="container">
     <view class="top">
         <view class="swiper-wrapper">
-            <swiper indicator-dots="{{true}}"
+            <swiper indicator-dots="{{false}}"
                     autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
                 <block wx:for="{{swiperList}}" wx:key="url">
                     <swiper-item>
@@ -11,6 +11,7 @@
                 </block>
             </swiper>
         </view>
+        <view style="height:10rpx;background:#f1f4f9;"></view>
         <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
@@ -35,7 +36,7 @@
             </view>
             <view class="line2">
                 <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}" placeholder="请输入打车目的地"
-                       bind:blur="getDrivingLine2"
+                       bind:blur="getDrivingLine"
                        bind:focus="focusInput1" bind:tap="focusInput1"/>
                 <image class="dot item1" src="../../assets/images/green_dot.png"></image>
             </view>
@@ -61,7 +62,7 @@
     <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;">
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="openPopup">乘车人信息</button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/confirmOrder/confirmOrder">订单支付
+                data-url="/pages/confirmOrder/confirmOrder">提交订单
         </button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
                 data-url="/pages/dedicatedLine/dedicatedLine">定制专线
@@ -70,7 +71,7 @@
                 data-url="/pages/lineSchedule/lineSchedule">选择班次
         </button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/paidSuccess/paidSuccess">支付成功
+                data-url="/pages/paidSuccess/paidSuccess">订单详情
         </button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
                 data-url="/pages/confirmPay/confirmPay">支付订单
@@ -78,5 +79,11 @@
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
                 data-url="/pages/busStop/busStop">站点选择
         </button>
+        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="testAPI"
+                data-url="/pages/busStop/busStop">API测试
+        </button>
+
+        <!--        miss 支付成功 / 支付失败 页面-->
+
     </view>
 </view>
