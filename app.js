@@ -26,5 +26,18 @@ App({
     },
     defaultCustomNavClick() {
         wx.navigateBack({})
+    },
+    getImageInfo(src) {
+        return wx.getImageInfo({src})
+    },
+    computeRec(selector) {
+        const query = wx.createSelectorQuery()
+        query.select(selector).boundingClientRect()
+        return new Promise((resolve, reject) => {
+            query.exec(function (res) {
+                resolve(res)
+            })
+        })
+
     }
 })

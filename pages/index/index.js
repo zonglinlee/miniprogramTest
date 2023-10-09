@@ -15,7 +15,6 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-        // swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}, {url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper2.jpg'}],
         swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
@@ -32,6 +31,138 @@ Page({
         includePoints: [],
         markers: [],
         selectStart: false,
+        swiperHeight: 75,
+        swiperLoaded: false,
+        card1Height: 777,
+        hotBtn: [{
+            label: '定制班线',
+            key: 'order',
+            src: '../../assets/images/order.png',
+        }, {
+            label: '货物代送',
+            key: 'order',
+            src: '../../assets/images/order.png',
+        }, {
+            label: '全部订单',
+            key: 'order',
+            src: '../../assets/images/order.png',
+        }, {
+            label: '待支付',
+            key: 'wait_pay',
+            src: '../../assets/images/wait_pay.png',
+        }, {
+            label: '待出行',
+            key: 'red_car',
+            src: '../../assets/images/red_car.png',
+        }, {
+            label: '待评价',
+            key: 'wait_evaluate',
+            src: '../../assets/images/wait_evaluate.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }, {
+            label: '退货/售后',
+            key: 'refund',
+            src: '../../assets/images/refund.png',
+        }],
     },
     // 事件处理函数
     navigateTo(e) {
@@ -41,13 +172,72 @@ Page({
         })
     },
 
-    onLoad() {
+    async onLoad() {
         if (wx.getUserProfile) {
             this.setData({
                 canIUseGetUserProfile: true
             })
         }
         this.getCurrentPosition()
+
+        wx.createIntersectionObserver().relativeToViewport().observe('.card1', (res) => {
+            // res.id // 目标节点 id
+            // res.dataset // 目标节点 dataset
+            // res.intersectionRatio // 相交区域占目标节点的布局区域的比例
+            // res.intersectionRect // 相交区域
+            // res.intersectionRect.left // 相交区域的左边界坐标
+            // res.intersectionRect.top // 相交区域的上边界坐标
+            // res.intersectionRect.width // 相交区域的宽度
+            // res.intersectionRect.height // 相交区域的高度
+            // console.log('createIntersectionObserver:', res)
+        })
+
+    },
+    async onReady() {
+        const cardRec = await app.computeRec('.card1')
+        const middle = await app.computeRec('.middle')
+        const swiperwrapper = await app.computeRec('.swiper-wrapper')
+        const items = await app.computeRec('.items-wrapper')
+        console.log('cardRec:', cardRec)
+        console.log('middle:', middle)
+        console.log('swiperwrapper:', swiperwrapper)
+        setTimeout(async () => {
+            const swiperwrapper = await app.computeRec('.swiper-wrapper')
+
+            const cardRec = await app.computeRec('.card1')
+            // console.log('swiperwrapper:', swiperwrapper)
+            // console.log('cardRec:', cardRec)
+        }, 50)
+        console.log('items:', items)
+        // this.setData({
+        //     card1Height: cardRec.height || cardRec[0].height || 450,
+        // })
+        wx.createIntersectionObserver().relativeToViewport().observe('.card1', (res) => {
+            // console.log('createIntersectionObserver-ready:', res)
+        })
+    },
+    async loadSwiperImage(e) {
+        const detail = e.detail
+        // console.log('loadSwiperImage:', detail.height)
+        if (!this.data.swiperLoaded) {
+            const res = await app.computeRec('.swiper-image')
+            const cardRec = await app.computeRec('.card1')
+            const swiperwrapper = await app.computeRec('.swiper-wrapper')
+            // console.log('swiperwrapper1:', swiperwrapper)
+            // console.log('loadSwiperImage1:', res)
+            // console.log('cardRec:', cardRec)
+            this.setData({
+                swiperHeight: res.height || res[0].height || 75,
+                // card1Height: cardRec.height || cardRec[0].height || 450,
+            })
+        }
+    },
+
+    moveCard(e) {
+        // console.log('moveCard:', e, e.detail)
+    },
+    moveCardV(e) {
+        // console.log('moveCardV:', e, e.detail)
     },
     testAPI() {
         // console.log(wx.getMenuButtonBoundingClientRect())
@@ -131,7 +321,7 @@ Page({
             Toast.fail('位置获取失败，请重新获取位置');
         }
     },
-    async getDrivingLine(from, to) {
+    async drawDrivingLine(from, to) {
         const pl = await this.getDrivingLine(from, to)
         this.setData({
             latitude: pl[0].latitude,
@@ -203,7 +393,7 @@ Page({
             }
             const {currentPositionStart, currentPositionEnd} = this.data
             if (currentPositionEnd.latitude) {
-                this.getDrivingLine(currentPositionStart, currentPositionEnd)
+                this.drawDrivingLine(currentPositionStart, currentPositionEnd)
             }
         } else {
             this.setData({

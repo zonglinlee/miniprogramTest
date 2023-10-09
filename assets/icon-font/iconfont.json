@@ -1,0 +1,16 @@
+{
+  "id": "4277940",
+  "name": "石嘴山出行",
+  "font_family": "szs",
+  "css_prefix_text": "szs-",
+  "description": "石嘴山出行,内蒙（包头）用，微信小程序，https://juejin.cn/post/7165458111283593247",
+  "glyphs": [
+    {
+      "icon_id": "1173707",
+      "name": "货物代送",
+      "font_class": "goods-delivery",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    }
+  ]
+}

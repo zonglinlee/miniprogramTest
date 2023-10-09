@@ -4,18 +4,11 @@ page {
   .top {
     position: relative;
 
-    .swiper-wrapper {
-      //margin-bottom: 20rpx;
-      box-sizing: border-box;
-
-      .swiper-image {
-        width: 100%;
-      }
-    }
 
     .map {
       width: 750rpx;
-      height: 500rpx;
+      //height: 500rpx;
+      height: 700rpx;
     }
 
     .shield {
@@ -23,7 +16,7 @@ page {
       border-radius: 16rpx;
       position: absolute;
       right: 22rpx;
-      top: 500rpx;
+      top: 320rpx;
       width: 64rpx;
       height: 62rpx;
     }
@@ -33,7 +26,7 @@ page {
       border-radius: 16rpx;
       position: absolute;
       right: 22rpx;
-      top: 580rpx;
+      top: 400rpx;
       width: 64rpx;
       height: 62rpx;
       display: flex;
@@ -51,36 +44,40 @@ page {
     }
   }
 
+  .ma {
+    width: 100%;
+    height: 500px;
+    padding-bottom: 30rpx;
+    top: -400rpx;
+  }
+
+  .mv {
+    width: 100%;
+  }
+
+  movable-view {
+    pointer-events: auto;
+  }
+
+  movable-area {
+    pointer-events: none;
+  }
+
+  .card1 {
+    background: @page-bg-gray;
+    padding-top: 30rpx;
+    border-radius: 16rpx;
+  }
 
   .middle {
-    position: relative;
-    top: -64rpx;
-
-    .tab {
-      background-image: url('http://s1dkzsmpj.hb-bkt.clouddn.com/outer/cus_tab1.png');
-      margin-left: 24rpx;
-      width: 610rpx;
-      height: 58rpx;
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .item {
-        width: 33%;
-        text-align: center;
-        font-size: @font-30;
-      }
-    }
+    margin-bottom: 24rpx;
+    background: @page-bg-gray;
 
     .content {
-      margin: -2px 24rpx 0 24rpx;
+      margin: 0 24rpx 0 24rpx;
       height: 230rpx;
       background: #ffffff;
-      border-radius: 20rpx;
-      border-top-left-radius: 0;
+      border-radius: 16rpx;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
@@ -97,6 +94,8 @@ page {
           margin-right: 24rpx;
           width: 25rpx;
           height: 25rpx;
+          flex-shrink: 0;
+          flex-grow: 0;
         }
 
         .item2 {
@@ -109,7 +108,7 @@ page {
 
         .item3 {
           margin-left: 24rpx;
-          margin-right: 34rpx;
+          margin-right: 38rpx;
           width: 11rpx;
           height: 21rpx;
         }
@@ -140,8 +139,75 @@ page {
         .des {
           height: 100%;
           margin-left: 75rpx;
-          font-size: @font-28;
+          font-size: @font-34;
         }
+      }
+    }
+  }
+
+  .swiper-wrapper {
+    box-sizing: border-box;
+    margin-bottom: 24rpx;
+    border: 1rpx solid #fff;
+
+    swiper {
+      height: 200rpx;
+    }
+
+    .swiper-image {
+      display: block;
+      border-radius: 16rpx;
+      width: 100%;
+    }
+  }
+
+  .items-wrapper {
+    margin-bottom: 24rpx;
+
+    .items {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 40rpx;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 20%;
+        height: 90rpx;
+        margin-bottom: 40rpx;
+
+        .t {
+          font-size: @font-26;
+        }
+
+        image.order {
+          width: 36rpx;
+          height: 42rpx;
+        }
+
+        image.wait_pay {
+          width: 48rpx;
+          height: 45rpx;
+        }
+
+        image.red_car {
+          width: 60rpx;
+          height: 39rpx;
+        }
+
+        image.wait_evaluate {
+          width: 43rpx;
+          height: 45rpx;
+        }
+
+        image.refund {
+          width: 57rpx;
+          height: 42rpx;
+        }
+
       }
     }
   }

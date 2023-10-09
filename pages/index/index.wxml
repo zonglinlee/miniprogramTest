@@ -1,17 +1,6 @@
 <!--index.wxml-->
 <view class="container">
     <view class="top">
-        <view class="swiper-wrapper">
-            <swiper indicator-dots="{{false}}"
-                    autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
-                <block wx:for="{{swiperList}}" wx:key="url">
-                    <swiper-item>
-                        <image src="{{item.url}}" mode="widthFix" class="swiper-image"></image>
-                    </swiper-item>
-                </block>
-            </swiper>
-        </view>
-        <view style="height:10rpx;background:#f1f4f9;"></view>
         <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
@@ -22,26 +11,87 @@
             <image class="img img-position" mode="widthFix" src="../../assets/images/positioning.png"></image>
         </view>
     </view>
-    <view class="middle">
-        <view class="tab">
-            <text class="item">城际出行</text>
-            <text class="item">定制班线</text>
-            <text class="item">货物代送</text>
-        </view>
-        <view class="content">
-            <view class="line1" bind:tap="selectStartPos">
-                <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
-                <text class="item2">{{locationAddStart}}</text>
-                <image class="item3" src="../../assets/images/next.png"></image>
-            </view>
-            <view class="line2">
-                <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}" placeholder="请输入打车目的地"
-                       bind:blur="getDrivingLine"
-                       bind:focus="focusInput1" bind:tap="focusInput1"/>
-                <image class="dot item1" src="../../assets/images/green_dot.png"></image>
-            </view>
-        </view>
 
+    <movable-area class="ma" style="height:{{card1Height+100}}px" wx:if="{{true}}">
+        <movable-view class="mv" direction="vertical" y="{{100}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
+                      style="height:{{card1Height}}px" inertia out-of-bounds
+                      friction="{{10}}">
+            <view class="card1" style="height:{{card1Height}}px">
+                <view class="middle">
+                    <view class="content">
+                        <view class="line1" bind:tap="selectStartPos">
+                            <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
+                            <text class="item2">{{locationAddStart}}</text>
+                            <image class="item3" src="../../assets/images/next.png"></image>
+                        </view>
+                        <view class="line2">
+                            <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}"
+                                   placeholder="请输入打车目的地"
+                                   bind:focus="focusInput1" bind:tap="focusInput1"/>
+                            <image class="dot item1" src="../../assets/images/green_dot.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="sec swiper-wrapper">
+                    <swiper indicator-dots="{{false}}" style="height:{{swiperHeight}}px"
+                            autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+                        <block wx:for="{{swiperList}}" wx:key="url">
+                            <swiper-item>
+                                <image src="{{item.url}}" bindload="loadSwiperImage" mode="widthFix"
+                                       class="swiper-image"></image>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                </view>
+                <view class="sec items-wrapper">
+                    <view class="items">
+                        <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
+                              data-item="{{item}}">
+                            <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
+                            <text class="t">{{item.label}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </movable-view>
+    </movable-area>
+
+    <view class="card1" wx:if="{{false}}">
+        <view class="middle">
+            <view class="content">
+                <view class="line1" bind:tap="selectStartPos">
+                    <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
+                    <text class="item2">{{locationAddStart}}</text>
+                    <image class="item3" src="../../assets/images/next.png"></image>
+                </view>
+                <view class="line2">
+                    <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}"
+                           placeholder="请输入打车目的地"
+                           bind:focus="focusInput1" bind:tap="focusInput1"/>
+                    <image class="dot item1" src="../../assets/images/green_dot.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="sec swiper-wrapper">
+            <swiper indicator-dots="{{false}}" style="height:{{swiperHeight}}px"
+                    autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+                <block wx:for="{{swiperList}}" wx:key="url">
+                    <swiper-item>
+                        <image src="{{item.url}}" bindload="loadSwiperImage" mode="widthFix"
+                               class="swiper-image"></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="sec items-wrapper">
+            <view class="items">
+                <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
+                      data-item="{{item}}">
+                    <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
+                    <text class="t">{{item.label}}</text>
+                </view>
+            </view>
+        </view>
     </view>
 
     <add-passenger show="{{showPopup}}"></add-passenger>
@@ -59,7 +109,7 @@
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
 
 
-    <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;">
+    <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;" wx:if="{{false}}">
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="openPopup">乘车人信息</button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
                 data-url="/pages/confirmOrder/confirmOrder">提交订单
@@ -83,7 +133,8 @@
                 data-url="/pages/busStop/busStop">API测试
         </button>
 
-        <!--        miss 支付成功 / 支付失败 页面-->
 
+        <text class="szs szs-goods-delivery">货物代送</text>
+        <text>miss 支付成功 / 支付失败 页面</text>
     </view>
 </view>
