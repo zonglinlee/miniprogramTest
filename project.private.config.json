@@ -4,5 +4,32 @@
   "setting": {
     "compileHotReLoad": true,
     "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "添加乘客",
+          "pathName": "pages/addPassenger/addPassenger",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "支付订单",
+          "pathName": "pages/confirmPay/confirmPay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "提交订单",
+          "pathName": "pages/confirmOrder/confirmOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

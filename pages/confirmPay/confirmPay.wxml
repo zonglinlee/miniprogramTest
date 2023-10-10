@@ -55,8 +55,8 @@
                 <view class="sum">33.00元</view>
             </view>
             <view class="btn-group">
-                <view class="btn gray-btn">取消订单</view>
-                <view class="btn primary-btn">立即支付</view>
+                <view class="btn gray-btn" catch:tap="cancelOrder">取消订单</view>
+                <view class="btn primary-btn" catch:tap="doPay">立即支付</view>
             </view>
         </view>
     </view>

@@ -19,7 +19,7 @@
                         <view class="m">
                             <text class="red">￥ 75.00</text>
                         </view>
-                        <view class="btn">进入</view>
+                        <view class="btn" bind:tap="gotoPage" data-url="/pages/lineSchedule/lineSchedule">进入</view>
                     </view>
                 </view>
 

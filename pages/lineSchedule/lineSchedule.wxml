@@ -11,7 +11,7 @@
         </view>
     </view>
     <view class="buses">
-        <view class="item" wx:key="index" wx:for="{{2}}">
+        <view class="item" wx:key="index" wx:for="{{2}}" catch:tap="gotoPage" data-url="/pages/busStop/busStop">
             <view class="l1">班次号:NDGY1230</view>
             <view class="l2">
                 <view class="time">11:30</view>

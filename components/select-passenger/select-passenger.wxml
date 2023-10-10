@@ -6,8 +6,8 @@
 
 
             <view class="people">
-                <scroll-view scroll-y="true" style="height: 460rpx;" show-scrollbar="{{false}}" enhanced="{{true}}">
-                    <view class="item" wx:for="{{1}}" wx:key="index">
+                <scroll-view scroll-y="true" style="height: 380rpx;" show-scrollbar="{{false}}" enhanced="{{true}}">
+                    <view class="item" wx:for="{{3}}" wx:key="index">
                         <view class="left">
                             <view class="l">
                                 <radio checked="{{false}}" color="#1a87f6"/>
@@ -30,17 +30,17 @@
             </view>
 
             <view class="btn-group">
-                <view class="add-btn">
+                <view class="add-btn" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
                     <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
                     <view class="add-text">添加乘客</view>
                 </view>
-                <view class="add-btn">
+                <view class="add-btn" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
                     <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
                     <view class="add-text">添加儿童票</view>
                 </view>
             </view>
 
-            <button class="confirm-btn" type="primary">确定</button>
+            <button class="confirm-btn" type="primary" catch:tap="confirmSelect">确定</button>
             <!--            <van-button type="info">信息按钮</van-button>-->
 
 

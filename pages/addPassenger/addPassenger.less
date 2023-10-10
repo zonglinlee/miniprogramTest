@@ -1,0 +1,97 @@
+@import "assets/css/common";
+
+.container {
+
+  .wrapper {
+    margin-top: 24rpx;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 100rpx;
+    height: 100rpx;
+    padding: 24rpx;
+    border-bottom: 1rpx solid @border-gray;
+
+    .t1 {
+      font-size: 36rpx;
+    }
+
+    .t2 {
+      font-size: @font-32;
+    }
+
+    .t3 {
+      font-size: @font-28;
+    }
+
+    .t4, .t5 {
+      font-size: 44rpx;
+      padding: 10rpx;
+    }
+
+    .t4 {
+      color: @blue-bg;
+    }
+
+    .t5 {
+      color: red;
+    }
+
+  }
+
+  .add-btn {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0 0 28rpx;
+
+    .add-blue {
+      width: 40rpx;
+      margin-right: 16rpx;
+    }
+
+    .add-text {
+      font-size: @font-32;
+      font-weight: bold;
+    }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: 0 24rpx 24rpx 24rpx;
+    background: #e0e0e0;
+    border-radius: 50rpx;
+
+    .icon {
+      width: 100rpx;
+      flex-grow: 0;
+      flex-shrink: 0;
+      text-align: center;
+      font-size: 46rpx;
+    }
+
+    .input {
+      flex-grow: 1;
+      flex-shrink: 0;
+      font-size: @font-32;
+    }
+  }
+
+  .save-btn {
+    height: 80rpx;
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    width: 80%;
+    background: @blue-bg;
+    text-align: center;
+    font-size: @font-32;
+    font-weight: bold;
+    color: white;
+    margin: 100rpx auto 0 auto;
+  }
+}

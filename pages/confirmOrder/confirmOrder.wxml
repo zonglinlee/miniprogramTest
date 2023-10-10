@@ -35,7 +35,7 @@
                 </view>
             </view>
         </view>
-        <view class="add">
+        <view class="add" catch:tap="openPopup">
             <image class="add-orange" src="../../assets/images/add_orange.png" mode="widthFix"></image>
             <text class="add-txt">添加乘客</text>
         </view>
@@ -55,7 +55,9 @@
             <view class="gross">
                 <text>合计：</text><text class="red">￥ 75.00</text>
             </view>
-            <view class="btn">提交订单</view>
+            <view class="btn" data-url="/pages/confirmPay/confirmPay" catch:tap="gotoPage">提交订单</view>
         </view>
     </view>
+
+    <select-passenger show="{{showPopup}}"></select-passenger>
 </view>

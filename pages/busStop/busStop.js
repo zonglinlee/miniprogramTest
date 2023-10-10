@@ -93,7 +93,8 @@ Page({
             showStop1: false
         })
     },
-    confirmStop2() {
-    },
-
+    gotoPage(e) {
+        console.log(e)
+        app.navigate(e)
+    }
 });

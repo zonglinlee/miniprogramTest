@@ -7,7 +7,7 @@ const mapBehavior = require("../../assets/js/qqmap-wx-jssdk1.2/mapBehavior")
 Page({
     behaviors: [mapBehavior],
     data: {
-        showPopup: false,
+
         showSelectPositionPopup: false,
         motto: 'canvas test',
         userInfo: {},
@@ -35,12 +35,13 @@ Page({
         swiperLoaded: false,
         hotBtn: [{
             label: '定制班线',
-            key: 'order',
-            src: '../../assets/images/order.png',
+            key: 'dedicatedLine',
+            src: '../../assets/images/red_car.png',
+            pageUrl: '/pages/dedicatedLine/dedicatedLine'
         }, {
             label: '货物代送',
-            key: 'order',
-            src: '../../assets/images/order.png',
+            key: 'goodsDelivery',
+            src: '../../assets/images/red_car.png',
         }, {
             label: '全部订单',
             key: 'order',
@@ -137,6 +138,21 @@ Page({
             }
         })
     },
+    hotBtnClick(e) {
+        let item = e.currentTarget.dataset.item
+        const {imgUrl, pageUrl, label} = item
+        if (pageUrl) {
+            wx.navigateTo({url: pageUrl})
+        } else if (imgUrl) {
+            wx.navigateTo({url: `/pages/imagePage/imagePage?navTitle=${label}&imageUrl=${imgUrl}`})
+        } else {
+            wx.showToast({
+                title: item.label,
+                icon: 'success',
+                duration: 500
+            })
+        }
+    },
     getUserProfile(e) {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
         wx.getUserProfile({
@@ -215,11 +231,6 @@ Page({
         this.setData({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
-        })
-    },
-    openPopup() {
-        this.setData({
-            showPopup: true
         })
     },
     confirmOrder() {

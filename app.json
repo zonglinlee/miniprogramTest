@@ -10,14 +10,16 @@
     "pages/confirmOrder/confirmOrder",
     "pages/dedicatedLine/dedicatedLine",
     "pages/lineSchedule/lineSchedule",
-    "pages/paidSuccess/paidSuccess",
+    "pages/orderDetail/orderDetail",
     "pages/confirmPay/confirmPay",
-    "pages/busStop/busStop"
+    "pages/busStop/busStop",
+    "pages/orderStatus/orderStatus",
+    "pages/addPassenger/addPassenger"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "网约车",
+    "navigationBarTitleText": "石嘴山出行",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

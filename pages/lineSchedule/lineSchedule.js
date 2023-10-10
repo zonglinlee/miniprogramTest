@@ -47,5 +47,8 @@ Page({
     },
     goBack() {
         app.defaultCustomNavClick()
+    },
+    gotoPage(e) {
+        app.navigate(e)
     }
 });

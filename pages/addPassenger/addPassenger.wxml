@@ -1,0 +1,60 @@
+<view class="container">
+    <view class="custom-nav">
+        <custom-nav navTitle="添加乘客"></custom-nav>
+    </view>
+    <view class="wrapper sec" style="min-height:{{cardHeight}}px">
+        <view class="list-item " wx:for="{{passengers}}" wx:key="idCard">
+            <text class="t1 icon szs szs-name"></text>
+            <text class="t2 name">{{item.name}}</text>
+            <text class="t3 id">{{item.idCard}}</text>
+            <text class="t4 icon szs szs-edit" catch:tap="editInfo" data-info="{{item}}"></text>
+            <text class="t5 icon szs szs-delete" catch:tap="deleteInfo" data-info="{{item}}"></text>
+        </view>
+
+        <view class="add-btn" catch:tap="openPopup">
+            <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
+            <view class="add-text">添加常用乘车人</view>
+        </view>
+    </view>
+
+
+    <van-popup show="{{ show }}" bind:close="closePopup" round="{{false}}" position="top" duration="{{20}}"
+               safe-area-tab-bar="{{false}}">
+        <view class="popup" style="height:{{sHeight}}px;">
+
+            <van-nav-bar
+                    title="添加乘客"
+                    left-arrow
+                    class="custom-nav"
+                    bind:click-left="closePopup"
+            />
+            <view style="padding-top:30rpx;">
+                <view class="item">
+                    <text class="icon szs szs-name"></text>
+                    <input class="input" confirm-type="next" type="text" maxlength="{{10}}" model:value="{{name}}"
+                           placeholder-class="placeholder-style" placeholder="乘车人姓名"
+                           cursor-spacing="{{50}}"/>
+                </view>
+                <view class="item">
+                    <text class="icon szs szs-id-card"></text>
+                    <input class="input" type="idcard" maxlength="{{18}}" model:value="{{idCard}}"
+                           placeholder-class="placeholder-style" placeholder="乘车人身份证号"
+                           cursor-spacing="{{50}}"/>
+                </view>
+                <view class="item">
+                    <text class="icon szs szs-mobile"></text>
+                    <input class="input" type="number" maxlength="{{11}}" model:value="{{mobile}}"
+                           placeholder-class="placeholder-style" placeholder="乘车人手机号"
+                           cursor-spacing="{{50}}"/>
+                </view>
+
+                <view class="save-btn" catch:tap="saveInfo">
+                    保存
+                </view>
+            </view>
+        </view>
+    </van-popup>
+
+
+    <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
+</view>

@@ -41,7 +41,7 @@
         </view>
         <view class="sec items-wrapper">
             <view class="items">
-                <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
+                <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="hotBtnClick"
                       data-item="{{item}}">
                     <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
                     <text class="t">{{item.label}}</text>
@@ -50,7 +50,7 @@
         </view>
     </view>
 
-    <add-passenger show="{{showPopup}}"></add-passenger>
+
     <page-container
             duration="{{300}}"
             overlay="{{false}}"
@@ -66,31 +66,12 @@
 
 
     <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;" wx:if="{{false}}">
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="openPopup">乘车人信息</button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/confirmOrder/confirmOrder">提交订单
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/dedicatedLine/dedicatedLine">定制专线
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/lineSchedule/lineSchedule">选择班次
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/paidSuccess/paidSuccess">订单详情
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/confirmPay/confirmPay">支付订单
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/busStop/busStop">站点选择
+                data-url="/pages/orderDetail/orderDetail">订单详情
         </button>
         <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="testAPI"
                 data-url="/pages/busStop/busStop">API测试
         </button>
-
-
-        <text class="szs szs-goods-delivery">货物代送</text>
         <text>miss 支付成功 / 支付失败 页面</text>
     </view>
 </view>

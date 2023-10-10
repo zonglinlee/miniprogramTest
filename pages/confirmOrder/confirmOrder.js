@@ -1,7 +1,17 @@
 const app = getApp()
 Page({
-    data: {},
+    data: {
+        showPopup: false,
+    },
     onLoad: function (options) {
 
     },
+    openPopup() {
+        this.setData({
+            showPopup: true
+        })
+    },
+    gotoPage(e) {
+        app.navigate(e)
+    }
 });

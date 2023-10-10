@@ -23,6 +23,13 @@ Page({
     onLoad: function (options) {
 
     },
+    cancelOrder() {
+    },
+    doPay() {
+        setTimeout(() => {
+            app.navigate('/pages/orderStatus/orderStatus')
+        }, 2000)
+    },
     goBack() {
         app.defaultCustomNavClick()
     }

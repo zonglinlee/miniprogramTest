@@ -32,12 +32,20 @@ App({
     },
     computeRec(selector) {
         const query = wx.createSelectorQuery()
-        query.select(selector).boundingClientRect()
+        if (selector) {
+            query.select(selector).boundingClientRect()
+        } else {
+            query.selectViewport().boundingClientRect()
+        }
         return new Promise((resolve, reject) => {
             query.exec(function (res) {
                 resolve(res)
             })
         })
 
+    },
+    navigate(e) {
+        const url = e?.currentTarget?.dataset.url || e
+        wx.navigateTo({url})
     }
 })
