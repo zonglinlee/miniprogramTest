@@ -43,25 +43,20 @@ Page({
             key: 'goodsDelivery',
             src: '../../assets/images/red_car.png',
         }, {
-            label: '全部订单',
+            label: '我的订单',
             key: 'order',
             src: '../../assets/images/order.png',
+            pageUrl: '/pages/order/order',
+            isTabPage: true
         }, {
-            label: '待支付',
-            key: 'wait_pay',
-            src: '../../assets/images/wait_pay.png',
+            label: '优惠券',
+            key: 'coupons',
+            src: '../../assets/images/coupons.png',
         }, {
-            label: '待出行',
-            key: 'red_car',
-            src: '../../assets/images/red_car.png',
-        }, {
-            label: '待评价',
-            key: 'wait_evaluate',
-            src: '../../assets/images/wait_evaluate.png',
-        }, {
-            label: '退货/售后',
-            key: 'refund',
-            src: '../../assets/images/refund.png',
+            label: '常用乘车人',
+            key: 'passenger',
+            src: '../../assets/images/passenger.png',
+            pageUrl: "/pages/addPassenger/addPassenger"
         }],
     },
     // 事件处理函数
@@ -140,9 +135,13 @@ Page({
     },
     hotBtnClick(e) {
         let item = e.currentTarget.dataset.item
-        const {imgUrl, pageUrl, label} = item
+        const {imgUrl, pageUrl, label, isTabPage} = item
         if (pageUrl) {
-            wx.navigateTo({url: pageUrl})
+            if (isTabPage) {
+                wx.switchTab({url: pageUrl})
+            } else {
+                wx.navigateTo({url: pageUrl})
+            }
         } else if (imgUrl) {
             wx.navigateTo({url: `/pages/imagePage/imagePage?navTitle=${label}&imageUrl=${imgUrl}`})
         } else {

@@ -47,10 +47,15 @@
                            placeholder-class="placeholder-style" placeholder="乘车人手机号"
                            cursor-spacing="{{50}}"/>
                 </view>
-
-                <view class="save-btn" catch:tap="saveInfo">
-                    保存
+                <view class="btn-group">
+                    <view class="cancel-btn btn" catch:tap="closePopup">
+                        取消
+                    </view>
+                    <view class="save-btn btn" catch:tap="saveInfo">
+                        保存
+                    </view>
                 </view>
+
             </view>
         </view>
     </van-popup>

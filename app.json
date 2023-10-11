@@ -14,7 +14,10 @@
     "pages/confirmPay/confirmPay",
     "pages/busStop/busStop",
     "pages/orderStatus/orderStatus",
-    "pages/addPassenger/addPassenger"
+    "pages/addPassenger/addPassenger",
+    "pages/setting/setting",
+    "pages/invoice/invoice",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,6 +44,12 @@
       {
         "pagePath": "pages/me/me",
         "text": "个人中心",
+        "iconPath": "assets/images/tab_me.png",
+        "selectedIconPath": "assets/images/tab_me_blue.png"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "设置",
         "iconPath": "assets/images/tab_me.png",
         "selectedIconPath": "assets/images/tab_me_blue.png"
       }

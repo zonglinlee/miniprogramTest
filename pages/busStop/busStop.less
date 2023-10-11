@@ -1,6 +1,6 @@
 @import "assets/css/common";
 
-@semi-transparent: #607d8b85;
+@semi-transparent: rgba(201, 201, 201, 0.59);
 .container {
   position: relative;
 
@@ -18,7 +18,8 @@
     left: 0;
     right: 0;
     top: 0;
-    background: @semi-transparent;
+    //background: @semi-transparent;
+    background: rgba(54, 54, 54, 0.5);
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -26,6 +27,11 @@
     justify-content: center;
     padding: 0 22rpx;
 
+    .border {
+      padding: 24rpx;
+      //border: 1rpx solid #d3d3d3;
+      border-radius: 16rpx;
+    }
 
     .item {
       display: flex;
@@ -43,6 +49,7 @@
         padding: 10rpx 20rpx;
         border-radius: 10rpx;
         width: 50%;
+        font-size: @font-28;
         //width: 325rpx;
       }
 
@@ -57,6 +64,7 @@
         border-radius: 12rpx;
         width: 50%;
         //width: 325rpx;
+        font-size: @font-28;
       }
 
       .right.even {
@@ -144,7 +152,8 @@
   }
 
   .btn-wrapper {
-    background: @semi-transparent;
+    //background: @semi-transparent;
+    background: rgba(54, 54, 54, 0.5);
     position: fixed;
     bottom: 0;
     padding-bottom: 10rpx;

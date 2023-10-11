@@ -1,0 +1,88 @@
+<view class="container">
+    <view class="top">
+        <view class="t-wrapper">
+            <view class="avatar-wrapper">
+                <view class="avatar">
+                    <image src="../../assets/images/temp/avatar.png"></image>
+
+                </view>
+                <view class="info">
+                    <view class="line1">天涯有蔷薇</view>
+                    <view class="line2">132****9316</view>
+                </view>
+            </view>
+            <view class="c-wrapper">
+                <view class="item" style="margin-right:24rpx;">
+                    <image src="../../assets/images/coupons.png" mode="widthFix" class="coupons"></image>
+                    <view class="r">
+                        <view class="l1">优惠券 ></view>
+                        <view class="l2">
+                            <text style="font-weight:bold">5</text> 张可用
+                        </view>
+                    </view>
+                </view>
+                <view class="item" catch:tap="gotoPage" data-tab="{{true}}" data-url="/pages/order/order">
+                    <image src="../../assets/images/order.png" mode="widthFix" class="order"></image>
+                    <view class="r">
+                        <view class="l1">订单 ></view>
+                        <view class="l2">
+                            <text style="font-weight:bold">0</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+    </view>
+
+    <view class="list sec" wx:if="{{true}}">
+        <view class="items">
+            <view class="item" catch:tap="gotoPage" data-url="/pages/invoice/invoice">
+                <view class="l">
+                    <text class="icon szs szs-invoice"></text><text class="t">发票中心</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+            <view class="item" catch:tap="gotoPage" data-url="/pages/feedback/feedback">
+                <view class="l">
+                    <text class="icon szs szs-feedback"></text><text class="t">意见反馈</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+            <view class="item" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
+                <view class="l">
+                    <text class="icon szs szs-contact"></text><text class="t">常用乘车人</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+            <view class="item" catch:tap="openPopup">
+                <view class="l">
+                    <text class="icon szs szs-kefu"></text><text class="t">客服中心</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+            <view class="item" catch:tap="gotoPage" data-url="/pages/imagePage/imagePage"
+                  data-imgUrl="http://s1dkzsmpj.hb-bkt.clouddn.com/temp/test.png" data-title="约车规则">
+                <view class="l">
+                    <text class="icon szs szs-setting"></text><text class="t">约车规则</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+            <view class="item last" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
+                <view class="l">
+                    <text class="icon szs szs-emergency"></text><text class="t">紧急联系人</text>
+                </view>
+                <text class="szs szs-arrow-right"></text>
+            </view>
+        </view>
+    </view>
+    <view class="btn">退出登录</view>
+    <van-popup show="{{ show }}" bind:close="cancel" round="{{true}}" position="center" duration="{{300}}" closeable
+               safe-area-tab-bar="{{false}}">
+        <view class="pop-wrapper">
+            <view class="hot" data-number="123456789" catch:tap="makePhoneCall">石嘴山热线</view>
+            <view class="hot" data-number="123456789" catch:tap="makePhoneCall">银川热线</view>
+        </view>
+    </van-popup>
+</view>

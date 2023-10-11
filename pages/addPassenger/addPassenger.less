@@ -82,16 +82,29 @@
     }
   }
 
-  .save-btn {
+  .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn {
     height: 80rpx;
     border-radius: 40rpx;
     line-height: 80rpx;
-    width: 80%;
-    background: @blue-bg;
+    width: 45%;
     text-align: center;
     font-size: @font-32;
     font-weight: bold;
+    margin: 80rpx auto 0 auto;
+  }
+
+  .cancel-btn {
+    background: #e0e0e0;
+  }
+
+  .save-btn {
     color: white;
-    margin: 100rpx auto 0 auto;
+    background: @blue-bg;
   }
 }

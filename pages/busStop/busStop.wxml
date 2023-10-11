@@ -18,48 +18,53 @@
         </map>
 
         <view class="card" style="height:{{cardHeight}}px;">
-            <scroll-view scroll-y enable-flex="{{false}}"
-                         style="height: {{cardHeight-30}}px;"
-                         show-scrollbar="{{false}}"
-                         enhanced="{{true}}">
-                <!--  上车点 -->
-                <view class="wrapper" wx:if="{{showStop1}}">
-                    <view class="item" wx:for="{{stop1List}}"
-                          wx:key="index" bind:tap="clickStop" data-up data-stop="{{item}}">
-                        <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}">
-                            {{item.title}}
-                        </view>
-                        <view class="middle {{stop1.title === item.title ? 'item-selected' : ''}}">
-                            <view class="outer">
-                                <view class="inner"></view>
+            <view class="border">
+                <scroll-view scroll-y enable-flex="{{false}}"
+                             style="height: {{cardHeight-30}}px;"
+                             show-scrollbar="{{false}}"
+                             enhanced="{{true}}">
+                    <!--  上车点 -->
+                    <view class="wrapper" wx:if="{{showStop1}}">
+                        <view class="item" wx:for="{{stop1List}}"
+                              wx:key="index">
+                            <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}"
+                                  catch:tap="clickStop" data-up data-stop="{{item}}">
+                                {{item.title}}
                             </view>
-                            <view class="line"></view>
-                        </view>
-                        <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}">
-                            {{item.title}}
+                            <view class="middle {{stop1.title === item.title ? 'item-selected' : ''}}">
+                                <view class="outer">
+                                    <view class="inner"></view>
+                                </view>
+                                <view class="line"></view>
+                            </view>
+                            <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}"
+                                  catch:tap="clickStop" data-up data-stop="{{item}}">
+                                {{item.title}}
+                            </view>
                         </view>
                     </view>
-                </view>
-                <!--下车点-->
-                <view class="wrapper" wx:else>
-                    <view class="item" wx:for="{{stop2List}}"
-                          wx:key="index" bind:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
-                        <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}">
-                            {{item.title}}
-                        </view>
-                        <view class="middle {{stop2.title === item.title ? 'item-selected' : ''}}">
-                            <view class="outer">
-                                <view class="inner"></view>
+                    <!--下车点-->
+                    <view class="wrapper" wx:else>
+                        <view class="item" wx:for="{{stop2List}}"
+                              wx:key="index">
+                            <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}"
+                                  catch:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
+                                {{item.title}}
                             </view>
-                            <view class="line"></view>
-                        </view>
-                        <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}">
-                            {{item.title}}
+                            <view class="middle {{stop2.title === item.title ? 'item-selected' : ''}}">
+                                <view class="outer">
+                                    <view class="inner"></view>
+                                </view>
+                                <view class="line"></view>
+                            </view>
+                            <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}"
+                                  catch:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
+                                {{item.title}}
+                            </view>
                         </view>
                     </view>
-                </view>
-            </scroll-view>
-
+                </scroll-view>
+            </view>
         </view>
     </view>
     <view class="btn-wrapper">

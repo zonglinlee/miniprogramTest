@@ -9,6 +9,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "个人中心",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "站点选择",
+          "pathName": "pages/busStop/busStop",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "添加乘客",
           "pathName": "pages/addPassenger/addPassenger",
           "query": "",

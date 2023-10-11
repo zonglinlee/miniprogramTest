@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="sec wrapper">
+        <textarea class="textarea" placeholder-style="color:#ccc;font-size:30rpx;" confirm-type="done" cursor-spacing="{{50}}"
+                  maxlength="{{500}}" placeholder="请输入建议内容，我们会尽快处理"
+                  auto-focus/>
+    </view>
+    <view class="btn">提交</view>
+</view>
