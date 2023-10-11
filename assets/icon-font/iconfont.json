@@ -6,6 +6,125 @@
   "description": "石嘴山出行,内蒙（包头）用，微信小程序，https://juejin.cn/post/7165458111283593247",
   "glyphs": [
     {
+      "icon_id": "9306311",
+      "name": "微信支付",
+      "font_class": "wechat-pay",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "1283158",
+      "name": "人民币",
+      "font_class": "yuan",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "11544971",
+      "name": "successful",
+      "font_class": "successful",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "30019568",
+      "name": "error",
+      "font_class": "error",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "6151396",
+      "name": "angle-right",
+      "font_class": "arrow-right",
+      "unicode": "e84e",
+      "unicode_decimal": 59470
+    },
+    {
+      "icon_id": "566086",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "1727422",
+      "name": "205设置",
+      "font_class": "setting",
+      "unicode": "e8b8",
+      "unicode_decimal": 59576
+    },
+    {
+      "icon_id": "6129295",
+      "name": "252意见反馈",
+      "font_class": "feedback",
+      "unicode": "e7da",
+      "unicode_decimal": 59354
+    },
+    {
+      "icon_id": "12978128",
+      "name": "发票",
+      "font_class": "invoice",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "16942371",
+      "name": "反馈",
+      "font_class": "feedback1",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "35104126",
+      "name": "紧急联系人",
+      "font_class": "emergency",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "10487555",
+      "name": "联系人",
+      "font_class": "contact",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "248953",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "10166320",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "376365",
+      "name": "身份证",
+      "font_class": "id-card",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "1523209",
+      "name": "姓名",
+      "font_class": "name",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "12579384",
+      "name": "mobile",
+      "font_class": "mobile",
+      "unicode": "e747",
+      "unicode_decimal": 59207
+    },
+    {
       "icon_id": "1173707",
       "name": "货物代送",
       "font_class": "goods-delivery",

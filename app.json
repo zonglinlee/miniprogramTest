@@ -17,7 +17,8 @@
     "pages/addPassenger/addPassenger",
     "pages/setting/setting",
     "pages/invoice/invoice",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/paymentResult/paymentResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

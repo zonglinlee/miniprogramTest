@@ -27,7 +27,7 @@ Page({
     },
     doPay() {
         setTimeout(() => {
-            app.navigate('/pages/orderStatus/orderStatus')
+            app.navigate('/pages/paymentResult/paymentResult')
         }, 2000)
     },
     goBack() {

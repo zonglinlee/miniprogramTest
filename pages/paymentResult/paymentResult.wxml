@@ -1,0 +1,51 @@
+<view class="sec wrapper">
+    <text class="l1 szs szs-successful"></text>
+    <view class="l2">订单支付成功</view>
+    <view class="l3 item">
+        <text class="icon-pay szs szs-wechat-pay"></text>
+        <text class="t2">支付方式</text>
+        <text class="t3 green">微信支付</text>
+    </view>
+    <view class="l3 item">
+        <text class="icon-yuan szs szs-yuan"></text>
+        <text class="t2">订单金额</text>
+        <text class="t3 green">33.00元</text>
+    </view>
+    <view class="l3 item">
+        <text class="icon-yuan szs szs-yuan"></text>
+        <text class="t2">支付金额</text>
+        <text class="t3 red">33.00元</text>
+    </view>
+    <view class="btn-group">
+        <view class="btn green" catch:tap="gotoPage" data-tab="{{false}}" data-url="/pages/orderDetail/orderDetail">
+            查看订单
+        </view>
+        <view class="btn orange" catch:tap="gotoPage" data-tab="{{true}}" data-url="/pages/index/index">返回首页</view>
+    </view>
+</view>
+        <!--支付失败-->
+<view class="sec wrapper">
+    <text class="l1 error szs szs-error"></text>
+    <view class="l2 error">订单支付失败</view>
+    <view class="l3 item">
+        <text class="icon-pay szs szs-wechat-pay"></text>
+        <text class="t2">支付方式</text>
+        <text class="t3 green">微信支付</text>
+    </view>
+    <view class="l3 item">
+        <text class="icon-yuan szs szs-yuan"></text>
+        <text class="t2">订单金额</text>
+        <text class="t3 green">33.00元</text>
+    </view>
+    <view class="l3 item">
+        <text class="icon-yuan szs szs-yuan"></text>
+        <text class="t2">支付金额</text>
+        <text class="t3 red">0.00元</text>
+    </view>
+    <view class="btn-group">
+        <view class="btn green" catch:tap="gotoPage" data-tab="{{false}}" data-url="/pages/orderDetail/orderDetail">
+            查看订单
+        </view>
+        <view class="btn orange" catch:tap="gotoPage" data-tab="{{true}}" data-url="/pages/index/index">返回首页</view>
+    </view>
+</view>

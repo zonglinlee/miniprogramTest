@@ -1,0 +1,90 @@
+@import "assets/css/common";
+
+.wrapper {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+
+  .l1 {
+    font-size: 66rpx;
+    color: #09bb07;
+  }
+
+  .error {
+    color: red !important;
+  }
+
+  .l2 {
+    font-size: @font-36;
+    color: @text-color-gray;
+    margin: 16rpx 0;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8rpx 0;
+
+    .icon-pay {
+      color: #09bb07;
+    }
+
+    .icon-yuan {
+      color: #d81e06;
+    }
+
+    .green {
+      color: @text-color-green;
+    }
+
+    .red {
+      color: @text-color-orange;
+    }
+
+    .t2, .t3 {
+      font-size: @font-30;
+    }
+
+    .t2 {
+      margin: 0 12rpx;
+    }
+  }
+
+  .icon-pay {
+    font-size: @font-32;
+  }
+
+  .btn-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 40rpx 24rpx 0 24rpx;
+
+    .btn {
+      width: 200rpx;
+      height: 60rpx;
+      border-radius: 30rpx;
+      line-height: 60rpx;
+      text-align: center;
+      font-size: @font-30;
+      font-weight: bold;
+      color: #fff;
+      background: @blue-bg;
+    }
+
+    .green {
+      background: @text-color-green;
+    }
+
+    .gray {
+      background: white;
+      border: 1rpx solid @border-gray;
+      color: @text-color-default;
+    }
+  }
+}

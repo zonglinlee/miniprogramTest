@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "paymentResult",
+          "pathName": "pages/paymentResult/paymentResult",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "个人中心",
           "pathName": "pages/setting/setting",
           "query": "",
