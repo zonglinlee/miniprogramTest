@@ -26,5 +26,39 @@ App({
     },
     defaultCustomNavClick() {
         wx.navigateBack({})
+    },
+    getImageInfo(src) {
+        return wx.getImageInfo({src})
+    },
+    computeRec(selector) {
+        const query = wx.createSelectorQuery()
+        if (selector) {
+            query.select(selector).boundingClientRect()
+        } else {
+            query.selectViewport().boundingClientRect()
+        }
+        return new Promise((resolve, reject) => {
+            query.exec(function (res) {
+                resolve(res)
+            })
+        })
+
+    },
+    navigate(e) {
+        const url = e?.currentTarget?.dataset.url || e
+        const isTab = e?.currentTarget?.dataset.tab || false
+        if (isTab) {
+            wx.switchTab({url})
+        } else {
+            if (url === '/pages/imagePage/imagePage') {
+                const imgUrl = e?.currentTarget?.dataset.imgurl
+                const title = e?.currentTarget?.dataset.title
+                if (imgUrl) {
+                    wx.navigateTo({url: `${url}?navTitle=${title}&imageUrl=${imgUrl}`})
+                }
+            } else {
+                wx.navigateTo({url})
+            }
+        }
     }
 })
