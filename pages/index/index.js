@@ -15,7 +15,7 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}],
+        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
             longitude: 116.40,
@@ -31,10 +31,12 @@ Page({
         includePoints: [],
         markers: [],
         selectStart: false,
-        swiperHeight: 75,
+        swiperHeight: 100,
         swiperLoaded: false,
         card1Height: 777,
+        maHeight: 0,
         cardTop: 0,
+        showBg: false,
         hotBtn: [{
             label: '定制班线',
             key: 'order',
@@ -85,23 +87,18 @@ Page({
         })
     },
     async onReady() {
-        const cardRec = await app.computeRec('.card1')
-        const middle = await app.computeRec('.middle')
-        const swiperwrapper = await app.computeRec('.swiper-wrapper')
-        const items = await app.computeRec('.items-wrapper')
-        // console.log('cardRec:', cardRec)
-        // console.log('middle:', middle)
-        // console.log('swiperwrapper:', swiperwrapper)
-        setTimeout(async () => {
-            const swiperwrapper = await app.computeRec('.swiper-wrapper')
-            const cardRec = await app.computeRec('.card1')
-            // console.log('swiperwrapper:', swiperwrapper)
-            // console.log('cardRec:', cardRec)
-        }, 50)
-        // console.log('items:', items)
-
-        wx.createIntersectionObserver().relativeToViewport().observe('.card1', (res) => {
-            // console.log('createIntersectionObserver-ready:', res)
+        const top = await app.computeRec('.top')
+        const cardRec = await app.computeRec('.ch', true)
+        const card1 = await app.computeRec('.card1')
+        const itemsWrapper = await app.computeRec('.items-wrapper')
+        const viewPort = await app.computeRec()
+        const ht = cardRec[0].reduce((acc, item) => acc + item.height, 0)
+        console.log(1111, top, cardRec, ht, card1[0].bottom, itemsWrapper[0].bottom, viewPort[0].height)
+        const mvDistance = Math.max(card1[0].bottom, itemsWrapper[0].bottom) - viewPort[0].height
+        this.setData({
+            card1Height: ht,
+            maHeight: ht + mvDistance,
+            maTop: mvDistance,
         })
     },
     async loadSwiperImage(e) {
@@ -109,14 +106,32 @@ Page({
         // console.log('loadSwiperImage:', detail.height)
         if (!this.data.swiperLoaded) {
             const res = await app.computeRec('.swiper-image')
+            const top = await app.computeRec('.top')
+            const cardRec = await app.computeRec('.ch', true)
+            const card1 = await app.computeRec('.card1')
+            const itemsWrapper = await app.computeRec('.items-wrapper')
+            const viewPort = await app.computeRec()
+            const ht = cardRec[0].reduce((acc, item) => acc + item.height, 0)
+            const mvDistance = Math.max(card1[0].bottom, itemsWrapper[0].bottom) - viewPort[0].height
+            console.log(22222, top, cardRec, ht)
             this.setData({
-                swiperHeight: res.height || res[0].height || 75,
+                // swiperHeight: res[0].height || 75,
+                swiperHeight: 100,
+                card1Height: ht,
+                maHeight: ht + mvDistance,
+                maTop: mvDistance,
             })
         }
     },
 
-    moveCard(e) {
-        // console.log('moveCard:', e, e.detail)
+    async moveCard(e) {
+        const res = await app.computeRec('.mv')
+        // console.log('moveCard:', res[0].top, res[0].top <= 20, e.detail, res[0])
+        console.log(e.detail)
+        this.setData({
+            mvOffsetTop: res[0].top,
+            showBg: res[0].top <= 60
+        })
     },
     moveCardV(e) {
         // console.log('moveCardV:', e, e.detail)
@@ -133,9 +148,9 @@ Page({
             const diff = touch1.clientY - this.clientY + this.data.cardTop
 
             console.log(e, diff)
-            if (diff <= -100) {
+            if (diff <= -10000) {
                 this.setData(
-                    {cardTop: -100}
+                    {cardTop: -10000}
                 )
             } else if (diff >= 0) {
                 this.setData(

@@ -1,6 +1,8 @@
 <!--index.wxml-->
 <view class="container">
     <view class="top">
+        <view wx:if="{{showBg}}"
+              style="position:fixed;left:0;top:0;right:0;height:66px;z-index:9999;background:{{showBg?'white':'transparent'}}"></view>
         <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
@@ -12,12 +14,12 @@
         </view>
     </view>
 
-    <movable-area class="ma" style="height:{{card1Height+100}}px" wx:if="{{false}}">
-        <movable-view class="mv" direction="vertical" y="{{100}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
+    <movable-area class="ma" style="height:{{maHeight}}px;top:-{{maTop}}px" wx:if="{{true}}">
+        <movable-view class="mv" direction="vertical" y="{{10000}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
                       style="height:{{card1Height}}px" inertia out-of-bounds
                       friction="{{10}}">
             <view class="card1" style="height:{{card1Height}}px">
-                <view class="middle">
+                <view class="middle ch">
                     <view class="content">
                         <view class="line1" bind:tap="selectStartPos">
                             <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
@@ -32,7 +34,7 @@
                         </view>
                     </view>
                 </view>
-                <view class="sec swiper-wrapper">
+                <view class="sec swiper-wrapper ch">
                     <swiper indicator-dots="{{false}}" style="height:{{swiperHeight}}px"
                             autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
                         <block wx:for="{{swiperList}}" wx:key="url">
@@ -43,7 +45,7 @@
                         </block>
                     </swiper>
                 </view>
-                <view class="sec items-wrapper">
+                <view class="sec items-wrapper ch">
                     <view class="items">
                         <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
                               data-item="{{item}}">
@@ -56,11 +58,11 @@
         </movable-view>
     </movable-area>
 
-    <view class="card-p" style="position:relative">
+    <view class="card-p" style="position:relative" catch:touchstart="onTouchStart" wx:if="{{false}}"
+          catch:touchmove="onTouchMove" catch:touchend="onTouchEnd">
         <view class="card1" style="top:{{cardTop}}px"
               wx:if="{{true}}">
-            <view class="middle" catch:touchstart="onTouchStart"
-                  catch:touchmove="onTouchMove" catch:touchend="onTouchEnd">
+            <view class="middle">
                 <view class="content">
                     <view class="line1" bind:tap="selectStartPos">
                         <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
@@ -80,7 +82,7 @@
                         autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
                     <block wx:for="{{swiperList}}" wx:key="url">
                         <swiper-item>
-                            <image src="{{item.url}}" bindload="loadSwiperImage" mode="widthFix"
+                            <image src="{{item.url}}" bindload="loadSwiperImage" mode="aspectFill"
                                    class="swiper-image"></image>
                         </swiper-item>
                     </block>

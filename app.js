@@ -30,9 +30,14 @@ App({
     getImageInfo(src) {
         return wx.getImageInfo({src})
     },
-    computeRec(selector) {
+    computeRec(selector, all = false) {
         const query = wx.createSelectorQuery()
-        query.select(selector).boundingClientRect()
+        const s = all ? 'selectAll' : 'select'
+        if (selector) {
+            query[s](selector).boundingClientRect()
+        } else {
+            query.selectViewport().boundingClientRect()
+        }
         return new Promise((resolve, reject) => {
             query.exec(function (res) {
                 resolve(res)
