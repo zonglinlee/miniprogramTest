@@ -4,6 +4,13 @@ page {
   .top {
     position: relative;
 
+    .avatar {
+      padding-left: 20px;
+
+      image {
+        border-radius: 50%;
+      }
+    }
 
     .map {
       width: 750rpx;
@@ -46,11 +53,11 @@ page {
 
   .ma {
     width: 100%;
-    padding-bottom: 30rpx;
   }
 
   .mv {
     width: 100%;
+    padding-bottom: 30rpx;
   }
 
   movable-view {
@@ -75,7 +82,7 @@ page {
   }
 
   .middle {
-    margin-bottom: 24rpx;
+    margin-bottom: 12px;
     background: @page-bg-gray;
 
     .content {
@@ -152,7 +159,7 @@ page {
 
   .swiper-wrapper {
     box-sizing: border-box;
-    margin-bottom: 24rpx;
+    margin-bottom: 12px;
     border: 1rpx solid #fff;
 
     swiper {
@@ -168,7 +175,6 @@ page {
   }
 
   .items-wrapper {
-    margin-bottom: 24rpx;
 
     .items {
       display: flex;

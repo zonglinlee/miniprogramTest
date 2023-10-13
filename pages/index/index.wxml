@@ -1,8 +1,14 @@
 <!--index.wxml-->
 <view class="container">
     <view class="top">
-        <view wx:if="{{showBg}}"
-              style="position:fixed;left:0;top:0;right:0;height:66px;z-index:9999;background:{{showBg?'white':'transparent'}}"></view>
+        <view
+                style="height：{{fixedHeight}}px;position:fixed;left:0;top:0;right:0;z-index:9999;background:{{showBg?'white':'transparent'}}">
+            <view class="avatar" style="padding-top:{{sysInfo.statusBarHeight}}px;">
+                <image style="height:{{fixedHeight-sysInfo.statusBarHeight}}px" mode="heightFix" bind:tap="gotoPage"
+                       data-tab="{{true}}" data-url="/pages/setting/setting"
+                       src="../../assets/images/temp/avatar.png"></image>
+            </view>
+        </view>
         <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
@@ -14,8 +20,9 @@
         </view>
     </view>
 
-    <movable-area class="ma" style="height:{{maHeight}}px;top:-{{maTop}}px" wx:if="{{true}}">
-        <movable-view class="mv" direction="vertical" y="{{10000}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
+    <movable-area class="ma" style="height:{{maHeight}}px;margin-top:-{{maTop + (isPc ? 60 : 15)}}px" wx:if="{{true}}"
+                  catch:touchmove="noop" catch:touchstart="noop">
+        <movable-view class="mv" direction="vertical" y="{{maTop}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
                       style="height:{{card1Height}}px" inertia out-of-bounds
                       friction="{{10}}">
             <view class="card1" style="height:{{card1Height}}px">

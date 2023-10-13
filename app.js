@@ -44,5 +44,22 @@ App({
             })
         })
 
+    },
+    navigate(e) {
+        const url = e?.currentTarget?.dataset.url || e
+        const isTab = e?.currentTarget?.dataset.tab || false
+        if (isTab) {
+            wx.switchTab({url})
+        } else {
+            if (url === '/pages/imagePage/imagePage') {
+                const imgUrl = e?.currentTarget?.dataset.imgurl
+                const title = e?.currentTarget?.dataset.title
+                if (imgUrl) {
+                    wx.navigateTo({url: `${url}?navTitle=${title}&imageUrl=${imgUrl}`})
+                }
+            } else {
+                wx.navigateTo({url})
+            }
+        }
     }
 })
