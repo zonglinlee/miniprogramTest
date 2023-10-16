@@ -63,15 +63,4 @@
                         bind:closeSelectPositionPopup="closeSelectPositionPopup"></selectPosition>
     </page-container>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
-
-
-    <view style="display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;" wx:if="{{false}}">
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="navigateTo"
-                data-url="/pages/orderDetail/orderDetail">订单详情
-        </button>
-        <button type="primary" style="margin-bottom:15rpx;width:40%" bind:tap="testAPI"
-                data-url="/pages/busStop/busStop">API测试
-        </button>
-        <text>miss 支付成功 / 支付失败 页面</text>
-    </view>
 </view>

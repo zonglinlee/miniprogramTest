@@ -71,4 +71,5 @@
         <view class="btn" wx:if="{{showStop1}}" catch:tap="confirmStop1">确认上车点</view>
         <view class="btn" wx:else catch:tap="gotoPage" data-url="/pages/confirmOrder/confirmOrder">确认下车点</view>
     </view>
+    <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
 </view>

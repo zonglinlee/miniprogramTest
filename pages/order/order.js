@@ -4,7 +4,9 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        refresh: false
+    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -52,7 +54,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-
+        this.setData({refresh: true})
     },
 
     /**

@@ -15,5 +15,39 @@
     <view wx:if="{{orderList.length === 0}}" class="empty-wrapper">
         <image class="empty" src="../../assets/images/empty_order_list.png"></image>
     </view>
+    <view class="list-wrapper">
+        <view class="item" wx:for="{{orderList}}" wx:key="index">
+            <view class="h">
+                <view class="l">
+                    <image class="car" mode="widthFix" src="../../assets/images/red_car.png"></image>
+                    <text class="t1 bold" overflow="ellipsis">{{item.type}}</text>
+                </view>
+                <text class="orange t1">已取消</text>
+            </view>
+            <view class="lc">
+                <image class="icon" mode="widthFix" src="../../assets/images/depart_clock.png"></image>
+                <text class="t2" overflow="ellipsis">{{item.departureTime}}</text>
+            </view>
+            <view class="lc">
+                <image class="icon" mode="widthFix" src="../../assets/images/green_dot.png"></image>
+                <text class="t2" overflow="ellipsis">{{item.from}}</text>
+            </view>
+            <view class="lc">
+                <image class="icon" mode="widthFix" src="../../assets/images/blue_dot.png"></image>
+                <text class="t2" overflow="ellipsis">{{item.to}}</text>
+            </view>
+            <view class="lc">
+                <image class="icon" mode="widthFix" src="../../assets/images/wechat_pay.png"></image>
+                <text class="t2" overflow="ellipsis">{{item.price}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom-divider" style="padding: 15rpx 0;">
+        <van-loading wx:if="{{refresh && orderList.length<total}}" size="24px" type="spinner" color="#1989fa" vertical>
+            加载中...
+        </van-loading>
+        <van-divider hairline wx:if="{{orderList.length>=total}}" contentPosition="center">没有更多了</van-divider>
+    </view>
     <slot></slot>
 </view>

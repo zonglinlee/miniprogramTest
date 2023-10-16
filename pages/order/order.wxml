@@ -7,10 +7,10 @@
 
     <van-tabs active="cjcx" color="#1a87f6" line-width="20px">
         <van-tab title="城际出行" name="cjcx" title-style="font-size:32rpx;">
-            <order-list bind:item-click="orderListClick" orderType="cjcx"></order-list>
+            <order-list refresh="{{refresh}}" bind:item-click="orderListClick" orderType="cjcx"></order-list>
         </van-tab>
         <van-tab title="定制班线" name="dzbx" title-style="font-size:32rpx;">
-            <order-list bind:item-click="orderListClick" orderType="dzbx"></order-list>
+            <order-list refresh="{{refresh}}" bind:item-click="orderListClick" orderType="dzbx"></order-list>
         </van-tab>
     </van-tabs>
 

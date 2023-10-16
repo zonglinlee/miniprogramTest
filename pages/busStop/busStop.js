@@ -1,4 +1,6 @@
 const app = getApp()
+import Toast from '@vant/weapp/toast/toast';
+
 Page({
     data: {
         cardHeight: 300,
@@ -89,12 +91,22 @@ Page({
         }
     },
     confirmStop1() {
-        this.setData({
-            showStop1: false
-        })
+        const stopTitle = this.data.stop1.title
+        if (stopTitle) {
+            this.setData({
+                showStop1: false
+            })
+        } else {
+            Toast({duration: 2000, message: '请选择上车点'});
+        }
+
     },
     gotoPage(e) {
-        console.log(e)
-        app.navigate(e)
+        const stopTitle = this.data.stop2.title
+        if (stopTitle) {
+            app.navigate(e)
+        } else {
+            Toast({duration: 2000, message: '请选择下车点'});
+        }
     }
 });
