@@ -3,5 +3,6 @@
     "selectPosition": "../../components/selectPosition/selectPosition"
   },
   "navigationStyle": "custom",
-  "enablePassiveEvent": false
+  "enablePassiveEvent": false,
+  "disableScroll": true
 }

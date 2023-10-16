@@ -30,10 +30,11 @@ App({
     getImageInfo(src) {
         return wx.getImageInfo({src})
     },
-    computeRec(selector) {
+    computeRec(selector, all = false) {
         const query = wx.createSelectorQuery()
+        const s = all ? 'selectAll' : 'select'
         if (selector) {
-            query.select(selector).boundingClientRect()
+            query[s](selector).boundingClientRect()
         } else {
             query.selectViewport().boundingClientRect()
         }

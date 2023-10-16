@@ -7,7 +7,9 @@ const mapBehavior = require("../../assets/js/qqmap-wx-jssdk1.2/mapBehavior")
 Page({
     behaviors: [mapBehavior],
     data: {
-
+        sysInfo: {statusBarHeight: 20},
+        fixedHeight: 56,
+        isPc: false,
         showSelectPositionPopup: false,
         motto: 'canvas test',
         userInfo: {},
@@ -15,7 +17,7 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper1.jpg'}],
+        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
             longitude: 116.40,
@@ -31,8 +33,12 @@ Page({
         includePoints: [],
         markers: [],
         selectStart: false,
-        swiperHeight: 75,
+        swiperHeight: 100,
         swiperLoaded: false,
+        card1Height: 777,
+        maHeight: 2000,
+        cardTop: 0,
+        showBg: false,
         hotBtn: [{
             label: '定制班线',
             key: 'dedicatedLine',
@@ -74,20 +80,115 @@ Page({
             })
         }
         this.getCurrentPosition()
+        this.setData({
+            hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
+        })
     },
     async onReady() {
+        const sysInfo = wx.getSystemInfoSync()
+        const menuBtnRec = wx.getMenuButtonBoundingClientRect()
+        const platform = sysInfo.platform;
+        let isPc = false
+        if (platform === 'windows' || platform === 'mac') {
+            isPc = true
+        }
+        // console.log('fixedHeight:', res);
+        // console.log('sysInfo:', isPc, sysInfo);
+        const query = wx.createSelectorQuery()
+        query.select('.top').boundingClientRect()
+        query.selectAll('.ch').boundingClientRect()
+        query.select('.card1').boundingClientRect()
+        query.select('.items-wrapper').boundingClientRect()
+        query.selectViewport().boundingClientRect()
+        const that = this
+        query.exec(function (res) {
+            console.log(res)
+            const [top, cardRec, card1, itemsWrapper, viewPort] = res
+            const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
+            console.log(1111, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
+            // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
+            const mvDistance = itemsWrapper.bottom - viewPort.height
+            that.setData({
+                card1Height: ht + 24,
+                maHeight: ht + mvDistance,
+                maTop: mvDistance,
+                fixedHeight: menuBtnRec.bottom,
+                sysInfo,
+                isPc
+            })
+        })
     },
     async loadSwiperImage(e) {
         const detail = e.detail
-        // console.log('loadSwiperImage:', detail.height)
+        // /*
         if (!this.data.swiperLoaded) {
-            const res = await app.computeRec('.swiper-image')
-            this.setData({
-                swiperHeight: res.height || res[0].height || 75,
+            const query = wx.createSelectorQuery()
+            query.select('.swiper-image').boundingClientRect()
+            query.select('.top').boundingClientRect()
+            query.selectAll('.ch').boundingClientRect()
+            query.select('.card1').boundingClientRect()
+            query.select('.items-wrapper').boundingClientRect()
+            query.selectViewport().boundingClientRect()
+            const that = this
+            query.exec(function (res) {
+                const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
+                const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
+                console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
+                // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
+                const mvDistance = itemsWrapper.bottom - viewPort.height
+                that.setData({
+                    card1Height: ht + 24,
+                    maHeight: ht + mvDistance,
+                    maTop: mvDistance,
+                })
             })
         }
+        // */
     },
 
+    async moveCard(e) {
+        const res = await app.computeRec('.mv')
+        // console.log('moveCard:', res[0].top, res[0].top <= 20, e.detail, res[0])
+        // console.log(e.detail)
+        this.setData({
+            mvOffsetTop: res[0].top,
+            showBg: res[0].top <= 60
+        })
+    },
+    moveCardV(e) {
+        // console.log('moveCardV:', e, e.detail)
+    },
+    onTouchStart(e) {
+        // console.log(e)
+        this.cardMoving = true
+        const [touch1] = e.touches
+        this.clientY = touch1.clientY
+    },
+    onTouchMove(e) {
+        if (this.cardMoving) {
+            const [touch1] = e.touches
+            const diff = touch1.clientY - this.clientY + this.data.cardTop
+
+            console.log(e, diff)
+            if (diff <= -10000) {
+                this.setData(
+                    {cardTop: -10000}
+                )
+            } else if (diff >= 0) {
+                this.setData(
+                    {cardTop: 0}
+                )
+            } else {
+                this.setData(
+                    {cardTop: diff}
+                )
+            }
+            this.clientY = touch1.clientY
+        }
+    },
+    onTouchEnd(e) {
+        this.cardMoving = false
+    },
     testAPI() {
         // console.log(wx.getMenuButtonBoundingClientRect())
         // wx.hideTabBar({})
@@ -269,5 +370,10 @@ Page({
         // wx.nextTick(()=>{
         //
         // })
+    },
+    gotoPage(e) {
+        app.navigate(e)
+    },
+    noop() {
     }
 })
