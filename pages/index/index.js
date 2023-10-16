@@ -81,7 +81,7 @@ Page({
         }
         this.getCurrentPosition()
         this.setData({
-            hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
+            hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
         })
     },
     async onReady() {
@@ -120,7 +120,7 @@ Page({
     },
     async loadSwiperImage(e) {
         const detail = e.detail
-        // /*
+        /*
         if (!this.data.swiperLoaded) {
             const query = wx.createSelectorQuery()
             query.select('.swiper-image').boundingClientRect()
@@ -143,7 +143,7 @@ Page({
                 })
             })
         }
-        // */
+        */
     },
 
     async moveCard(e) {
@@ -336,6 +336,7 @@ Page({
     confirmOrder() {
     },
     focusInput1() {
+        console.log("focusInput1")
         this.setData({selectStart: false, showSelectPositionPopup: true})
     },
     closeSelectPositionPopup(event) {

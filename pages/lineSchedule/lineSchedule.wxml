@@ -11,36 +11,18 @@
         </view>
     </view>
     <view class="buses">
-        <view class="item" wx:key="index" wx:for="{{2}}" catch:tap="gotoPage" data-url="/pages/busStop/busStop">
-            <view class="l1">班次号:NDGY1230</view>
+        <view class="item" wx:key="index" wx:for="{{scheduledLines}}" catch:tap="gotoPage" data-item="{{item}}" data-url="/pages/busStop/busStop">
+            <view class="l1">班次号:{{item.no}}</view>
             <view class="l2">
                 <view class="time">11:30</view>
                 <view class="des-wrapper">
                     <image class="icon" src="../../assets/images/from_to.png" mode="widthFix"></image>
                     <view class="des">
-                        <view class="from">大武口汽车站</view>
-                        <view class="to">银川河东机场</view>
+                        <view class="from">{{item.from}}</view>
+                        <view class="to">{{item.to}}</view>
                     </view>
                 </view>
-                <view class="m">￥75</view>
-            </view>
-            <view class="l3">
-                <text class="type">55座大巴车</text>
-                <text class="left">余票100张</text>
-            </view>
-        </view>
-        <view class="item" wx:key="index" wx:for="{{1}}">
-            <view class="l1">班次号:NDGY1230</view>
-            <view class="l2">
-                <view class="time">11:30</view>
-                <view class="des-wrapper">
-                    <image class="icon" src="../../assets/images/from_to.png" mode="widthFix"></image>
-                    <view class="des">
-                        <view class="from">大武口汽车站反对法地方</view>
-                        <view class="to">银川河东机场</view>
-                    </view>
-                </view>
-                <view class="m">￥75</view>
+                <view class="m">￥{{item.price}}</view>
             </view>
             <view class="l3">
                 <text class="type">55座大巴车</text>

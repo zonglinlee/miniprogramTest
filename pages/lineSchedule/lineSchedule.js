@@ -2,10 +2,29 @@ const app = getApp()
 Page({
     data: {
         days: [],
-        currentSelectDate: ''
+        currentSelectDate: '',
+        scheduledLines: [{
+            no: 'NDGY1230',
+            from: '大武口汽车站',
+            to: '银川河东机场',
+            price: '88',
+        },{
+            no: 'NDGY1230',
+            from: '大武口汽车站',
+            to: '银川河东机场',
+            price: '88',
+        },{
+            no: 'NDGY1230',
+            from: '大武口汽车站',
+            to: '银川河东机场',
+            price: '88',
+        }],
+        selectedScheduledLine: {},
     },
     onLoad: function (options) {
         this.getDays()
+        // const pages = getCurrentPages()
+        // console.log(pages)
     },
     getDays() {
         const paddingStart = (s) => {
@@ -49,6 +68,11 @@ Page({
         app.defaultCustomNavClick()
     },
     gotoPage(e) {
+        const selectedScheduledLine = e.currentTarget.dataset.item
+        this.setData({selectedScheduledLine})
+        app.globalData.currentOrder.currentSelectDate = this.data.currentSelectDate
+        app.globalData.currentOrder.selectedScheduledLine = this.data.selectedScheduledLine
+        console.log(app.globalData.currentOrder)
         app.navigate(e)
     }
 });

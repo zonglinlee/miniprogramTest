@@ -7,18 +7,18 @@
 
             <view class="people">
                 <scroll-view scroll-y="true" style="height: 380rpx;" show-scrollbar="{{false}}" enhanced="{{true}}">
-                    <view class="item" wx:for="{{3}}" wx:key="index">
+                    <view class="item" wx:for="{{passengerList}}" wx:key="index">
                         <view class="left">
-                            <view class="l">
-                                <radio checked="{{false}}" color="#1a87f6"/>
+                            <view class="l" catch:tap="selectPassenger" data-passenger="{{item}}" data-index="{{index}}">
+                                <radio checked="{{selectedPassenger[index]}}" color="#1a87f6"/>
                             </view>
 
                             <view class="r">
                                 <view class="t1">
-                                    <view class="name">收到发</view>
+                                    <view class="name">{{item.name}}</view>
                                     <view class="type">成人票</view>
                                 </view>
-                                <view class="t2">身份证：640106201708487878</view>
+                                <view class="t2">身份证：{{item.idCard}}</view>
                             </view>
 
                         </view>

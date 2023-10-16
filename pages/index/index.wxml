@@ -21,7 +21,7 @@
     </view>
 
     <movable-area class="ma" style="height:{{maHeight}}px;margin-top:-{{maTop + (isPc ? 60 : 15)}}px" wx:if="{{true}}"
-                  catch:touchmove="noop" catch:touchstart="noop">
+                  catch:touchmove="noop">
         <movable-view class="mv" direction="vertical" y="{{maTop}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
                       style="height:{{card1Height}}px" inertia out-of-bounds
                       friction="{{10}}">
@@ -54,7 +54,7 @@
                 </view>
                 <view class="sec items-wrapper ch">
                     <view class="items">
-                        <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
+                        <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="hotBtnClick"
                               data-item="{{item}}">
                             <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
                             <text class="t">{{item.label}}</text>

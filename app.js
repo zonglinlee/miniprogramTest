@@ -22,7 +22,11 @@ App({
     },
     globalData: {
         userInfo: null,
-        mapSdk: null
+        mapSdk: null,
+        currentOrder: {
+            orderType:''
+        },
+        orderOngoing: false
     },
     defaultCustomNavClick() {
         wx.navigateBack({})

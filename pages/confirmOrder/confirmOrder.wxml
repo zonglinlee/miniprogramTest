@@ -23,17 +23,23 @@
         </view>
         <view class="pas">乘客</view>
         <view class="pas-wrapper">
-            <view class="item" wx:for="{{1}}">
+            <block wx:if="{{passengerList.length>0}}">
+                <view class="item" wx:for="{{passengerList}}" wx:key="index">
 
-                <view class="l1">
-                    <view class="circle"/>
-                    <view class="name">李先生</view>
-                </view>
+                    <view class="l1">
+                        <view class="circle"/>
+                        <view class="name">{{item.name}}</view>
+                    </view>
 
-                <view class="l2">
-                    手机号：17809527290
+                    <view class="l2">
+                        手机号：{{item.mobile}}
+                    </view>
                 </view>
+            </block>
+            <view class="empty" wx:else>
+                <text class="gray">暂无乘客</text>
             </view>
+
         </view>
         <view class="add" catch:tap="openPopup">
             <image class="add-orange" src="../../assets/images/add_orange.png" mode="widthFix"></image>
@@ -46,18 +52,18 @@
     </view>
     <view class="sec sec2">
         <view class="confirm">
-            <radio class="r1" checked="{{false}}" color="#1a87f6"/>
+            <radio class="r1" checked="{{agreement}}" color="#1a87f6" catch:tap="toggleAgreement"/>
             <view class="t">我已认真阅读读【乘车、退票须知】并同意协议</view>
         </view>
         <view class="line"></view>
         <view class="bottom">
-            <view>明细</view>
+            <view class="t">明细</view>
             <view class="gross">
-                <text>合计：</text><text class="red">￥ 75.00</text>
+                <text class="t">合计：</text><text class="red">￥ 75.00</text>
             </view>
             <view class="btn" data-url="/pages/confirmPay/confirmPay" catch:tap="gotoPage">提交订单</view>
         </view>
     </view>
 
-    <select-passenger show="{{showPopup}}"></select-passenger>
+    <select-passenger  bind:closePopup="getSelectedPassenger" show="{{showPopup}}"></select-passenger>
 </view>
