@@ -37,16 +37,16 @@ Page({
         swiperHeight: 100,
         swiperLoaded: false,
         card1Height: 777,
-        maHeight: 0,
+        maHeight: 2000,
         cardTop: 0,
         showBg: false,
         hotBtn: [{
             label: '定制班线',
-            key: 'order1',
+            key: 'order',
             src: '../../assets/images/order.png',
         }, {
             label: '货物代送',
-            key: 'order2',
+            key: 'order',
             src: '../../assets/images/order.png',
         }, {
             label: '全部订单',
@@ -111,7 +111,8 @@ Page({
             const [top, cardRec, card1, itemsWrapper, viewPort] = res
             const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
             console.log(1111, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
-            const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
+            // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
+            const mvDistance = itemsWrapper.bottom - viewPort.height
             that.setData({
                 card1Height: ht + 24,
                 maHeight: ht + mvDistance,
@@ -124,29 +125,30 @@ Page({
     },
     async loadSwiperImage(e) {
         const detail = e.detail
-        /*
-                if (!this.data.swiperLoaded) {
-                    const query = wx.createSelectorQuery()
-                    query.select('.swiper-image').boundingClientRect()
-                    query.select('.top').boundingClientRect()
-                    query.selectAll('.ch').boundingClientRect()
-                    query.select('.card1').boundingClientRect()
-                    query.select('.items-wrapper').boundingClientRect()
-                    query.selectViewport().boundingClientRect()
-                    const that = this
-                    query.exec(function (res) {
-                        const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
-                        const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
-                        console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
-                        const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
-                        that.setData({
-                            card1Height: ht + 24,
-                            maHeight: ht + mvDistance,
-                            maTop: mvDistance,
-                        })
-                    })
-                }
-         */
+        // /*
+        if (!this.data.swiperLoaded) {
+            const query = wx.createSelectorQuery()
+            query.select('.swiper-image').boundingClientRect()
+            query.select('.top').boundingClientRect()
+            query.selectAll('.ch').boundingClientRect()
+            query.select('.card1').boundingClientRect()
+            query.select('.items-wrapper').boundingClientRect()
+            query.selectViewport().boundingClientRect()
+            const that = this
+            query.exec(function (res) {
+                const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
+                const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
+                console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
+                // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
+                const mvDistance = itemsWrapper.bottom - viewPort.height
+                that.setData({
+                    card1Height: ht + 24,
+                    maHeight: ht + mvDistance,
+                    maTop: mvDistance,
+                })
+            })
+        }
+        // */
     },
 
     async moveCard(e) {
