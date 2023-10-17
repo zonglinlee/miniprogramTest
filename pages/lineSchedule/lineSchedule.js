@@ -3,28 +3,22 @@ Page({
     data: {
         days: [],
         currentSelectDate: '',
-        scheduledLines: [{
-            no: 'NDGY1230',
-            from: '大武口汽车站',
-            to: '银川河东机场',
-            price: '88',
-        },{
-            no: 'NDGY1230',
-            from: '大武口汽车站',
-            to: '银川河东机场',
-            price: '88',
-        },{
-            no: 'NDGY1230',
-            from: '大武口汽车站',
-            to: '银川河东机场',
-            price: '88',
-        }],
+        scheduledLines: [],
         selectedScheduledLine: {},
     },
     onLoad: function (options) {
         this.getDays()
-        // const pages = getCurrentPages()
-        // console.log(pages)
+
+        const scheduledLines = []
+        for (let i = 0; i < 12; i++) {
+            scheduledLines.push({
+                no: 'NDGY1230',
+                from: '大武口汽车站',
+                to: '银川河东机场',
+                price: '88',
+            })
+        }
+        this.setData({scheduledLines})
     },
     getDays() {
         const paddingStart = (s) => {

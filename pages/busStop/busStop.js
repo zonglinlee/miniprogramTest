@@ -28,9 +28,14 @@ Page({
         stop2: {},
         stop1List: [],
         stop2List: [],
+        safeBottom: 0
     },
     onLoad: function (options) {
-
+        // console.log(app.globalData.sysInfo)
+        const {safeArea: {bottom}, windowHeight, screenHeight} = app.globalData.sysInfo
+        this.setData({
+            safeBottom: screenHeight - bottom
+        })
     },
     onReady: function () {
         this.computeHeight()
@@ -71,11 +76,10 @@ Page({
         query.select('.btn-wrapper').boundingClientRect()
         query.selectViewport().boundingClientRect()
         query.exec(function (res) {
-            const sysInfo = wx.getSystemInfoSync()
             // debugger
             console.log(res)
             that.setData({
-                mapHeight: res[2].height - res[0].height,
+                mapHeight: res[2].height - res[0].height - that.data.safeBottom,
                 cardHeight: res[1].top - res[0].height,
             })
         })

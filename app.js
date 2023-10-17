@@ -13,18 +13,22 @@ App({
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId
             }
         })
-        //    地图
-        // 实例化API核心类
+        //    地图   实例化API核心类
         mapSdk = new QQMapWX({
             key: 'FRNBZ-L3ZWI-LBKGO-53YVV-MZS53-G4FJO'
         });
         this.globalData.mapSdk = mapSdk
+
+        //    设备信息
+        const sysInfo = wx.getSystemInfoSync()
+        this.globalData.sysInfo = sysInfo
     },
     globalData: {
+        sysInfo: null,
         userInfo: null,
         mapSdk: null,
         currentOrder: {
-            orderType:''
+            orderType: ''
         },
         orderOngoing: false
     },

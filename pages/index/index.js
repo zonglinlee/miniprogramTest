@@ -85,8 +85,8 @@ Page({
         })
     },
     async onReady() {
-        const sysInfo = wx.getSystemInfoSync()
         const menuBtnRec = wx.getMenuButtonBoundingClientRect()
+        const sysInfo = app.globalData.sysInfo
         const platform = sysInfo.platform;
         let isPc = false
         if (platform === 'windows' || platform === 'mac') {
