@@ -1,3 +1,4 @@
+const app = getApp()
 Component({
     properties: {
         orderType: {
@@ -5,15 +6,31 @@ Component({
         },
         refresh: {
             type: Boolean
+        },
+        navHeight: {
+            type: Number
         }
     },
     lifetimes: {
         created: function () {
             console.log("created", this.data.orderType)
         },
-        attached: function () {
+        ready: function () {
+            const {safeArea: {bottom}, windowHeight, screenHeight} = app.globalData.sysInfo
+            const safeBottom = screenHeight - bottom
             console.log("attached", this.data.orderType)
             // 在组件实例进入页面节点树时执行
+            const query = wx.createSelectorQuery().in(this)
+            query.select('.header').boundingClientRect()
+            query.selectViewport().boundingClientRect()
+            const that = this
+            query.exec(function (res) {
+                console.log(res)
+                console.log(that, res[1].height, that.data.navHeight, 44, res[0].height, safeBottom)
+                that.setData({
+                    listHeight: res[1].height - that.data.navHeight - 44 - res[0].height - safeBottom - 25
+                })
+            })
         },
         detached: function () {
             // 在组件实例被从页面节点树移除时执行
@@ -32,6 +49,7 @@ Component({
         }
     },
     data: {
+        listHeight: 300,
         currentSelect: '1',
         orderList: [{
             type: '定制班线',
@@ -91,7 +109,17 @@ Component({
                 )
             }, 1200)
 
-        }
+        },
+        scrollToLower() {
+            console.log('scrollToLower')
+            this.setData(
+                {refresh: true}
+            )
+            if (this.data.orderList.length < this.data.total) {
+                this.onReachBottom()
+            }
+
+        },
     },
     observers: {
         'refresh': function (refresh) {
@@ -100,6 +128,22 @@ Component({
                     this.onReachBottom()
                 }
             }
+        },
+        navHeight: function (h) {
+            const {safeArea: {bottom}, windowHeight, screenHeight} = app.globalData.sysInfo
+            const safeBottom = screenHeight - bottom
+            console.log("attached", this.data.orderType)
+            // 在组件实例进入页面节点树时执行
+            const query = wx.createSelectorQuery().in(this)
+            query.select('.header').boundingClientRect()
+            query.selectViewport().boundingClientRect()
+            const that = this
+            query.exec(function (res) {
+                console.log(that, res[1].height, that.data.navHeight, 44, res[0].height, safeBottom)
+                that.setData({
+                    listHeight: res[1].height - that.data.navHeight - 44 - res[0].height - safeBottom - 25
+                })
+            })
         }
     }
 

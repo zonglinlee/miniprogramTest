@@ -18,7 +18,8 @@
     "pages/setting/setting",
     "pages/invoice/invoice",
     "pages/feedback/feedback",
-    "pages/paymentResult/paymentResult"
+    "pages/paymentResult/paymentResult",
+    "pages/coupons/coupons"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -2,19 +2,12 @@
 
 .container {
   .top {
-    height: 409rpx;
     position: relative;
-    //background-image: url('http://s1dkzsmpj.hb-bkt.clouddn.com/outer/me_top_bg.png');
-    //background-position: 0 0;
-    //background-repeat: no-repeat;
-    //background-size: 100% 100%;
-
-    .t-wrapper {
-      position: absolute;
-      left: 41rpx;
-      right: 41rpx;
-      top: 146rpx;
-    }
+    background-image: url('http://s2z4nayoc.hb-bkt.clouddn.com/outer/me_top_bg.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding: 50rpx 50rpx 120rpx 50rpx;
 
     .avatar-wrapper {
       display: flex;
@@ -25,6 +18,7 @@
         height: 90rpx;
         width: 90rpx;
         margin-right: 24rpx;
+
 
         image {
           width: 100%;
@@ -61,19 +55,30 @@
         justify-content: space-evenly;
         height: 90rpx;
         padding: 10rpx;
-        border-radius: 10rpx;
-        border: 1rpx solid #1a87f63d;
+        border-radius: 20rpx;
         width: 40%;
         max-width: 260rpx;
+        background-image: -moz-linear-gradient(-142deg, rgb(136, 202, 250) 0%, rgb(147, 183, 253) 95%);
+        background-image: -webkit-linear-gradient(-142deg, rgb(136, 202, 250) 0%, rgb(147, 183, 253) 95%);
+        background-image: -ms-linear-gradient(-142deg, rgb(136, 202, 250) 0%, rgb(147, 183, 253) 95%);
 
-        .coupons {
-          width: 46rpx;
+        .img-container {
+          width: 70rpx;
+          height: 70rpx;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-right: 30rpx;
         }
 
+        .coupons {
+          width: 35rpx;
+        }
+
         .order {
-          width: 42rpx;
-          margin-right: 30rpx;
+          width: 33rpx;
         }
 
         .r {
@@ -84,10 +89,19 @@
 
           .l1 {
             font-size: @font-30;
+            color: white;
+            display: flex;
+            align-items: center;
+
+            .back {
+              width: 30rpx;
+              margin-left: 12rpx;
+            }
           }
 
           .l2 {
             font-size: @font-30;
+            color: white;
           }
         }
       }
@@ -97,7 +111,9 @@
   }
 
   .list {
-    margin-top: 20rpx;
+    margin-top: -70rpx;
+    position: relative;
+    z-index: 100;
 
     .items {
       display: flex;
@@ -118,10 +134,18 @@
         .l {
           display: flex;
           align-items: center;
+
+          image {
+            width: 36rpx;
+          }
         }
 
         .icon {
           font-size: 44rpx;
+        }
+
+        .arrow {
+          color: @text-color-gray;
         }
 
         .t {
@@ -174,3 +198,4 @@
     }
   }
 }
+

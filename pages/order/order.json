@@ -4,5 +4,6 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "order-list": "../../components/order-list/order-list"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "disableScroll": true
 }

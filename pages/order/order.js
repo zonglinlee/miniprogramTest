@@ -19,6 +19,16 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
+        const that = this
+        const query1 = wx.createSelectorQuery()
+        query1.select('.ss').boundingClientRect()
+        // query1.select('.tab-wrapper .van-tabs__nav').boundingClientRect()
+        query1.exec(function (res) {
+            that.setData({
+                navHeight: res[0].height
+            })
+        })
+
 
     },
 

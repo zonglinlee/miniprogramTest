@@ -17,7 +17,7 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-        swiperList: [{url: 'http://s1dkzsmpj.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
+        swiperList: [{url: 'http://s2z4nayoc.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
             longitude: 116.40,
@@ -33,7 +33,7 @@ Page({
         includePoints: [],
         markers: [],
         selectStart: false,
-        swiperHeight: 100,
+        swiperHeight: 111,
         swiperLoaded: false,
         card1Height: 777,
         maHeight: 2000,
@@ -42,27 +42,42 @@ Page({
         hotBtn: [{
             label: '定制班线',
             key: 'dedicatedLine',
-            src: '../../assets/images/red_car.png',
+            src: '../../assets/images/index/dedicatedLine.png',
             pageUrl: '/pages/dedicatedLine/dedicatedLine'
         }, {
             label: '货物代送',
             key: 'goodsDelivery',
-            src: '../../assets/images/red_car.png',
+            src: '../../assets/images/index/goodsDelivery.png',
         }, {
             label: '我的订单',
             key: 'order',
-            src: '../../assets/images/order.png',
+            src: '../../assets/images/index/order.png',
             pageUrl: '/pages/order/order',
-            isTabPage: true
+            isTabPage: false
         }, {
-            label: '优惠券',
-            key: 'coupons',
-            src: '../../assets/images/coupons.png',
+            label: '发票中心',
+            key: 'invoice',
+            pageUrl: '/pages/invoice/invoice',
+            src: '../../assets/images/index/invoice.png',
+        }, {
+            label: '意见反馈',
+            key: 'feedback',
+            pageUrl: '/pages/feedback/feedback',
+            src: '../../assets/images/index/feedback.png',
         }, {
             label: '常用乘车人',
             key: 'passenger',
-            src: '../../assets/images/passenger.png',
+            src: '../../assets/images/index/passenger.png',
             pageUrl: "/pages/addPassenger/addPassenger"
+        }, {
+            label: '优惠券',
+            key: 'coupons',
+            pageUrl: '/pages/coupons/coupons',
+            src: '../../assets/images/index/coupons.png',
+        }, {
+            label: '联系客服',
+            key: 'customer_service',
+            src: '../../assets/images/index/customer_service.png',
         }],
     },
     // 事件处理函数
@@ -80,9 +95,9 @@ Page({
             })
         }
         this.getCurrentPosition()
-        this.setData({
-            hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
-        })
+        // this.setData({
+        //     hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
+        // })
     },
     async onReady() {
         const menuBtnRec = wx.getMenuButtonBoundingClientRect()
@@ -120,30 +135,29 @@ Page({
     },
     async loadSwiperImage(e) {
         const detail = e.detail
-        /*
         if (!this.data.swiperLoaded) {
             const query = wx.createSelectorQuery()
             query.select('.swiper-image').boundingClientRect()
-            query.select('.top').boundingClientRect()
-            query.selectAll('.ch').boundingClientRect()
-            query.select('.card1').boundingClientRect()
-            query.select('.items-wrapper').boundingClientRect()
-            query.selectViewport().boundingClientRect()
+            // query.select('.top').boundingClientRect()
+            // query.selectAll('.ch').boundingClientRect()
+            // query.select('.card1').boundingClientRect()
+            // query.select('.items-wrapper').boundingClientRect()
+            // query.selectViewport().boundingClientRect()
             const that = this
             query.exec(function (res) {
                 const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
-                const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
-                console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
+                // const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
+                // console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
                 // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
-                const mvDistance = itemsWrapper.bottom - viewPort.height
+                // const mvDistance = itemsWrapper.bottom - viewPort.height
                 that.setData({
-                    card1Height: ht + 24,
-                    maHeight: ht + mvDistance,
-                    maTop: mvDistance,
+                    swiperHeight:swiperImg.height
+                    // card1Height: ht + 24,
+                    // maHeight: ht + mvDistance,
+                    // maTop: mvDistance,
                 })
             })
         }
-        */
     },
 
     async moveCard(e) {
@@ -307,7 +321,7 @@ Page({
                 longitude: pl[0].longitude,
                 title: 'start',
                 // iconPath: '../../assets/images/start_position.png',
-                iconPath: 'http://s1dkzsmpj.hb-bkt.clouddn.com/start_position.png',
+                iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/start_position.png',
                 width: 20,
                 height: 20
             }, {
@@ -316,7 +330,7 @@ Page({
                 longitude: pl[pl.length - 1].longitude,
                 title: 'end',
                 // iconPath: '../../assets/images/end_position.png',
-                iconPath: 'http://s1dkzsmpj.hb-bkt.clouddn.com/end_position.png',
+                iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/end_position.png',
                 width: 20,
                 height: 20
             }]

@@ -7,7 +7,7 @@ Page({
                 latitude: 39.90,
                 longitude: 116.40,
                 // iconPath: '../../assets/images/select_position.svg',
-                // iconPath: 'http://s1dkzsmpj.hb-bkt.clouddn.com/select_position.png',
+                // iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/select_position.png',
                 width: 20,
                 height: 20,
                 customCallout: {

@@ -1,4 +1,5 @@
 <view class="container">
+    <custom-nav class="custom-nav" navTitle="个人中心"></custom-nav>
     <view class="top">
         <view class="t-wrapper">
             <view class="avatar-wrapper">
@@ -12,21 +13,32 @@
                 </view>
             </view>
             <view class="c-wrapper">
-                <view class="item" style="margin-right:24rpx;">
-                    <image src="../../assets/images/coupons.png" mode="widthFix" class="coupons"></image>
+                <view class="item" style="margin-right:30rpx;" catch:tap="gotoPage" data-tab="{{false}}"
+                      data-url="/pages/coupons/coupons">
+                    <view class="img-container">
+                        <image src="../../assets/images/me_coupons1.png" mode="widthFix" class="coupons"></image>
+                    </view>
                     <view class="r">
-                        <view class="l1">优惠券 ></view>
+                        <view class="l1">
+                            <text>优惠券</text>
+                            <image src="../../assets/images/me_back.png" mode="widthFix" class="back"></image>
+                        </view>
                         <view class="l2">
-                            <text style="font-weight:bold">5</text> 张可用
+                            <text style="font-weight:bold;font-size:36rpx;">5</text> 张可用
                         </view>
                     </view>
                 </view>
-                <view class="item" catch:tap="gotoPage" data-tab="{{true}}" data-url="/pages/order/order">
-                    <image src="../../assets/images/order.png" mode="widthFix" class="order"></image>
+                <view class="item" catch:tap="gotoPage" data-tab="{{false}}" data-url="/pages/order/order">
+                    <view class="img-container">
+                        <image src="../../assets/images/order.png" mode="widthFix" class="order"></image>
+                    </view>
                     <view class="r">
-                        <view class="l1">订单 ></view>
+                        <view class="l1">
+                            <text>订单</text>
+                            <image src="../../assets/images/me_back.png" mode="widthFix" class="back"></image>
+                        </view>
                         <view class="l2">
-                            <text style="font-weight:bold">0</text>
+                            <text style="font-weight:bold;font-size:36rpx;">0</text> 张可用
                         </view>
                     </view>
                 </view>
@@ -40,40 +52,46 @@
         <view class="items">
             <view class="item" catch:tap="gotoPage" data-url="/pages/invoice/invoice">
                 <view class="l">
-                    <text class="icon szs szs-invoice"></text><text class="t">发票中心</text>
+                    <image src="../../assets/images/me_invoice.png" mode="widthFix" class="icon"></image>
+                    <text class="t">发票中心</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
             <view class="item" catch:tap="gotoPage" data-url="/pages/feedback/feedback">
                 <view class="l">
-                    <text class="icon szs szs-feedback"></text><text class="t">意见反馈</text>
+                    <image src="../../assets/images/me_feedback.png" mode="widthFix" class="icon"></image>
+                    <text class="t">意见反馈</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
             <view class="item" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
                 <view class="l">
-                    <text class="icon szs szs-contact"></text><text class="t">常用乘车人</text>
+                    <image src="../../assets/images/me_passenger.png" mode="widthFix" class="icon"></image>
+                    <text class="t">常用乘车人</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
             <view class="item" catch:tap="openPopup">
                 <view class="l">
-                    <text class="icon szs szs-kefu"></text><text class="t">客服中心</text>
+                    <image src="../../assets/images/me_customer_service.png" mode="widthFix" class="icon"></image>
+                    <text class="t">客服中心</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
             <view class="item" catch:tap="gotoPage" data-url="/pages/imagePage/imagePage"
-                  data-imgUrl="http://s1dkzsmpj.hb-bkt.clouddn.com/temp/test.png" data-title="约车规则">
+                  data-imgUrl="http://s2z4nayoc.hb-bkt.clouddn.com/temp/test.png" data-title="约车规则">
                 <view class="l">
-                    <text class="icon szs szs-setting"></text><text class="t">约车规则</text>
+                    <image src="../../assets/images/me_setting.png" mode="widthFix" class="icon"></image>
+                    <text class="t">约车规则</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
             <view class="item last" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
                 <view class="l">
-                    <text class="icon szs szs-emergency"></text><text class="t">紧急联系人</text>
+                    <image src="../../assets/images/me_passenger.png" mode="widthFix" class="icon"></image>
+                    <text class="t">紧急联系人</text>
                 </view>
-                <text class="szs szs-arrow-right"></text>
+                <text class="arrow szs szs-arrow-right"></text>
             </view>
         </view>
     </view>
