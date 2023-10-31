@@ -8,7 +8,6 @@
                     <image style="height:{{fixedHeight-sysInfo.statusBarHeight}}px" mode="heightFix" bind:tap="gotoPage"
                            data-tab="{{false}}" data-url="/pages/setting/setting"
                            src="../../assets/images/temp/avatar_index.png"></image>
-                    <!--                    <text class="city">银川市</text>-->
                     <text style="margin-left:10rpx;" class="arrow szs szs-arrow-down"></text>
                 </view>
             </view>
@@ -24,7 +23,7 @@
         </view>
     </view>
 
-    <movable-area class="ma" style="height:{{maHeight}}px;margin-top:-{{maTop + (isPc ? 60 : 15)}}px" wx:if="{{true}}"
+    <movable-area class="ma" style="height:{{maHeight}}px;margin-top:-{{maTop + (isPc ? 60 : 15)}}px"
                   catch:touchmove="noop">
         <movable-view class="mv" direction="vertical" y="{{maTop}}" bind:vtouchmove="moveCardV" bindchange="moveCard"
                       style="height:{{card1Height}}px" inertia out-of-bounds
@@ -71,55 +70,6 @@
             </view>
         </movable-view>
     </movable-area>
-
-    <view class="card-p" style="position:relative" catch:touchstart="onTouchStart" wx:if="{{false}}"
-          catch:touchmove="onTouchMove" catch:touchend="onTouchEnd">
-        <view class="card1" style="top:{{cardTop}}px"
-              wx:if="{{true}}">
-            <view class="middle">
-                <view class="content">
-                    <!--                    <view class="line1" bind:tap="gotoPage" data-tab="{{false}}"-->
-                    <view class="line1" bind:tap="selectStartPos">
-                        data-url="/pages/startLocation/startLocation">
-                        <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
-                        <text class="item2">{{locationAddStart}}</text>
-                        <image class="item3" src="../../assets/images/next.png"></image>
-                    </view>
-                    <view class="line2">
-                        <!--                        <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}" bind:tap="gotoPage"-->
-                        <!--                               data-tab="{{false}}" data-url="/pages/endLocation/endLocation"-->
-                        <!--                               placeholder="请输入打车目的地"/>-->
-                        <input class="des" disabled="{{true}}" model:value="{{locationAddEnd}}"
-                               placeholder="请输入打车目的地"
-                               bind:focus="focusInput1" bind:tap="focusInput1"/>
-                        <image class="dot item1" src="../../assets/images/green_dot.png"></image>
-                    </view>
-                </view>
-            </view>
-            <view class="sec swiper-wrapper">
-                <swiper indicator-dots="{{false}}" style="height:{{swiperHeight}}px"
-                        autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
-                    <block wx:for="{{swiperList}}" wx:key="url">
-                        <swiper-item>
-                            <!--                            <image src="{{item.url}}" bindload="loadSwiperImage" mode="heightFix"-->
-                            <image src="{{item.url}}" bindload="loadSwiperImage" mode="widthFix"
-                                   class="swiper-image"></image>
-                        </swiper-item>
-                    </block>
-                </swiper>
-            </view>
-            <view class="sec items-wrapper">
-                <view class="items">
-                    <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="orderItemClick"
-                          data-item="{{item}}">
-                        <image src="{{item.src}}" mode="aspectFit" class="{{item.key}}"></image>
-                        <text class="t">{{item.label}}</text>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
-
 
     <page-container
             duration="{{300}}"

@@ -95,9 +95,6 @@ Page({
             })
         }
         this.getCurrentPosition()
-        // this.setData({
-        //     hotBtn: [...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn, ...this.data.hotBtn,]
-        // })
     },
     async onReady() {
         const menuBtnRec = wx.getMenuButtonBoundingClientRect()
@@ -107,8 +104,6 @@ Page({
         if (platform === 'windows' || platform === 'mac') {
             isPc = true
         }
-        // console.log('fixedHeight:', res);
-        // console.log('sysInfo:', isPc, sysInfo);
         const query = wx.createSelectorQuery()
         query.select('.top').boundingClientRect()
         query.selectAll('.ch').boundingClientRect()
@@ -117,10 +112,8 @@ Page({
         query.selectViewport().boundingClientRect()
         const that = this
         query.exec(function (res) {
-            console.log(res)
             const [top, cardRec, card1, itemsWrapper, viewPort] = res
             const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
-            console.log(1111, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
             // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
             const mvDistance = itemsWrapper.bottom - viewPort.height
             that.setData({
@@ -138,23 +131,11 @@ Page({
         if (!this.data.swiperLoaded) {
             const query = wx.createSelectorQuery()
             query.select('.swiper-image').boundingClientRect()
-            // query.select('.top').boundingClientRect()
-            // query.selectAll('.ch').boundingClientRect()
-            // query.select('.card1').boundingClientRect()
-            // query.select('.items-wrapper').boundingClientRect()
-            // query.selectViewport().boundingClientRect()
             const that = this
             query.exec(function (res) {
                 const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
-                // const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
-                // console.log(2222, top, cardRec, ht, card1.bottom, itemsWrapper.bottom, viewPort.height)
-                // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
-                // const mvDistance = itemsWrapper.bottom - viewPort.height
                 that.setData({
                     swiperHeight:swiperImg.height
-                    // card1Height: ht + 24,
-                    // maHeight: ht + mvDistance,
-                    // maTop: mvDistance,
                 })
             })
         }
@@ -162,92 +143,12 @@ Page({
 
     async moveCard(e) {
         const res = await app.computeRec('.mv')
-        // console.log('moveCard:', res[0].top, res[0].top <= 20, e.detail, res[0])
-        // console.log(e.detail)
         this.setData({
             mvOffsetTop: res[0].top,
             showBg: res[0].top <= 60
         })
     },
-    moveCardV(e) {
-        // console.log('moveCardV:', e, e.detail)
-    },
-    onTouchStart(e) {
-        // console.log(e)
-        this.cardMoving = true
-        const [touch1] = e.touches
-        this.clientY = touch1.clientY
-    },
-    onTouchMove(e) {
-        if (this.cardMoving) {
-            const [touch1] = e.touches
-            const diff = touch1.clientY - this.clientY + this.data.cardTop
-
-            console.log(e, diff)
-            if (diff <= -10000) {
-                this.setData(
-                    {cardTop: -10000}
-                )
-            } else if (diff >= 0) {
-                this.setData(
-                    {cardTop: 0}
-                )
-            } else {
-                this.setData(
-                    {cardTop: diff}
-                )
-            }
-            this.clientY = touch1.clientY
-        }
-    },
-    onTouchEnd(e) {
-        this.cardMoving = false
-    },
-    testAPI() {
-        // console.log(wx.getMenuButtonBoundingClientRect())
-        // wx.hideTabBar({})
-        // wx.showTabBarRedDot({index: 0})
-        // wx.startPullDownRefresh()
-        // wx.openSetting({})
-        // wx.startSoterAuthentication({
-        //     requestAuthModes: ['fingerPrint'],
-        //     challenge: '123456',
-        //     authContent: '请用指纹解锁',
-        //     success(res) {
-        //         console.log(res)
-        //     }
-        // })
-        // wx.openBluetoothAdapter({})
-        // wx.startWifi({})
-        // setTimeout(() => {
-        //     wx.stopWifi({
-        //         success(res) {
-        //             console.log(res.errMsg)
-        //         },
-        //         fail(res) {
-        //             console.log(res)
-        //         }
-        //     })
-        //     wx.closeBluetoothAdapter({})
-        // }, 3000)
-        // wx.makePhoneCall({
-        //     phoneNumber: '67414' //仅为示例，并非真实的电话号码
-        // })
-        // wx.vibrateShort({
-        //     style: 'light', success(res) {
-        //         console.log(res)
-        //     }, fail(err) {
-        //         console.log(err)
-        //     }
-        // })
-
-        console.log("wx.getWindowInfo():", wx.getWindowInfo());
-        wx.getSystemInfo({
-            success(res) {
-                console.log(res)
-            }
-        })
-    },
+    moveCardV(e) {},
     hotBtnClick(e) {
         let item = e.currentTarget.dataset.item
         const {imgUrl, pageUrl, label, isTabPage} = item
@@ -341,7 +242,6 @@ Page({
     },
     getUserInfo(e) {
         // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-        console.log(e)
         this.setData({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
@@ -382,9 +282,6 @@ Page({
     },
     selectStartPos() {
         this.setData({selectStart: true, showSelectPositionPopup: true})
-        // wx.nextTick(()=>{
-        //
-        // })
     },
     gotoPage(e) {
         app.navigate(e)
