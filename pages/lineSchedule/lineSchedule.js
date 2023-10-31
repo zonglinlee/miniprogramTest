@@ -5,10 +5,10 @@ Page({
         currentSelectDate: '',
         scheduledLines: [],
         selectedScheduledLine: {},
+        listHeight: 0
     },
     onLoad: function (options) {
         this.getDays()
-
         const scheduledLines = []
         for (let i = 0; i < 12; i++) {
             scheduledLines.push({
@@ -19,6 +19,11 @@ Page({
             })
         }
         this.setData({scheduledLines})
+    },
+    onReady() {
+        wx.nextTick(() => {
+            this.computeHeight()
+        })
     },
     getDays() {
         const paddingStart = (s) => {
@@ -68,5 +73,24 @@ Page({
         app.globalData.currentOrder.selectedScheduledLine = this.data.selectedScheduledLine
         console.log(app.globalData.currentOrder)
         app.navigate(e)
-    }
+    },
+    computeHeight() {
+        const that = this
+        const query = wx.createSelectorQuery()
+        query.selectAll('.c-height').boundingClientRect()
+        query.selectViewport().boundingClientRect()
+        query.exec(function (res) {
+            // debugger
+            const {safeArea: {bottom}, windowHeight, screenHeight} = app.globalData.sysInfo
+            const safeBottom = screenHeight - bottom
+            const total = res[0].reduce((acc, nodeInfo) => acc + nodeInfo.height, 0)
+            console.log(3333333333, res, res[1].height - total - safeBottom)
+            // debugger
+            that.setData({
+                listHeight: res[1].height - total - safeBottom - 8,
+            })
+        })
+    },
 });
+
+

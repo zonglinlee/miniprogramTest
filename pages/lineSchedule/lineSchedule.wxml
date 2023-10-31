@@ -1,9 +1,9 @@
 <view class="container">
-    <view class="nav">
+    <view class="nav c-height">
         <image class="back" src="../../assets/images/back_gray.png" mode="widthFix" bind:tap="goBack"></image>
         <text class="nav-title">大武口-银川</text>
     </view>
-    <view class="days">
+    <view class="days c-height">
         <view class="[item,{{currentSelectDate===item.date?'selected':''}}]" wx:for="{{days}}" wx:key="date"
               data-day="{{item}}" bind:tap="changeDate">
             <view class="day">{{item.label}}</view>
@@ -11,23 +11,28 @@
         </view>
     </view>
     <view class="buses">
-        <view class="item" wx:key="index" wx:for="{{scheduledLines}}" catch:tap="gotoPage" data-item="{{item}}" data-url="/pages/busStop/busStop">
-            <view class="l1">班次号:{{item.no}}</view>
-            <view class="l2">
-                <view class="time">11:30</view>
-                <view class="des-wrapper">
-                    <image class="icon" src="../../assets/images/from_to.png" mode="widthFix"></image>
-                    <view class="des">
-                        <view class="from">{{item.from}}</view>
-                        <view class="to">{{item.to}}</view>
+        <scroll-view class="s-wrapper" scroll-y="true" style="height: {{listHeight}}px" show-scrollbar="{{false}}"
+                     enhanced="{{true}}">
+            <view class="item" wx:key="index" wx:for="{{scheduledLines}}" catch:tap="gotoPage" data-item="{{item}}"
+                  data-url="/pages/busStop/busStop">
+                <view class="l1">班次号:{{item.no}}</view>
+                <view class="l2">
+                    <view class="time">11:30</view>
+                    <view class="des-wrapper">
+                        <image class="icon" src="../../assets/images/from_to.png" mode="widthFix"></image>
+                        <view class="des">
+                            <view class="from">{{item.from}}</view>
+                            <view class="to">{{item.to}}</view>
+                        </view>
                     </view>
+                    <view class="m">￥{{item.price}}</view>
                 </view>
-                <view class="m">￥{{item.price}}</view>
+                <view class="l3">
+                    <text class="type">55座大巴车</text>
+                    <text class="left">余票100张</text>
+                </view>
             </view>
-            <view class="l3">
-                <text class="type">55座大巴车</text>
-                <text class="left">余票100张</text>
-            </view>
-        </view>
+        </scroll-view>
+
     </view>
 </view>

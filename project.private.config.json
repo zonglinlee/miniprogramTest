@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "lineSchedule",
+          "pathName": "pages/lineSchedule/lineSchedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "paymentResult",
           "pathName": "pages/paymentResult/paymentResult",
           "query": "",

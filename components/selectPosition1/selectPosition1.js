@@ -242,23 +242,6 @@ Component({
                 })
             })
         },
-        computeHeight1() {
-            // const query = wx.createSelectorQuery()
-            const that = this
-            const query = wx.createSelectorQuery().in(this)
-            query.selectAll('.c-height1').boundingClientRect()
-            query.selectViewport().boundingClientRect()
-            query.exec(function (res) {
-                // debugger
-                const {safeArea: {bottom}, windowHeight, screenHeight} = app.globalData.sysInfo
-                const safeBottom = screenHeight - bottom
-                // console.log(3333333333, res, res[1].height - total - safeBottom)
-                const total = res[0].reduce((acc, nodeInfo) => acc + nodeInfo.height, 0)
-                that.setData({
-                    searchListHeight: res[1].height - total - safeBottom + 30,
-                })
-            })
-        },
         openCityList() {
             this.setData({showCityList: true})
         },
