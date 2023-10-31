@@ -11,12 +11,6 @@ Page({
         fixedHeight: 56,
         isPc: false,
         showSelectPositionPopup: false,
-        motto: 'canvas test',
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        canIUseGetUserProfile: false,
-        canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
         swiperList: [{url: 'http://s2z4nayoc.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
@@ -37,7 +31,6 @@ Page({
         swiperLoaded: false,
         card1Height: 777,
         maHeight: 2000,
-        cardTop: 0,
         showBg: false,
         hotBtn: [{
             label: '定制班线',
@@ -89,11 +82,6 @@ Page({
     },
 
     async onLoad() {
-        if (wx.getUserProfile) {
-            this.setData({
-                canIUseGetUserProfile: true
-            })
-        }
         this.getCurrentPosition()
     },
     async onReady() {
@@ -135,7 +123,7 @@ Page({
             query.exec(function (res) {
                 const [swiperImg, top, cardRec, card1, itemsWrapper, viewPort] = res
                 that.setData({
-                    swiperHeight:swiperImg.height
+                    swiperHeight: swiperImg.height
                 })
             })
         }
@@ -148,7 +136,8 @@ Page({
             showBg: res[0].top <= 60
         })
     },
-    moveCardV(e) {},
+    moveCardV(e) {
+    },
     hotBtnClick(e) {
         let item = e.currentTarget.dataset.item
         const {imgUrl, pageUrl, label, isTabPage} = item
@@ -167,19 +156,6 @@ Page({
                 duration: 500
             })
         }
-    },
-    getUserProfile(e) {
-        // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-        wx.getUserProfile({
-            desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-            success: (res) => {
-                console.log(res)
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        })
     },
     async getCurrentPosition() {
         try {
@@ -240,17 +216,9 @@ Page({
     getClickPoint(res) {
         console.log("点击地图:", res)
     },
-    getUserInfo(e) {
-        // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
-    },
     confirmOrder() {
     },
     focusInput1() {
-        console.log("focusInput1")
         this.setData({selectStart: false, showSelectPositionPopup: true})
     },
     closeSelectPositionPopup(event) {

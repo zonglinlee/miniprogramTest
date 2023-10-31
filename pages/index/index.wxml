@@ -78,9 +78,6 @@
             close-on-slide-down="{{false}}"
             show="{{showSelectPositionPopup}}"
     >
-
-        <!--                <selectPosition show="{{showSelectPositionPopup}}" isStart="{{selectStart}}" cityName="{{currentCity}}"-->
-        <!--                                bind:closeSelectPositionPopup="closeSelectPositionPopup"></selectPosition>-->
         <selectPosition1 show="{{showSelectPositionPopup}}"
                          bind:closeSelectPositionPopup="closeSelectPositionPopup"></selectPosition1>
     </page-container>
