@@ -1,0 +1,128 @@
+<view class="container" id="select-position">
+    <van-nav-bar
+            title="石嘴山出行"
+            left-arrow
+            class="custom-nav c-height c-height1"
+            bind:click-left="goBack"
+    />
+    <view class="search-container c-height" wx:if="{{showRegion}}">
+        <!--        <view class="l">-->
+        <!--            <view class="city" bind:tap="openCityList">{{currentCity}}</view>-->
+        <!--        </view>-->
+        <view class="m">
+            <text class="search-icon icon-c1 szs szs-search"></text>
+            <input class="input" confirm-type="search" model:value="{{searchKeyword}}" disabled="{{true}}"
+                   placeholder-class="placeholder-style" placeholder="请输入地区名称/地址"
+                   cursor-spacing="{{50}}" bind:tap="tapShowSearch"/>
+        </view>
+    </view>
+    <view class="rec s1 bbg c-height" wx:if="{{showRegion}}">
+        <text class="icon-c1 szs szs-clock-filling"></text>
+        <text class="t1">推荐上下车点</text>
+    </view>
+    <scroll-view class="s-wrapper" scroll-y="true" style="height: {{recHeight}}px" show-scrollbar="{{false}}"
+                 enhanced="{{true}}" wx:if="{{showRegion}}">
+        <view class="s1 rec-region" wx:for="{{recList}}" wx:key="index">
+            <view class="region">{{item.region}}</view>
+            <view class="rec-item bbg" wx:for="{{item.items}}" wx:for-item="innerItem" wx:for-index="innerIndex"
+                  wx:key="innerIndex">
+                <text class="icon-c1 szs szs-position"></text>
+                <view class="r">
+                    <text class="t1">{{innerItem.title}}</text>
+                    <text class="t2">{{innerItem.address}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+
+    <view class="search-container c-height" wx:if="{{showSearch}}">
+        <view class="m">
+            <text class="search-icon icon-c1 szs szs-search"></text>
+            <input class="input" confirm-type="search" model:value="{{searchKeyword}}" disabled="{{false}}"
+                   placeholder-class="placeholder-style" placeholder="请输入地区名称/地址"
+                   cursor-spacing="{{50}}" bind:tap="showSearch"/>
+        </view>
+        <view class="r" bind:tap="cancelShowSearch">取消</view>
+    </view>
+
+    <view class="map c-height" wx:if="{{showSearch}}">
+        <!--        <map class="map" style="height:{{mapHeight}}px;" latitude="{{currentPosition.latitude}}"-->
+        <map class="map" latitude="{{currentPosition.latitude}}"
+             longitude="{{currentPosition.longitude}}"
+             polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}"
+             markers="{{markers}}"
+             show-location>
+            <cover-view slot="callout">
+                <cover-view marker-id="{{100}}"
+                            style="text-align:center;font-size:26rpx;padding:12rpx 28rpx;background:#ffffff;border-radius:24rpx;">
+                    上车点
+                </cover-view>
+            </cover-view>
+        </map>
+    </view>
+
+    <view class="l-wrapper" wx:if="{{showSearch}}">
+        <scroll-view class="s-wrapper" scroll-y="true" style="height: {{searchListHeight}}px" show-scrollbar="{{false}}"
+                     enhanced="{{true}}">
+            <view style="padding:20rpx 40rpx 2rpx 40rpx;">
+                <view class="rec-item bbg" wx:for="{{lList}}" wx:for-item="innerItem" wx:for-index="innerIndex"
+                      style="padding:16rpx 0;"
+                      wx:key="innerIndex">
+                    <text class="icon-c1 szs szs-position"></text>
+                    <view class="r">
+                        <text class="t1">{{innerItem.title}}</text>
+                        <text class="t2">{{innerItem.address}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+
+
+    <view class="content-wrapper" wx:if="{{false}}">
+        <block wx:if="{{isStart}}">
+            <map class="map" style="height:{{mapHeight}}px;" latitude="{{currentPosition.latitude}}"
+                 longitude="{{currentPosition.longitude}}"
+                 polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}"
+                 markers="{{markers}}"
+                 show-location>
+                <cover-view slot="callout">
+                    <cover-view marker-id="{{100}}"
+                                style="text-align:center;font-size:26rpx;padding:12rpx 28rpx;background:#ffffff;border-radius:24rpx;">
+                        上车点
+                    </cover-view>
+                </cover-view>
+            </map>
+            <view class="confirm">
+                <view class="card">
+                    <view class="l1">司机将与您在此处见面</view>
+                    <view class="l2">{{currentPosition.markerAdd}}</view>
+                </view>
+                <view class="confirm-btn" bind:tap="confirmStartPosition">确认上车点</view>
+            </view>
+        </block>
+
+        <view class="list-container" wx:if="{{suggestList.length>0}}">
+            <scroll-view scroll-y="true" style="height: {{mapHeight}}px;" show-scrollbar="{{false}}"
+                         enhanced="{{true}}">
+                <view class="item" wx:for="{{suggestList}}" wx:key="title" data-pos="{{item}}"
+                      bind:tap="chooseRecommendPosition">
+                    <image class="img-position" mode="widthFix" src="../../assets/images/position.png"></image>
+                    <view class="r">
+                        <view class="title">{{item.title}}</view>
+                        <view class="add">{{item.addr}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <city-list show="{{showCityList}}"
+               bind:closeCity="closeCityList"></city-list>
+    <slot></slot>
+</view>
+
+
+
+
+

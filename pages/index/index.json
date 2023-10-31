@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "selectPosition": "../../components/selectPosition/selectPosition"
+    "selectPosition": "../../components/selectPosition/selectPosition",
+    "selectPosition1": "../../components/selectPosition1/selectPosition1"
   },
   "navigationStyle": "custom",
   "enablePassiveEvent": false,

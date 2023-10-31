@@ -1,4 +1,4 @@
-// pages/order/order.js
+const app = getApp()
 Page({
 
     /**
@@ -81,5 +81,8 @@ Page({
     },
     orderListClick(e) {
         console.log(e.detail)
-    }
+    },
+    goBack() {
+        app.defaultCustomNavClick()
+    },
 })
