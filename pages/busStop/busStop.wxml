@@ -7,16 +7,6 @@
     />
 
     <view class="content">
-        <map style="height:{{mapHeight}}px;" class="map" markers="{{markers}}" latitude="{{destination.latitude}}"
-             longitude="{{destination.longitude}}">
-            <cover-view slot="callout">
-                <cover-view marker-id="{{300}}"
-                            style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
-                    站点名称
-                </cover-view>
-            </cover-view>
-        </map>
-
         <view class="card" style="height:{{cardHeight}}px;">
             <view class="border">
                 <scroll-view scroll-y enable-flex="{{false}}"
@@ -25,41 +15,40 @@
                              enhanced="{{true}}">
                     <!--  上车点 -->
                     <view class="wrapper" wx:if="{{showStop1}}">
-                        <view class="item" wx:for="{{stop1List}}"
+                        <view class="item" wx:for="{{stop1List}}" catch:tap="clickStop" data-up data-stop="{{item}}"
                               wx:key="index">
-                            <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}"
-                                  catch:tap="clickStop" data-up data-stop="{{item}}">
-                                {{item.title}}
-                            </view>
-                            <view class="middle {{stop1.title === item.title ? 'item-selected' : ''}}">
+                            <view class="left {{stop1.title === item.title ? 'item-selected' : ''}}">
                                 <view class="outer">
                                     <view class="inner"></view>
                                 </view>
                                 <view class="line"></view>
                             </view>
-                            <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop1.title === item.title ? 'item-selected' : ''}}"
-                                  catch:tap="clickStop" data-up data-stop="{{item}}">
+                            <view class="middle  {{stop1.title === item.title ? 'item-selected' : ''}}">
                                 {{item.title}}
+                            </view>
+                            <view class="right"
+                                  catch:tap="clickPosition" data-stop="{{item}}">
+                                <text class="position szs szs-position {{stop1.title === item.title ? 'position-selected' : ''}}"></text>
                             </view>
                         </view>
                     </view>
                     <!--下车点-->
                     <view class="wrapper" wx:else>
-                        <view class="item" wx:for="{{stop2List}}"
+                        <view class="item" wx:for="{{stop2List}}" catch:tap="clickStop" data-up="{{false}}"
+                              data-stop="{{item}}"
                               wx:key="index">
-                            <view class="left {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}"
-                                  catch:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
-                                {{item.title}}
-                            </view>
-                            <view class="middle {{stop2.title === item.title ? 'item-selected' : ''}}">
+                            <view class="left {{stop2.title === item.title ? 'item-selected' : ''}}">
                                 <view class="outer">
                                     <view class="inner"></view>
                                 </view>
                                 <view class="line"></view>
                             </view>
-                            <view class="right {{index%2 === 0 ? 'even' : 'odd'}} {{stop2.title === item.title ? 'item-selected' : ''}}"
-                                  catch:tap="clickStop" data-up="{{false}}" data-stop="{{item}}">
+                            <view class="middle  {{stop2.title === item.title ? 'item-selected' : ''}}">
                                 {{item.title}}
+                            </view>
+                            <view class="right"
+                                  catch:tap="clickPosition" data-stop="{{item}}">
+                                <text class="position szs szs-position {{stop2.title === item.title ? 'position-selected' : ''}}"></text>
                             </view>
                         </view>
                     </view>
@@ -71,5 +60,23 @@
         <view class="btn" wx:if="{{showStop1}}" catch:tap="confirmStop1">确认上车点</view>
         <view class="btn" wx:else catch:tap="gotoPage" data-url="/pages/confirmOrder/confirmOrder">确认下车点</view>
     </view>
+    <van-popup show="{{ show }}" bind:close="onClose" position="right" safe-area-tab-bar="{{false}}">
+        <van-nav-bar
+                title="大武口 - 银川"
+                left-arrow
+                class="custom-nav"
+                bind:click-left="onClose"
+        />
+        <map style="height:{{mapHeight}}px;width:100%;" class="map" markers="{{markers}}"
+             latitude="{{destination.latitude}}"
+             longitude="{{destination.longitude}}">
+            <cover-view slot="callout">
+                <cover-view marker-id="{{300}}"
+                            style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
+                    {{currentStop}}
+                </cover-view>
+            </cover-view>
+        </map>
+    </van-popup>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
 </view>

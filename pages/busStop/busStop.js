@@ -28,7 +28,8 @@ Page({
         stop2: {},
         stop1List: [],
         stop2List: [],
-        safeBottom: 0
+        safeBottom: 0,
+        show: false
     },
     onLoad: function (options) {
         // console.log(app.globalData.sysInfo)
@@ -48,7 +49,7 @@ Page({
     fakeData() {
         let arr = []
         let arr2 = []
-        const str = '法大师傅士大夫士大夫的答复是否发士大夫房贷首付'
+        const str = '空空空空空空空空空空空空'
         let len = str.length
         const randomStr = () => {
             const start = Math.floor(Math.random() * 10)
@@ -57,12 +58,12 @@ Page({
         for (let i = 0; i < 15; i++) {
             const obj = {}
             arr.push(obj)
-            obj.title = `上车站点名称_${randomStr()}_${i}`
+            obj.title = `银川河东机场_${randomStr()}_${i}`
         }
         for (let i = 0; i < 14; i++) {
             const obj = {}
             arr2.push(obj)
-            obj.title = `下车站点名称_${randomStr()}_${i}`
+            obj.title = `银川火车站_${randomStr()}_${i}`
         }
         this.setData({
             stop1List: arr,
@@ -76,8 +77,6 @@ Page({
         query.select('.btn-wrapper').boundingClientRect()
         query.selectViewport().boundingClientRect()
         query.exec(function (res) {
-            // debugger
-            console.log(res)
             that.setData({
                 mapHeight: res[2].height - res[0].height - that.data.safeBottom,
                 cardHeight: res[1].top - res[0].height,
@@ -112,5 +111,17 @@ Page({
         } else {
             Toast({duration: 2000, message: '请选择下车点'});
         }
+    },
+    onClose() {
+        this.setData({show: false})
+        this.triggerEvent('closePopup', {})
+    },
+    clickPosition(e) {
+        console.log('clickPosition')
+        const stop = e.currentTarget.dataset.stop
+        this.setData({
+            show: true,
+            currentStop: stop.title,
+        })
     }
 });
