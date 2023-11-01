@@ -42,7 +42,6 @@ Page({
         this.computeHeight()
         this.fakeData()
     },
-
     goBack() {
         app.defaultCustomNavClick()
     },

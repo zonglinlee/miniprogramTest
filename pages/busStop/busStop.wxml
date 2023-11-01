@@ -61,22 +61,24 @@
         <view class="btn" wx:else catch:tap="gotoPage" data-url="/pages/confirmOrder/confirmOrder">确认下车点</view>
     </view>
     <van-popup show="{{ show }}" bind:close="onClose" position="right" safe-area-tab-bar="{{false}}">
-        <van-nav-bar
-                title="大武口 - 银川"
-                left-arrow
-                class="custom-nav"
-                bind:click-left="onClose"
-        />
-        <map style="height:{{mapHeight}}px;width:100%;" class="map" markers="{{markers}}"
-             latitude="{{destination.latitude}}"
-             longitude="{{destination.longitude}}">
-            <cover-view slot="callout">
-                <cover-view marker-id="{{300}}"
-                            style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
-                    {{currentStop}}
+        <view style="width:750rpx">
+            <van-nav-bar
+                    title="大武口 - 银川"
+                    left-arrow
+                    class="custom-nav"
+                    bind:click-left="onClose"
+            />
+            <map style="height:{{mapHeight}}px;width:100%;" class="map" markers="{{markers}}"
+                 latitude="{{destination.latitude}}"
+                 longitude="{{destination.longitude}}">
+                <cover-view slot="callout">
+                    <cover-view marker-id="{{300}}"
+                                style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
+                        {{currentStop}}
+                    </cover-view>
                 </cover-view>
-            </cover-view>
-        </map>
+            </map>
+        </view>
     </van-popup>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
 </view>

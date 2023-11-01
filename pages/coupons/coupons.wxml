@@ -1,3 +1,208 @@
 <view class="container">
-    coupons todo
+    <van-nav-bar
+            title="优惠券"
+            left-arrow
+            class="custom-nav"
+            bind:click-left="goBack"
+    />
+    <view class="c-wrapper">
+        <view class="c-item sec" wx:for="{{coupons}}" wx:key="id" data-item="{{item}}" bind:tap="showDetail">
+            <view class="l1">{{item.title}}</view>
+            <view class="l2">
+                <view class="l">有效期 {{item.expires}}</view>
+                <view class="r">
+                    <text class="t1 orange bold">{{item.discount}}</text>
+                    <text class="t2 orange bold">折</text>
+                </view>
+            </view>
+            <view class="l3">
+                <scroll-view scroll-x class="l">
+                    <view class="tags">
+
+                        <view class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</view>
+                    </view>
+                </scroll-view>
+                <view class="r">
+                    <text class="t2 orange bold">最多抵扣{{item.maxDiscount}}元</text>
+                </view>
+            </view>
+            <view class="footer">
+                <view class="l">
+                    <text>{{item.timeRange}}</text>
+                    <text class="arrow szs szs-arrow-right"></text>
+                </view>
+                <view class="r">本券不支持转赠</view>
+            </view>
+        </view>
+    </view>
+    <view class="check" bind:tap="checkExpires">
+        <text>查看已失效的券</text><text class="arrow szs szs-arrow-right"></text>
+    </view>
+    <van-popup show="{{ show }}" bind:close="onClose" position="right" safe-area-tab-bar="{{false}}" duration="{{300}}">
+        <view class="pop-wrapper" style="height:{{screenHeight}}px">
+            <van-nav-bar
+                    title="优惠券"
+                    left-arrow
+                    class="custom-nav c-height"
+                    bind:click-left="onClose"
+            />
+            <scroll-view style="height:{{infoHeight}}px;width:100%;" scroll-y>
+                <view class="info">
+                    <view class="sec1">
+                        <view class="t1">可用业务</view>
+                        <view class="t2">普通打车、尊享、特享、拼车</view>
+                    </view>
+                    <view class="sec1">
+                        <view class="t1">可用车型</view>
+                        <view class="t2">舒适型、、行政型、商务型、尊享、快享、惠享、坚果舒适型</view>
+                    </view>
+                    <view class="sec1">
+                        <view class="t1">订单类型</view>
+                        <view class="t2">实时</view>
+                    </view>
+                    <view class="sec1">
+                        <view class="t1">有效期</view>
+                        <view class="t2">2023-10-08 16:15:37 至 2023-11-07 23:59:59</view>
+                    </view>
+                    <view class="sec1">
+                        <view class="t1">可用时段</view>
+                        <view class="t2">00:00:00-23:59:59</view>
+                    </view>
+                    <view class="sec1">
+                        <view class="t1">可用城市</view>
+                        <view class="t2">全国</view>
+                    </view>
+                </view>
+                <view class="info1">
+                    <view class="sec1">
+                        <view class="t1">使用规则</view>
+                        <view class="t2">
+                            <view class="dot"></view>
+                            <view class="t">
+                                普通打车、尊享、特享、拼车,普通打车、尊享、特享、拼车普通打车、尊享、特享、拼车
+                            </view>
+                        </view>
+                        <view class="t2">
+                            <view class="dot"></view>
+                            <view class="t">
+                                普通打车、尊享、特享、拼车,普通打车、尊享、特享、拼车,普通打车、尊享、普通打车、尊享、特享、拼车普通打车、尊享、特享、拼车
+                            </view>
+                        </view>
+                        <view class="t2">
+                            <view class="dot"></view>
+                            <view class="t">
+                                普通打车、尊享、特享、拼车,普通打车、尊享、特享、拼车,普通打车、尊享、特享、拼车,普通打车、尊享、拼车,普通打车、尊享、特享、拼车普通打车、尊享、特享、拼车
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+            </scroll-view>
+            <view class="btn-wrapper c-height" wx:if="{{couponsType==='1'}}">
+                <view class="btn" catch:tap="useCoupons">立即使用</view>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ show1 }}" bind:close="onClose1" position="right" safe-area-tab-bar="{{false}}"
+               duration="{{1}}">
+        <view class="pop-wrapper" style="height:{{screenHeight}}px">
+            <van-nav-bar
+                    title="失效券"
+                    left-arrow
+                    class="custom-nav c-height1"
+                    bind:click-left="onClose1"
+            />
+            <van-tabs active="ysy" color="#f7800c" line-width="20px" class="tab-wrapper" wx:if="{{show1}}">
+                <van-tab title="已使用" name="ysy" title-style="font-size:32rpx;">
+                    <scroll-view class="tab-scroll" style="height:{{tabHeight}}px;width:100%;" scroll-y>
+                        <view class="c-wrapper c-wrapper-gray" wx:if="{{coupons1.length>0}}">
+                            <view class="c-item sec" wx:for="{{coupons1}}" wx:key="id" data-item="{{item}}"
+                                  bind:tap="showDetail1">
+                                <view class="l1">{{item.title}}</view>
+                                <view class="l2">
+                                    <view class="l">有效期 {{item.expires}}</view>
+                                    <view class="r">
+                                        <text class="t1 orange bold">{{item.discount}}</text>
+                                        <text class="t2 orange bold">折</text>
+                                    </view>
+                                </view>
+                                <view class="l3">
+                                    <scroll-view scroll-x class="l">
+                                        <view class="tags">
+
+                                            <view class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">
+                                                {{tag}}
+                                            </view>
+                                        </view>
+                                    </scroll-view>
+                                    <view class="r">
+                                        <text class="t2 orange bold">最多抵扣{{item.maxDiscount}}元</text>
+                                    </view>
+                                </view>
+                                <view class="footer">
+                                    <view class="l">
+                                        <text>{{item.timeRange}}</text>
+                                        <text class="arrow szs szs-arrow-right"></text>
+                                    </view>
+                                    <view class="r">本券不支持转赠</view>
+                                </view>
+                                <view class="expires">
+                                    <text class="icon szs szs-yishiyong"></text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="empty" wx:else>
+                            <text class="icon szs szs-zanwukeyongquan"></text>
+                            <text class="t">暂无可用优惠券</text>
+                        </view>
+                    </scroll-view>
+                </van-tab>
+                <van-tab title="已失效" name="ygq" title-style="font-size:32rpx;">
+                    <scroll-view class="tab-scroll" style="height:{{tabHeight}}px;width:100%;" scroll-y>
+                        <view class="c-wrapper c-wrapper-gray" wx:if="{{coupons2.length>0}}">
+                            <view class="c-item sec" wx:for="{{coupons2}}" wx:key="id" data-item="{{item}}"
+                                  bind:tap="showDetail1">
+                                <view class="l1">{{item.title}}</view>
+                                <view class="l2">
+                                    <view class="l">有效期 {{item.expires}}</view>
+                                    <view class="r">
+                                        <text class="t1 orange bold">{{item.discount}}</text>
+                                        <text class="t2 orange bold">折</text>
+                                    </view>
+                                </view>
+                                <view class="l3">
+                                    <scroll-view scroll-x class="l">
+                                        <view class="tags">
+
+                                            <view class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">
+                                                {{tag}}
+                                            </view>
+                                        </view>
+                                    </scroll-view>
+                                    <view class="r">
+                                        <text class="t2 orange bold">最多抵扣{{item.maxDiscount}}元</text>
+                                    </view>
+                                </view>
+                                <view class="footer">
+                                    <view class="l">
+                                        <text>{{item.timeRange}}</text>
+                                        <text class="arrow szs szs-arrow-right"></text>
+                                    </view>
+                                    <view class="r">本券不支持转赠</view>
+                                </view>
+                                <view class="expires">
+                                    <text class="icon szs szs-yiguoqi"></text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="empty" wx:else>
+                            <text class="icon szs szs-zanwukeyongquan"></text>
+                            <text class="t">暂无可用优惠券</text>
+                        </view>
+                    </scroll-view>
+                </van-tab>
+            </van-tabs>
+
+        </view>
+    </van-popup>
 </view>
