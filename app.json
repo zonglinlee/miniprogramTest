@@ -19,7 +19,8 @@
     "pages/invoice/invoice",
     "pages/feedback/feedback",
     "pages/paymentResult/paymentResult",
-    "pages/coupons/coupons"
+    "pages/coupons/coupons",
+    "pages/finishOrder/finishOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

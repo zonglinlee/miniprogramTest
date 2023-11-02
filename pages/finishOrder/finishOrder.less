@@ -1,0 +1,212 @@
+@import "assets/css/common";
+
+.container {
+
+  .card {
+    margin-top: 20rpx;
+  }
+
+  .map {
+    width: 100%;
+  }
+
+  .content {
+    position: relative;
+  }
+
+  .mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 888;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .cards {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+
+  .sec1 {
+    padding: 24rpx 24rpx 0 24rpx;
+  }
+
+  .icon {
+    font-size: @font-36;
+    color: @text-color-gray2;
+    margin-right: 12rpx;
+    flex-shrink: 0;
+  }
+
+  .l {
+    display: flex;
+    align-items: center;
+    padding: 16rpx 0;
+
+
+    .yuan.icon {
+      color: #f66607;
+    }
+
+    .clock.icon {
+      color: @blue-bg;
+    }
+
+    .t2 {
+      font-size: @font-30;
+    }
+
+
+  }
+
+  .cancel-panel {
+    padding-bottom: 24rpx;
+
+    .p {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: @font-34;
+      text-align: center;
+      width: fit-content;
+      margin: 0 auto 30rpx auto;
+    }
+
+    .icon {
+      color: @green-bg;
+      font-size: 46rpx;
+    }
+
+    .t2 {
+      text-align: center;
+      color: @text-color-gray;
+      font-size: @font-28;
+    }
+  }
+
+  .status {
+    padding: 28rpx 0;
+    border-top: 1rpx solid @border-gray;
+  }
+
+  .driver {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24rpx;
+
+    .avatar {
+      flex-shrink: 0;
+      margin-right: 24rpx;
+
+      image {
+        width: 120rpx
+      }
+    }
+
+    .info {
+      .l1 {
+        font-size: @font-34;
+        margin-bottom: 8rpx;
+      }
+
+      .l2 {
+        font-size: @font-30;
+        color: @text-color-gray;
+        margin-bottom: 8rpx;
+      }
+
+      .l3 {
+        font-size: @font-30;
+        color: @text-color-gray;
+      }
+    }
+  }
+
+  .refund-panel {
+    padding-bottom: 24rpx;
+
+    .title {
+      font-weight: bold;
+      font-size: @font-30;
+      margin-bottom: 12rpx;
+    }
+
+    .p2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: @font-28;
+      color: @text-color-gray;
+      margin-bottom: 12rpx;
+    }
+
+    .pt {
+      border-top: 1rpx solid @border-gray;
+      padding-top: 16rpx;
+    }
+
+    .pb {
+      border-bottom: 1rpx solid @border-gray;
+      padding-bottom: 16rpx;
+    }
+
+    .t2 {
+      text-align: center;
+      color: @text-color-gray;
+      font-size: @font-28;
+    }
+
+    .t2:not(:last-of-type) {
+      margin-bottom: 12rpx;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20rpx 0;
+    position: absolute;
+    bottom: 10rpx;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    .btn {
+      border-radius: 16rpx;
+      width: 200rpx;
+      height: 66rpx;
+      line-height: 66rpx;
+      font-size: @font-32;
+      text-align: center;
+      color: white;
+    }
+
+    .btn1 {
+      width: 360rpx;
+      margin-left: auto;
+      margin-right: auto;
+      height: 80rpx;
+      line-height: 80rpx;
+      text-align: center;
+      font-size: @font-32;
+      background: @blue-bg;
+      color: white;
+      border-radius: 16rpx;
+    }
+
+    .evaluate {
+      background: @blue-bg;
+    }
+
+    .back, .more {
+      background: #cfd2d5;
+    }
+  }
+
+}

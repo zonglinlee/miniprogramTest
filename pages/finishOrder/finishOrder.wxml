@@ -1,0 +1,117 @@
+<view class="container">
+    <van-nav-bar
+            title="石嘴山出行"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+    />
+    <view class="content">
+        <map class="map" style="height:{{contentHeight}}px" markers="{{markers}}" latitude="{{destination.latitude}}"
+             longitude="{{destination.longitude}}">
+            <cover-view slot="callout">
+                <cover-view marker-id="{{200}}"
+                            style="text-align:center;color:white;font-size:26rpx;padding:16rpx 28rpx;background:#4bc27e;border-radius:24rpx;">
+                    银川河东机场 >
+                </cover-view>
+            </cover-view>
+        </map>
+
+        <view class="cards">
+            <scroll-view scroll-y="true" style="max-height: {{cardHeight}}px" show-scrollbar="{{false}}"
+                         enhanced="{{true}}">
+                <view class="card">
+                    <view class="sec sec1">
+                        <view class="l">
+                            <text class="icon  szs szs-position"></text>
+                            <text class="t2">石嘴山金凤万达广场3号门</text>
+                        </view>
+                        <view class="l">
+                            <text class="icon  szs szs-zhongdian"></text>
+                            <text class="t2">金凤区iBi育成中心(五里台路)</text>
+                        </view>
+                        <view class="l">
+                            <text class="icon clock  szs szs-clock-filling"></text>
+                            <text class="t2">出发时间: 2023-09-13 11：30</text>
+                        </view>
+                        <view class="l">
+                            <text class="icon  szs szs-ticket"></text>
+                            <text class="t2">1人拼车、成人票1张</text>
+                        </view>
+                        <view class="l">
+                            <text class="icon yuan szs szs-yuan"></text>
+                            <text class="t2">行程价格: 33元</text>
+                        </view>
+
+                        <view class="l">
+                            <text class="icon  szs szs-liuyan"></text>
+                            <text class="t2">请准时到达接车点，因为有急事不能晚点，谢谢师傅!</text>
+                        </view>
+
+                        <view class="l status">
+                            <text class="icon  szs szs--jiageyujing"></text>
+                            <text class="t2" style="color:#e10303">订单已完成</text>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="card">
+                    <view class="sec sec1">
+                        <view class="driver">
+                            <view class="avatar">
+                                <image src="../../assets/images/driver.png" mode="widthFix"></image>
+                            </view>
+                            <view class="info">
+                                <view class="l1">测试账号:13629578177</view>
+                                <view class="l2">上汽大通G10</view>
+                                <view class="l3">已服务11次</view>
+                            </view>
+                        </view>
+
+                    </view>
+                </view>
+
+                <view class="card">
+                    <view class="sec sec1">
+                        <view class="cancel-panel">
+                            <view class="p">
+                                <text class="icon  szs szs-successful"></text>
+                                <text class="t">订单已取消成功</text>
+                            </view>
+                            <view class="t2">你可以重新预约用车</view>
+                        </view>
+
+                    </view>
+                </view>
+
+                <view class="card">
+                    <view class="sec sec1">
+                        <view class="refund-panel">
+                            <view class="title">退款详情</view>
+                            <view class="p2 pt">
+                                <text class="t">一口价</text>
+                                <text class="t">45 元</text>
+                            </view>
+                            <view class="p2 pb">
+                                <text class="t">实付金额</text>
+                                <text class="t">45 元</text>
+                            </view>
+                            <view class="t2">退款金额45元</view>
+                            <view class="t2">退款金额将在7个工作日内按原支付途径返回</view>
+                        </view>
+
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="mask"></view>
+        <view class="btn-group c-height">
+            <view class="evaluate btn">去评价</view>
+            <view class="back btn">返程</view>
+            <view class="more btn">更多</view>
+        </view>
+
+        <view class="btn-group c-height" wx:if="{{false}}">
+            <view class="btn1">重新预约</view>
+        </view>
+    </view>
+</view>
