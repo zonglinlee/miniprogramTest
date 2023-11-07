@@ -1,0 +1,56 @@
+<view class="container">
+    <van-nav-bar
+            title="订单评价"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+    />
+
+    <view class="card">
+        <view class="sec sec1">
+            <view class="evaluate-panel">
+                <view class="et">
+                    <text class="t1">您对本次行程满意吗？</text>
+                    <text class="t2">匿名</text>
+                </view>
+                <view class="evaluate-btn-group">
+                    <view class="btn" data-evaindex="1" catch:tap="clickIcon">
+                        <image class="evaluate" src="../../assets/images/evaluate1.png"
+                               mode="widthFix"></image>
+                        <text class="btn-t {{evaIndex==='1' ? 'selected' :''}}">不满意</text>
+                    </view>
+                    <view class="btn" data-evaindex="2" catch:tap="clickIcon">
+                        <image class="evaluate" src="../../assets/images/evaluate2.png"
+                               mode="widthFix"></image>
+                        <text class="btn-t {{evaIndex==='2' ? 'selected' :''}}">还可以</text>
+                    </view>
+                    <view class="btn" data-evaindex="3" catch:tap="clickIcon">
+                        <image class="evaluate" src="../../assets/images/evaluate3.png"
+                               mode="widthFix"></image>
+                        <text class="btn-t {{evaIndex==='3' ? 'selected' :''}}">满意</text>
+                    </view>
+
+                </view>
+                <view class="eva-title">{{evaTitle}}</view>
+
+                <view class="tips">
+                    <view catch:tap="selectTip" data-index="{{index}}"
+                          class="tip {{selectedTipIndex[index]?'tip-selected':''}}}" wx:for="{{evaTips}}"
+                          wx:key="*this">
+                        {{item}}
+                    </view>
+                </view>
+                <view style="display:flex;align-item:center;justify-content:center">
+                    <textarea bindfocus="focusInput" bindinput="inputEvaluate" class="textarea"
+                              placeholder-style="color:#ccc;font-size:30rpx;"
+                              confirm-type="done"
+                              cursor-spacing="{{50}}"
+                              maxlength="{{300}}" placeholder="请填写您对我们的评价"
+                              auto-focus/>
+                </view>
+                <view class="btn1 {{btnOk ?'btn-ok':''}}}">匿名评价</view>
+            </view>
+
+        </view>
+    </view>
+</view>

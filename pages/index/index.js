@@ -50,7 +50,7 @@ Page({
         }, {
             label: '发票中心',
             key: 'invoice',
-            pageUrl: '/pages/invoice/invoice',
+            pageUrl: '/pages/invoice/invoiceIndex/invoiceIndex',
             src: '../../assets/images/index/invoice.png',
         }, {
             label: '意见反馈',

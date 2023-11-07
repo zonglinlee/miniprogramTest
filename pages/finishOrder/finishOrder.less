@@ -10,6 +10,19 @@
     width: 100%;
   }
 
+  .ma {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+
+  .mv {
+    width: 100%;
+  }
+
   .content {
     position: relative;
   }
@@ -24,12 +37,54 @@
     background: rgba(0, 0, 0, 0.3);
   }
 
+  .status-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90rpx;
+
+    .lt {
+      font-size: @font-34;
+      flex-grow: 1;
+    }
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 120rpx;
+      flex-shrink: 0;
+      flex-grow: 0;
+
+      .btn-t {
+        font-size: 24rpx;
+      }
+    }
+  }
+
   .cards {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 999;
+    //position: absolute;
+    //left: 0;
+    //right: 0;
+    //top: 0;
+    //z-index: 999;
+    padding: 4rpx 0;
+    background: @page-bg-gray;
+
+    .line-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+
+      .line {
+        width: 80rpx;
+        height: 6rpx;
+        background: @border-gray;
+        border-radius: 6rpx;
+      }
+    }
   }
 
   .sec1 {
@@ -110,12 +165,12 @@
 
     .info {
       .l1 {
-        font-size: @font-34;
+        font-size: @font-32;
         margin-bottom: 8rpx;
       }
 
       .l2 {
-        font-size: @font-30;
+        font-size: @font-26;
         color: @text-color-gray;
         margin-bottom: 8rpx;
       }
@@ -163,6 +218,50 @@
 
     .t2:not(:last-of-type) {
       margin-bottom: 12rpx;
+    }
+  }
+
+  .evaluate-panel {
+    .et {
+      font-size: @font-34;
+      font-weight: bold;
+
+      .t1 {
+        margin-right: 20rpx;
+      }
+
+      .t2 {
+        font-size: 24rpx;
+        border: 1rpx solid @border-gray;
+        padding: 4rpx 8rpx;
+        border-radius: 8rpx;
+        text-align: center;
+        font-weight: normal;
+      }
+    }
+
+
+    .evaluate-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 40rpx 0;
+
+      .btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .evaluate {
+          width: 80rpx;
+          //font-size: 80rpx;
+          color: #d81e06;
+        }
+
+        .btn-t {
+          font-size: @font-30;
+        }
+      }
     }
   }
 

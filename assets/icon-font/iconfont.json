@@ -6,6 +6,76 @@
   "description": "石嘴山出行,内蒙（包头）用，微信小程序，https://juejin.cn/post/7165458111283593247",
   "glyphs": [
     {
+      "icon_id": "22258593",
+      "name": "一般",
+      "font_class": "daochu1024-33",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "22258595",
+      "name": "满意",
+      "font_class": "daochu1024-34",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "22258596",
+      "name": "不满意",
+      "font_class": "daochu1024-32",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "23563306",
+      "name": "RepeatOnce",
+      "font_class": "RepeatOnce",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "32670850",
+      "name": "arrow-repeat",
+      "font_class": "arrow-repeat",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "15838563",
+      "name": "close-bold",
+      "font_class": "close-bold",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "128845",
+      "name": "checkbox-checked",
+      "font_class": "checkboxchecked",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "23505842",
+      "name": "checked",
+      "font_class": "checked",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "18169661",
+      "name": "打印机,打印,传真,复印机",
+      "font_class": "print-full",
+      "unicode": "e931",
+      "unicode_decimal": 59697
+    },
+    {
+      "icon_id": "15838597",
+      "name": "filter-filling",
+      "font_class": "filter-filling",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    },
+    {
       "icon_id": "996209",
       "name": "ticket",
       "font_class": "ticket",

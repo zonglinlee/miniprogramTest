@@ -9,6 +9,27 @@
     "miniprogram": {
       "list": [
         {
+          "name": "invoiceDetail",
+          "pathName": "pages/invoice/invoiceDetail/invoiceDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceForm",
+          "pathName": "pages/invoice/invoiceForm/invoiceForm",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoice",
+          "pathName": "pages/invoice/invoiceIndex/invoiceIndex",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "finishOrder",
           "pathName": "pages/finishOrder/finishOrder",
           "query": "",

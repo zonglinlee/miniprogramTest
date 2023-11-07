@@ -1,0 +1,59 @@
+@import "assets/css/common";
+
+.container {
+  .sec1 {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 24rpx;
+
+    .t {
+      font-size: @font-26;
+      margin-bottom: 26rpx;
+    }
+
+    t1 {
+      font-size: @font-30;
+    }
+  }
+
+  .title {
+    font-size: @font-30;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: @text-color-gray;
+    padding-left: 24rpx;
+  }
+
+  .invoice {
+    .item {
+      background: #ffffff;
+      padding: 24rpx;
+      margin-bottom: 2rpx;
+
+      .line {
+        display: flex;
+        justify-content: space-between;
+        padding: 6rpx 0;
+      }
+
+      .l {
+        flex-shrink: 0;
+        width: 120rpx;
+        font-size: @font-30;
+        margin-right: 10rpx;
+      }
+
+      .r {
+        text-align: right;
+        font-size: @font-28;
+        //overflow: hidden;
+        //white-space: nowrap;
+        //text-overflow: ellipsis;
+        color: @text-color-gray;
+
+      }
+    }
+  }
+}

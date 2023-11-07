@@ -1,0 +1,201 @@
+<view class="container">
+    <van-nav-bar
+            title="按订单开票"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+    />
+
+    <van-tabs active="cjcx" color="#1a87f6" line-width="20px" class="tab-wrapper">
+        <van-tab title="城际出行" name="cjcx" title-style="font-size:32rpx;">
+            <view class="invoice-tab-panel-wrapper">
+                <view class="invoice-tab-panel c-height">
+                    <view class="tabs">
+                        <view class="t {{filterTabIndex===0? 'selected': ''}}" data-index="{{0}}"
+                              catch:tap="clickFilterTab">可开票订单
+                        </view>
+                        <view class="t {{filterTabIndex===1? 'selected': ''}}" data-index="{{1}}"
+                              catch:tap="clickFilterTab">其他订单
+                        </view>
+                    </view>
+                    <view class="filter-btn" catch:tap="openFilter">
+                        <text class="icon  szs szs-filter-filling"></text>
+                        <text>订单筛选</text>
+                        <view class="tag" wx:if="{{tagNumber !==0}}">{{tagNumber}}</view>
+                    </view>
+                </view>
+
+                <movable-area class="ma" style="height:{{listHeight}}px;width:100%;">
+                    <movable-view class="mv" direction="vertical" style="height:{{listHeight}}px;width:100%;" inertia
+                                  out-of-bounds
+                                  friction="{{1}}">
+
+                        <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight}}px"
+                                     show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                                     enhanced="{{true}}" bindscrolltolower="scrollToLower">
+                            <view wx:if="{{orderList.length === 0}}" class="empty-wrapper">
+                                <text class=" empty icon  szs szs-print-full"></text>
+                                <text class="t1">您还没有可开发票的订单</text>
+                            </view>
+                            <block wx:else>
+                                <view class="item-wrapper" wx:for="{{orderList}}" wx:key="index" data-order="{{item}}"
+                                      data-orderindex="{{index}}" catch:tap="onSelectOrder">
+                                    <van-checkbox
+                                            value="{{ item.checked }}"
+                                            icon-size="18px" checked-color="#f7800c"
+                                            label-class="invoice-radio-label1" icon-class="invoice-radio1">
+                                    </van-checkbox>
+                                    <view class="item">
+                                        <view class="lc">
+                                            <image class="icon" mode="widthFix"
+                                                   src="../../../assets/images/depart_clock.png"></image>
+                                            <text class="t2" overflow="ellipsis">{{item.departureTime}}</text>
+                                        </view>
+                                        <view class="lc">
+                                            <image class="icon" mode="widthFix"
+                                                   src="../../../assets/images/green_dot.png"></image>
+                                            <text class="t2" overflow="ellipsis">{{item.from}}</text>
+                                        </view>
+                                        <view class="lc">
+                                            <image class="icon" mode="widthFix"
+                                                   src="../../../assets/images/blue_dot.png"></image>
+                                            <text class="t2" overflow="ellipsis">{{item.to}}</text>
+                                        </view>
+                                        <view class="lc">
+                                            <image class="icon" mode="widthFix"
+                                                   src="../../../assets/images/wechat_pay.png"></image>
+                                            <text class="t2" overflow="ellipsis">{{item.price}}</text>
+                                        </view>
+                                    </view>
+
+                                </view>
+
+                                <view class="bottom-divider" wx:if="{{orderList.length > 0}}">
+                                    <van-loading wx:if="{{refresh && orderList.length<total}}" size="24px"
+                                                 type="spinner"
+                                                 color="#1989fa"
+                                                 vertical>
+                                        加载中...
+                                    </van-loading>
+                                    <van-divider hairline wx:if="{{orderList.length>=total}}" contentPosition="center">
+                                        没有更多了
+                                    </van-divider>
+                                </view>
+                            </block>
+
+                        </scroll-view>
+                    </movable-view>
+                </movable-area>
+
+                <view class="tips">{{tips}}</view>
+            </view>
+        </van-tab>
+        <van-tab title="定制班线" name="dzbx" title-style="font-size:32rpx;">
+        </van-tab>
+    </van-tabs>
+
+    <view class="footer c-height" wx:if="{{orderList.length > 0}}">
+        <view class="gross">
+            <text class="orange">{{selectedOrderLen}}</text> 个行程, 共<text class="orange"> {{totalPrice}} </text>元
+        </view>
+        <view class="opt">
+            <van-checkbox bind:change="onChangeCheckbox" data-field="checkPage" value="{{ checkPage }}" icon-size="24px"
+                          checked-color="#1a87f6"
+                          label-class="invoice-radio-label1" icon-class="invoice-radio1">本页全选
+            </van-checkbox>
+            <van-checkbox bind:change="onChangeCheckbox" data-field="checkAll" value="{{ checkAll }}" icon-size="24px"
+                          checked-color="#1a87f6"
+                          label-class="invoice-radio-label1" icon-class="invoice-radio1">全部全选
+            </van-checkbox>
+            <view class="btn {{selectedCheckbox ? 'selected':''}}" catch:tap="nextStep">下一步</view>
+        </view>
+    </view>
+    <van-popup show="{{ show }}"
+               custom-style="top:{{filterTop}}px;bottom:0;transform:translateY(0)"
+               overlay-style="top:{{filterTop}}px;"
+               custom-class="invoice-filter-popup"
+               root-portal="{{false}}"
+               overlay="{{true}}"
+               bind:close="cancel" round="{{false}}" position="right"
+               duration="{{20}}"
+               bind:after-enter="computeHeight"
+               safe-area-tab-bar="{{false}}">
+        <view class="filter-pop">
+            <view class="title">订单日期</view>
+            <view class="time-btn-wrapper">
+                <view class="time-btn" catch:tap="selectTime" data-start="{{true}}">{{startTime}}</view>
+                <view class="line"></view>
+                <view class="time-btn" catch:tap="selectTime" data-start="{{false}}">{{endTime}}</view>
+            </view>
+            <view class="title">可开票金额范围（元）</view>
+            <view class="input-wrapper">
+                <van-field
+                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"
+                        value="{{ value1 }}"
+                        type="number"
+                        placeholder="最低价"
+                        placeholder-style="text-align:center;color:initial"
+                        border="{{ false }}"
+                        bind:change="onChange1"
+                />
+                <view class="line"></view>
+                <van-field
+                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"
+                        placeholder-style="text-align:center;color:initial"
+                        value="{{ value2 }}"
+                        type="number"
+                        placeholder="最高价"
+                        border="{{ false }}"
+                        bind:change="onChange2"
+                />
+            </view>
+            <view class="btn-group">
+                <view class="btn" bind:tap="resetFilter">重置</view>
+                <view class="btn btn1" catch:tap="confirmFilter">确定</view>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ showTimePicker }}" z-index="{{200}}"
+               root-portal="{{false}}"
+               bind:close="cancel" round="{{false}}" position="bottom"
+               duration="{{100}}"
+               bind:after-enter="computeHeight"
+               safe-area-tab-bar="{{false}}">
+        <van-datetime-picker
+                type="date"
+                value="{{ currentDate }}"
+                min-date="{{minDate}}"
+                max-date="{{maxDate}}"
+                title="{{dateTitle}}"
+                show-toolbar
+                bind:input="onInput"
+                bind:confirm="confirmTime"
+                bind:cancel="closeTimePicker"
+                formatter="{{ formatter }}"
+        />
+    </van-popup>
+    <van-dialog id="van-dialog" confirm-button-class="dialog-confirm1"/>
+    <van-dialog
+            use-slot
+            use-confirm-button-slot
+            use-cancel-button-slot
+            show-cancel-button
+            show="{{ showNextStepTipDialog }}"
+    >
+        <view style="padding:40rpx 24rpx;text-align:center;font-size:28rpx;line-height:40rpx">您本次选择的待开发票行程共 {{selectedOrderLen}}
+            个, 共 {{totalPrice}}
+            元,请核对
+        </view>
+        <view style="width:100%;display:flex;align-items:center;justify-content:space-around;"
+              slot="confirm-button">
+            <view bind:tap="closeShowNextStepTipDialog"
+                  style="padding:30rpx;width:50%;text-align:center;font-size:30rpx;">取消
+            </view>
+            <view bind:tap="doNextStep"
+                  style="color:#ee0a24!important;padding:30rpx;width:50%;text-align:center;font-size:30rpx;">
+                确定
+            </view>
+        </view>
+    </van-dialog>
+    <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
+</view>

@@ -21,30 +21,56 @@ Page({
             latitude: 39.90,
             longitude: 116.40,
         },
+        winHeight: app.globalData.sysInfo.windowHeight,
+        maHeight: 0,
+        mvDistance: 0
     },
     onLoad: function (options) {
 
     },
     onReady() {
-        this.computeHeight()
+        setTimeout(() => {
+            this.computeHeight()
+        }, 500)
     },
     goBack() {
         app.defaultCustomNavClick()
     },
     computeHeight() {
+        // console.log()
         const that = this
         const query = wx.createSelectorQuery()
+        query.select('.cards').boundingClientRect()
         query.selectAll('.c-height').boundingClientRect()
         query.selectViewport().boundingClientRect()
         query.exec(function (res) {
             const {safeArea: {bottom}, screenHeight} = app.globalData.sysInfo
             const safeBottom = screenHeight - bottom
             console.log(res)
-            const total = res[0].reduce((acc, nodeInfo) => acc + nodeInfo.height, 0)
+            const [cards, cHeight, viewPort] = res
+            const total = res[1].reduce((acc, nodeInfo) => acc + nodeInfo.height, 0)
+            const mvDistance = res[0].bottom - viewPort.height
+            const winHeight = that.data.winHeight
             that.setData({
-                contentHeight: res[1].height - res[0][0].height - safeBottom,
-                cardHeight: res[1].height - total - 120 - safeBottom,
+                contentHeight: res[2].height - res[1][0].height - safeBottom,
+                cardHeight: res[0].height,
+                maHeight: res[0].height + mvDistance + winHeight * 0.7,
+                mvDistance
             })
         })
+    },
+    noop() {
+    },
+    async moveCard(e) {
+        // const res = await app.computeRec('.mv')
+        // this.setData({
+        //     mvOffsetTop: res[0].top,
+        //     showBg: res[0].top <= 60
+        // })
+    },
+    moveCardV(e) {
+    },
+    goEvaluate() {
+        wx.navigateTo({url: '/pages/evaluateOrder/evaluateOrder'})
     }
 });

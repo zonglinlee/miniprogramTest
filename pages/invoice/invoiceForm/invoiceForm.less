@@ -1,0 +1,115 @@
+@import "assets/css/common";
+
+.container {
+  .title {
+    padding: 24rpx;
+    font-size: @font-30;
+  }
+
+  .grand-total {
+    display: flex;
+    align-items: center;
+    background: white;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 24rpx;
+    justify-content: space-between;
+
+    .l1 {
+      font-size: @font-28;
+    }
+  }
+
+  .close {
+    position: absolute;
+    left: 16rpx;
+    top: 16rpx;
+    font-size: 40rpx;
+  }
+
+  .divider {
+    margin-top: 80rpx;
+    border-bottom: solid 1rpx @border-gray;
+  }
+
+  .pop-wrapper {
+
+
+    .empty {
+      color: @text-color-gray;
+      font-size: @font-32;
+      padding: 30rpx 20rpx 30rpx 20rpx;
+      border-bottom: solid 1rpx @border-gray;
+
+    }
+  }
+
+  .scroll-list {
+    .item {
+      padding: 0 20rpx 0 20rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: solid 1rpx @border-gray;
+      padding: 20rpx 12rpx;
+      transition: .3s;
+
+      .name {
+        font-size: @font-32;
+        flex-grow: 1;
+        margin-right: 12rpx;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .check {
+        flex-shrink: 0;
+        font-size: 36rpx;
+        visibility: hidden;
+      }
+
+      .name.selected {
+        color: @text-color-orange;
+      }
+
+      .check.selected {
+        color: @text-color-orange;
+        visibility: visible;
+      }
+    }
+  }
+
+  .btn-wrapper {
+    .btn1 {
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: @text-color-gray2;
+      transition: .3s;
+    }
+
+    .btn1.ok {
+      background: @blue-bg;
+    }
+
+    .btn2 {
+      background: @blue-bg;
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+    }
+  }
+
+}
+
+
+.invoice-radio1 {
+  color: white;
+}
+
+.invoice-radio-label1 {
+  font-size: @font-28;
+}
+
+.label-class1, .input-class1, .title-cell1, .value-cell1 {
+  font-size: @font-28;
+}

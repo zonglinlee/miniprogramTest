@@ -16,11 +16,14 @@
     "pages/orderStatus/orderStatus",
     "pages/addPassenger/addPassenger",
     "pages/setting/setting",
-    "pages/invoice/invoice",
+    "pages/invoice/invoiceIndex/invoiceIndex",
     "pages/feedback/feedback",
     "pages/paymentResult/paymentResult",
     "pages/coupons/coupons",
-    "pages/finishOrder/finishOrder"
+    "pages/finishOrder/finishOrder",
+    "pages/invoice/invoiceForm/invoiceForm",
+    "pages/invoice/invoiceDetail/invoiceDetail",
+    "pages/evaluateOrder/evaluateOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

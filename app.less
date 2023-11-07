@@ -17,6 +17,10 @@ view {
   font-size: 24rpx;
 }
 
+view.van-button__text {
+  //color: #d81e06;
+}
+
 .container {
 
 }
@@ -43,3 +47,22 @@ button[type=primary] {
   font-size: @font-32;
 }
 
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: @font-34;
+    font-weight: bold;
+    background: @blue-bg;
+    color: white;
+    border-radius: 30rpx;
+  }
+}

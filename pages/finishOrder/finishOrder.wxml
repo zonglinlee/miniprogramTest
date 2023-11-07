@@ -16,102 +16,160 @@
             </cover-view>
         </map>
 
-        <view class="cards">
-            <scroll-view scroll-y="true" style="max-height: {{cardHeight}}px" show-scrollbar="{{false}}"
-                         enhanced="{{true}}">
-                <view class="card">
-                    <view class="sec sec1">
-                        <view class="l">
-                            <text class="icon  szs szs-position"></text>
-                            <text class="t2">石嘴山金凤万达广场3号门</text>
-                        </view>
-                        <view class="l">
-                            <text class="icon  szs szs-zhongdian"></text>
-                            <text class="t2">金凤区iBi育成中心(五里台路)</text>
-                        </view>
-                        <view class="l">
-                            <text class="icon clock  szs szs-clock-filling"></text>
-                            <text class="t2">出发时间: 2023-09-13 11：30</text>
-                        </view>
-                        <view class="l">
-                            <text class="icon  szs szs-ticket"></text>
-                            <text class="t2">1人拼车、成人票1张</text>
-                        </view>
-                        <view class="l">
-                            <text class="icon yuan szs szs-yuan"></text>
-                            <text class="t2">行程价格: 33元</text>
-                        </view>
 
-                        <view class="l">
-                            <text class="icon  szs szs-liuyan"></text>
-                            <text class="t2">请准时到达接车点，因为有急事不能晚点，谢谢师傅!</text>
-                        </view>
+        <movable-area class="ma"
+                      style="height:{{maHeight}}px;margin-top:{{-mvDistance}}px"
+                      catch:touchmove="noop">
+            <movable-view class="mv" direction="vertical" y="{{mvDistance+(winHeight * 0.5)}}"
+                          bind:vtouchmove="moveCardV"
+                          bindchange="moveCard"
+                          style="height:{{cardHeight}}px" inertia out-of-bounds
+                          friction="{{10}}">
+                <view class="cards">
+                    <view class="card">
+                        <view class="sec sec1" style="padding-top:12rpx;">
+                            <view class="line-wrapper">
+                                <view class="line"></view>
+                            </view>
+                            <view class="status-wrapper">
+                                <text class="lt">行程已顺利结束</text>
+                                <view class="btn">
+                                    <text style="font-size:36rpx" class="szs szs-RepeatOnce"></text>
+                                    <text class="btn-t">再来一单</text>
+                                </view>
+                                <view class="btn">
+                                    <text style="font-size:36rpx" class="szs szs-arrow-repeat"></text>
+                                    <text class="btn-t">呼叫返程</text>
+                                </view>
+                            </view>
 
-                        <view class="l status">
-                            <text class="icon  szs szs--jiageyujing"></text>
-                            <text class="t2" style="color:#e10303">订单已完成</text>
+                        </view>
+                    </view>
+                    <view class="card">
+                        <view class="sec sec1" style="padding-top:12rpx;">
+                            <view class="l">
+                                <text class="icon  szs szs-position"></text>
+                                <text class="t2">石嘴山金凤万达广场3号门</text>
+                            </view>
+                            <view class="l">
+                                <text class="icon  szs szs-zhongdian"></text>
+                                <text class="t2">金凤区iBi育成中心(五里台路)</text>
+                            </view>
+                            <view class="l">
+                                <text class="icon clock  szs szs-clock-filling"></text>
+                                <text class="t2">出发时间: 2023-09-13 11：30</text>
+                            </view>
+                            <view class="l">
+                                <text class="icon  szs szs-ticket"></text>
+                                <text class="t2">1人拼车、成人票1张</text>
+                            </view>
+                            <view class="l">
+                                <text class="icon yuan szs szs-yuan"></text>
+                                <text class="t2">行程价格: 33元</text>
+                            </view>
+
+                            <view class="l">
+                                <text class="icon  szs szs-liuyan"></text>
+                                <text class="t2">请准时到达接车点，因为有急事不能晚点，谢谢师傅!</text>
+                            </view>
+
+                            <view class="l status">
+                                <text class="icon  szs szs--jiageyujing"></text>
+                                <text class="t2" style="color:#e10303">订单已完成</text>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="card">
+                        <view class="sec sec1">
+                            <view class="driver">
+                                <view class="avatar">
+                                    <image src="../../assets/images/driver.png" mode="widthFix"></image>
+                                </view>
+                                <view class="info">
+                                    <view class="l1">测试账号:13629578177</view>
+                                    <view class="l2">上汽大通G10 - 已服务11次</view>
+                                    <!--                                    <view class="l3"></view>-->
+                                </view>
+                            </view>
+
+                        </view>
+                    </view>
+
+                    <view class="card">
+                        <view class="sec sec1">
+                            <view class="cancel-panel">
+                                <view class="p">
+                                    <text class="icon  szs szs-successful"></text>
+                                    <text class="t">订单已取消成功</text>
+                                </view>
+                                <view class="t2">你可以重新预约用车</view>
+                            </view>
+
+                        </view>
+                    </view>
+
+                    <view class="card">
+                        <view class="sec sec1">
+                            <view class="refund-panel">
+                                <view class="title">退款详情</view>
+                                <view class="p2 pt">
+                                    <text class="t">一口价</text>
+                                    <text class="t">45 元</text>
+                                </view>
+                                <view class="p2 pb">
+                                    <text class="t">实付金额</text>
+                                    <text class="t">45 元</text>
+                                </view>
+                                <view class="t2">退款金额45元</view>
+                                <view class="t2">退款金额将在7个工作日内按原支付途径返回</view>
+                            </view>
+
+                        </view>
+                    </view>
+                    <view class="card">
+                        <view class="sec sec1">
+                            <view class="evaluate-panel">
+                                <view class="et">
+                                    <text class="t1">您对本次行程满意吗？</text>
+                                    <text class="t2">匿名</text>
+                                </view>
+                                <view class="evaluate-btn-group">
+                                    <view class="btn" catch:tap="goEvaluate">
+                                        <image class="evaluate" src="../../assets/images/evaluate1.png"
+                                               mode="widthFix"></image>
+                                        <text class="btn-t">不满意</text>
+                                    </view>
+                                    <view class="btn" catch:tap="goEvaluate">
+                                        <image class="evaluate" src="../../assets/images/evaluate2.png"
+                                               mode="widthFix"></image>
+                                        <text class="btn-t">还可以</text>
+                                    </view>
+                                    <view class="btn" catch:tap="goEvaluate">
+                                        <image class="evaluate" src="../../assets/images/evaluate3.png"
+                                               mode="widthFix"></image>
+                                        <text class="btn-t">满意</text>
+                                    </view>
+
+                                </view>
+                            </view>
+
                         </view>
                     </view>
                 </view>
+            </movable-view>
+        </movable-area>
 
-                <view class="card">
-                    <view class="sec sec1">
-                        <view class="driver">
-                            <view class="avatar">
-                                <image src="../../assets/images/driver.png" mode="widthFix"></image>
-                            </view>
-                            <view class="info">
-                                <view class="l1">测试账号:13629578177</view>
-                                <view class="l2">上汽大通G10</view>
-                                <view class="l3">已服务11次</view>
-                            </view>
-                        </view>
 
-                    </view>
-                </view>
+        <!--        <view class="mask"></view>-->
+        <!--        <view class="btn-group c-height">-->
+        <!--            <view class="evaluate btn">去评价</view>-->
+        <!--            <view class="back btn">返程</view>-->
+        <!--            <view class="more btn">更多</view>-->
+        <!--        </view>-->
+        <!--                    <view class="btn-group c-height">-->
+        <!--                        <view class="btn1">重新预约</view>-->
+        <!--                    </view>-->
 
-                <view class="card">
-                    <view class="sec sec1">
-                        <view class="cancel-panel">
-                            <view class="p">
-                                <text class="icon  szs szs-successful"></text>
-                                <text class="t">订单已取消成功</text>
-                            </view>
-                            <view class="t2">你可以重新预约用车</view>
-                        </view>
-
-                    </view>
-                </view>
-
-                <view class="card">
-                    <view class="sec sec1">
-                        <view class="refund-panel">
-                            <view class="title">退款详情</view>
-                            <view class="p2 pt">
-                                <text class="t">一口价</text>
-                                <text class="t">45 元</text>
-                            </view>
-                            <view class="p2 pb">
-                                <text class="t">实付金额</text>
-                                <text class="t">45 元</text>
-                            </view>
-                            <view class="t2">退款金额45元</view>
-                            <view class="t2">退款金额将在7个工作日内按原支付途径返回</view>
-                        </view>
-
-                    </view>
-                </view>
-            </scroll-view>
-        </view>
-        <view class="mask"></view>
-        <view class="btn-group c-height">
-            <view class="evaluate btn">去评价</view>
-            <view class="back btn">返程</view>
-            <view class="more btn">更多</view>
-        </view>
-
-        <view class="btn-group c-height" wx:if="{{false}}">
-            <view class="btn1">重新预约</view>
-        </view>
     </view>
 </view>

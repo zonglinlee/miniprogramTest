@@ -1,0 +1,110 @@
+@import "assets/css/common";
+
+.container {
+
+  .card {
+    margin-top: 20rpx;
+  }
+
+  .evaluate-panel {
+    padding: 24rpx;
+
+    .et {
+      font-size: @font-34;
+      font-weight: bold;
+
+      .t1 {
+        margin-right: 20rpx;
+      }
+
+      .t2 {
+        font-size: 24rpx;
+        border: 1rpx solid @border-gray;
+        padding: 4rpx 8rpx;
+        border-radius: 8rpx;
+        text-align: center;
+        font-weight: normal;
+      }
+    }
+
+
+    .evaluate-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 40rpx 0;
+
+      .btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .evaluate {
+          width: 80rpx;
+          color: #d81e06;
+        }
+
+        .btn-t {
+          font-size: @font-30;
+        }
+
+        .btn-t.selected {
+          color: orange;
+        }
+      }
+    }
+
+    .eva-title {
+      font-size: @font-36;
+      text-align: center;
+      margin: 20rpx 0;
+    }
+
+    .tips {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 10rpx 0;
+
+      .tip {
+        width: 45%;
+        box-sizing: border-box;
+        border: 1rpx solid @border-gray;
+        padding: 10rpx 20rpx;
+        border-radius: 8rpx;
+        text-align: center;
+        font-size: 24rpx;
+        margin-bottom: 12rpx;
+      }
+
+      .tip.tip-selected {
+        color: orangered;
+        border-color: orangered;
+      }
+    }
+
+    .textarea {
+      width: 100%;
+      padding: 24rpx;
+      font-size: @font-30;
+      background: @page-bg-gray;
+    }
+
+    .btn1 {
+      height: 80rpx;
+      border-radius: 40rpx;
+      line-height: 80rpx;
+      text-align: center;
+      font-size: @font-32;
+      font-weight: bold;
+      margin: 40rpx 24rpx 0 24rpx;
+      color: #fff;
+      background: @btn-disabled;
+    }
+
+    .btn1.btn-ok {
+      background: @orange-bg;
+    }
+  }
+}
