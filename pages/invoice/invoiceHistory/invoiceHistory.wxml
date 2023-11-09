@@ -1,0 +1,71 @@
+<view class="container">
+    <view class="custom-nav c-height">
+        <van-nav-bar
+                fixed="{{true}}"
+                title="开票历史"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+
+
+    <view class="wrapper" style="margin-top:{{cusNavHeight}}px">
+        <block wx:if="{{invoiceHistory.length===0}}">
+            <view class="empty-wrapper">
+                <text class=" empty icon  szs szs-print-full"></text>
+                <text class="t1">暂无历史开票记录</text>
+            </view>
+        </block>
+
+        <block wx:if="{{invoiceHistory.length>0}}">
+            <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight}}px;"
+                         show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                         enhanced="{{true}}">
+                <view class="lists">
+                    <view class="item" wx:for="{{invoiceHistory}}" wx:key="title" wx:for-item="tt"
+                          wx:for-index="ttIndex">
+                        <van-swipe-cell class="{{'cell'+ ttIndex}}" right-width="{{ 65 }}" left-width="{{ 0 }}">
+                            <van-cell-group>
+                                <van-cell bind:click="checkDetail" data-invoice="{{tt}}" custom-class="wrapper-s"
+                                          value-class="value-s" title-class="title-s">
+                                    <view class="title" slot="title">
+                                        <view class="line l1">
+                                            <view class="l">
+                                                <text class="clock szs szs-clock-filling"></text>
+                                                <text>{{tt.createTime}}</text>
+                                            </view>
+                                            <text class="arrow szs szs-arrow-right"></text>
+                                        </view>
+                                        <view class="line l2">
+                                            <view class="l">
+                                                <text class="type">{{tt.type}}</text>
+                                                <text class="tag">电子发票</text>
+                                            </view>
+                                            <view class="r">
+                                                <text class="price">{{tt.price}}</text>
+                                                <text class="unit"> 元</text>
+                                            </view>
+                                        </view>
+                                        <view class="line l3">
+                                            <view class="l">
+                                                <text class="t">待验证 </text>
+                                                <text class="question-mark szs szs-wenhao"></text>
+                                            </view>
+                                            <view class="r">
+                                                <text class="tag">重发发票和行程单</text>
+                                                <text class="tag">申请重开发票</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </van-cell>
+                            </van-cell-group>
+                            <view slot="right" class="del" data-index="{{ttIndex}}" catch:tap="tapDel">删除</view>
+                        </van-swipe-cell>
+                    </view>
+                </view>
+            </scroll-view>
+        </block>
+    </view>
+
+</view>

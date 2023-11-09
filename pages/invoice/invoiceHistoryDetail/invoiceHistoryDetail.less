@@ -1,0 +1,143 @@
+@import "assets/css/common";
+
+.container {
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18rpx 24rpx;
+    background: #ffffff;
+    margin-top: 16rpx;
+
+    .l {
+      font-size: @font-32;
+    }
+
+    .r {
+      .t {
+        font-size: @font-30;
+      }
+
+      .question-mark {
+        font-size: @font-36;
+      }
+    }
+  }
+
+  .list-wrapper {
+    //padding-bottom: 50rpx;
+  }
+
+  .content {
+    margin-top: 16rpx;
+    padding: 18rpx 24rpx;
+    background: #ffffff;
+
+    .line {
+      display: flex;
+      padding: 22rpx 0;
+
+      .t {
+        color: @text-color-gray;
+        width: 210rpx;
+        font-size: @font-32;
+      }
+
+      .c {
+        font-size: @font-30;
+      }
+
+    }
+
+    .more {
+      text-align: center;
+      font-size: 24rpx;
+      color: @text-color-gray;
+      margin-top: 20rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .triangle {
+        font-size: 22rpx;
+        margin-left: 6rpx;
+      }
+    }
+  }
+
+  .order {
+    margin-top: 16rpx;
+    padding: 18rpx 24rpx;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .l {
+      display: flex;
+      flex-direction: column;
+
+      .l1 {
+        font-size: @font-32;
+        padding: 12rpx 0;
+      }
+
+      .l2 {
+        color: @text-color-gray;
+        padding: 6rpx 0;
+        font-size: 24rpx;
+      }
+
+    }
+
+    .r {
+      display: flex;
+      align-items: center;
+
+
+      .t {
+        font-size: @font-26;
+        color: @text-color-gray;
+      }
+
+      .arrow {
+        font-size: 24rpx;
+        margin-left: 10rpx;
+        color: @text-color-gray;
+
+      }
+    }
+  }
+
+  .email {
+    .title {
+      padding-bottom: 30rpx;
+      padding-top: 20rpx;
+      border-bottom: 1rpx solid @border-gray;
+    }
+
+  }
+
+
+  .btn-wrapper {
+    background: white;
+    height: 150rpx;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+    .btn1 {
+      width: 42%;
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: rgb(74, 76, 91);
+      transition: .3s;
+      font-weight: normal;
+    }
+  }
+}

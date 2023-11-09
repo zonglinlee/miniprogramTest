@@ -1,0 +1,72 @@
+<view class="container">
+    <view class="custom-nav c-height">
+        <van-nav-bar
+                fixed="{{true}}"
+                title="我的发票抬头"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+
+    <block wx:if="{{ttList.length>0}}">
+        <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight}}px;margin-top:{{cusNavHeight}}px"
+                     show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                     enhanced="{{true}}">
+            <view class="lists">
+                <view class="item" wx:for="{{ttList}}" wx:key="title" wx:for-item="tt" wx:for-index="ttIndex">
+                    <van-swipe-cell class="{{'cell'+ ttIndex}}" right-width="{{ 65 }}" left-width="{{ 0 }}">
+                        <van-cell-group>
+                            <van-cell bind:click="clickInvoiceItem" data-invoice="{{tt}}" custom-class="wrapper-s"
+                                      value-class="value-s" title-class="title-s">
+                                <view class="title" slot="title">
+                                    <text>{{tt.companyName}}</text>
+                                    <text wx:if="{{tt.default}}" class="default">默认</text>
+                                </view>
+                                <view class="value">
+                                    <text class="arrow szs szs-arrow-right"></text>
+                                </view>
+                            </van-cell>
+                        </van-cell-group>
+                        <view slot="right" class="del" data-index="{{ttIndex}}" catch:tap="tapDel">删除</view>
+                    </van-swipe-cell>
+                </view>
+            </view>
+        </scroll-view>
+    </block>
+
+    <view class="btn-wrapper">
+        <view class="btn btn1" catch:tap="setInvoice">添加发票抬头</view>
+    </view>
+
+    <block wx:if="{{ttList.length===0}}" style="margin-top:{{cusNavHeight}}px">
+        <view class="empty-wrapper">
+            <text class=" empty icon  szs szs-print-full"></text>
+            <text class="t1">您未设置发票抬头</text>
+        </view>
+
+        <view class="set-btn" catch:tap="setInvoice">立即设置</view>
+    </block>
+    <van-dialog
+            use-slot
+            use-confirm-button-slot
+            use-cancel-button-slot
+            show-cancel-button
+            show="{{ showDeleteDialog }}"
+    >
+        <view style="display:flex;flex-direction:column;padding:40rpx 24rpx;text-align:center;font-size:28rpx;line-height:40rpx">
+            <text class=" empty icon szs szs-31tishi" style="color:orangered;margin-bottom:10rpx;font-size:56rpx;"></text>
+            <text>您确认要删除该发票抬头吗 ？</text>
+        </view>
+        <view style="width:100%;display:flex;align-items:center;justify-content:space-around;"
+              slot="confirm-button">
+            <view bind:tap="closeDeleteDialog"
+                  style="padding:30rpx;width:50%;text-align:center;font-size:30rpx;">取消
+            </view>
+            <view bind:tap="doConfirm"
+                  style="color:#ee0a24!important;padding:30rpx;width:50%;text-align:center;font-size:30rpx;">
+                确定
+            </view>
+        </view>
+    </van-dialog>
+</view>

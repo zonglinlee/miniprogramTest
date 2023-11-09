@@ -1,0 +1,134 @@
+<view class="container">
+    <view class="custom-nav c-height">
+        <van-nav-bar
+                fixed="{{true}}"
+                title="我的发票抬头"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+    <scroll-view class="list-wrapper" scroll-y="true" style="height: {{formHeight}}px;margin-top:{{cusNavHeight}}px"
+                 show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                 enhanced="{{true}}">
+        <view style="padding-top:16rpx;">
+            <van-cell-group>
+                <van-cell title-width="6.2em" required title-class="title-cell1"
+                          value-class="value-cell1">
+                    <view slot="title" style="font-size:28rpx">
+                        抬头类型
+                    </view>
+                    <van-radio-group
+                            value="{{ invoiceInfo.invoiceType }}"
+                            bind:change="onChangeType"
+                            direction="horizontal"
+                    >
+                        <view style="display:flex;align-items:center">
+                            <van-radio name="1" icon-size="18px" checked-color="#f7800c"
+                                       label-class="invoice-radio-label1"
+                                       icon-class="invoice-radio1">企业单位
+                            </van-radio>
+                            <van-radio name="2" icon-size="18px" checked-color="#f7800c"
+                                       label-class="invoice-radio-label1"
+                                       icon-class="invoice-radio1">个人/非企业单位
+                            </van-radio>
+                        </view>
+                    </van-radio-group>
+                </van-cell>
+
+
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="companyName"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.companyName}}"
+                        required
+                        clearable
+                        label="{{label+'名称'}}"
+                        placeholder="{{'请输入'+label+'名称'}}"
+                />
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="taxNo"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.taxNo}}"
+                        required
+                        clearable
+                        label="公司税号"
+                        placeholder="请输入公司税号"
+                        wx:if="{{ invoiceInfo.invoiceType ==='1'}}"
+                />
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="address"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.address}}"
+                        clearable
+                        label="公司地址"
+                        placeholder="请输入公司地址"
+                        wx:if="{{ invoiceInfo.invoiceType ==='1'}}"
+                />
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="mobile"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.mobile}}"
+                        clearable
+                        label="公司电话"
+                        placeholder="请输入公司电话"
+                        wx:if="{{ invoiceInfo.invoiceType ==='1'}}"
+                />
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="bankName"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.bankName}}"
+                        clearable
+                        label="公司开户行"
+                        placeholder="请输入公司开户行"
+                        wx:if="{{ invoiceInfo.invoiceType ==='1'}}"
+                />
+                <van-field
+                        label-class="label-class1"
+                        input-class="input-class1"
+                        data-field="bankNo"
+                        bind:change="onChangeInput"
+                        value="{{invoiceInfo.bankNo}}"
+                        clearable
+                        label="开户账号"
+                        placeholder="请输入开户账号"
+                        wx:if="{{ invoiceInfo.invoiceType ==='1'}}"
+                />
+                <!--            <van-field-->
+                <!--                    label-class="label-class1"-->
+                <!--                    input-class="input-class1"-->
+                <!--                    data-field="remark"-->
+                <!--                    bind:change="onChangeInput"-->
+                <!--                    value="{{invoiceInfo.remark}}"-->
+                <!--                    clearable-->
+                <!--                    label="备注"-->
+                <!--                    type="textarea"-->
+                <!--                    placeholder="请输入备注"-->
+                <!--            />-->
+            </van-cell-group>
+            <view class="default-panel">
+                <view class="title">
+                    <view class="t1">设为默认抬头</view>
+                    <view class="t2">每次开票会默认填写该抬头信息</view>
+                </view>
+                <van-switch checked="{{ switchCheck }}" size="24px" active-color="#ee0a24" bind:change="onChangeSwitch"/>
+            </view>
+        </view>
+    </scroll-view>
+
+
+    <view class="btn-wrapper">
+        <view class="btn btn1 {{okSubmit?'ok':''}}" catch:tap="setInvoice">保存</view>
+    </view>
+
+</view>

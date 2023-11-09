@@ -115,7 +115,7 @@
     </van-cell-group>
 
     <view class="title">发票详情</view>
-    <view class="grand-total">wx
+    <view class="grand-total">
         <view class="l1">总金额</view>
         <view class="l1">
             <text class="orange">2</text><text>元</text>
@@ -164,7 +164,7 @@
                 <scroll-view class="scroll-list" scroll-y="true" style="height: 600rpx" show-scrollbar="{{false}}"
                              enhanced="{{true}}">
                     <view class="item" catch:tap="checkInvoiceItem" data-item="{{item}}" wx:for="{{companyList}}"
-                          wx:key="{{item.companyName}}">
+                          wx:key="{{companyName}}">
                         <view class="name {{selectedItem.companyName===item.companyName?'selected':''}}">
                             {{item.companyName}}
                         </view>
@@ -175,7 +175,36 @@
         </view>
 
         <view class="btn-wrapper">
-            <view class="btn btn2" catch:tap="add">添加常用发票抬头</view>
+            <view class="btn btn2" catch:tap="addTT">添加常用发票抬头</view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ showSubmitPopup }}" z-index="{{200}}"
+               root-portal="{{false}}"
+               bind:close="closePopup" round="{{false}}" position="bottom"
+               duration="{{100}}"
+               close-on-click-overlay
+               safe-area-tab-bar="{{false}}">
+        <text class="close icon szs szs-close-bold" catch:tap="closeSubmitPopup"></text>
+        <text class="main-title">开具电子发票</text>
+        <view class="pop-wrapper1">
+            <view class="item">
+                <view class="f">发票类型</view>
+                <view class="f1">电子发票</view>
+            </view>
+            <view class="tip orangered">我们将为您提供电子发票</view>
+            <view class="item">
+                <view class="f">公司名称</view>
+                <view class="f1">{{invoiceInfo.companyName }}</view>
+            </view>
+            <view class="item">
+                <view class="f">电子邮箱</view>
+                <view class="f1">{{invoiceInfo.email }}</view>
+            </view>
+            <view class="tip orangered">如无特殊情况，我们将在24小时之内将发票发送至该邮箱</view>
+        </view>
+
+        <view class="btn-wrapper">
+            <view class="btn btn2" catch:tap="doSubmit">确认提交</view>
         </view>
     </van-popup>
     <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>

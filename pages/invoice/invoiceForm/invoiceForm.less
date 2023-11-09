@@ -80,20 +80,58 @@
     }
   }
 
+  .main-title {
+    display: block;
+    text-align: center;
+    font-size: @font-32;
+    padding-top: 16rpx;
+    padding-bottom: 30rpx;
+    border-bottom: solid 1rpx @border-gray;
+  }
+
+  .pop-wrapper1 {
+
+    .item {
+      display: flex;
+      align-items: center;
+      padding: 16rpx 24rpx;
+      border-bottom: solid 1rpx #f1f1f194;
+
+      .f {
+        font-size: @font-30;
+        color: @text-color-gray;
+        width: 130rpx;
+        margin-right: 20rpx;
+      }
+
+      .f1 {
+        font-size: @font-28;
+      }
+    }
+    .tip{
+      font-size: 22rpx;
+      padding: 8rpx 24rpx;
+      color: darkorange;
+      border-bottom: solid 1rpx @border-gray;
+    }
+
+
+  }
+
   .btn-wrapper {
     .btn1 {
       margin: 30rpx 0;
       border-radius: 10rpx;
-      background: @text-color-gray2;
+      background: @btn-disabled;
       transition: .3s;
     }
 
     .btn1.ok {
-      background: @blue-bg;
+      background: rgb(74, 76, 91);
     }
 
     .btn2 {
-      background: @blue-bg;
+      background: rgb(74, 76, 91);
       margin: 30rpx 0;
       border-radius: 10rpx;
     }
@@ -107,7 +145,7 @@
 }
 
 .invoice-radio-label1 {
-  font-size: @font-28;
+  font-size: @font-30;
 }
 
 .label-class1, .input-class1, .title-cell1, .value-cell1 {

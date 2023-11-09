@@ -23,7 +23,13 @@
     "pages/finishOrder/finishOrder",
     "pages/invoice/invoiceForm/invoiceForm",
     "pages/invoice/invoiceDetail/invoiceDetail",
-    "pages/evaluateOrder/evaluateOrder"
+    "pages/evaluateOrder/evaluateOrder",
+    "pages/invoice/invoiceTT/invoiceTT",
+    "pages/invoice/ttForm/ttForm",
+    "pages/invoice/invoiceSuccess/invoiceSuccess",
+    "pages/invoice/invoiceHistory/invoiceHistory",
+    "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
+    "pages/invoice/invoiceOrder/invoiceOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -17,6 +17,7 @@ Page({
         },
         okSubmit: false,
         showInvoicePopup: false,
+        showSubmitPopup: false,
         companyList: [
             {
                 companyName: '水水水水水水水水水水水水1',
@@ -62,7 +63,7 @@ Page({
     },
     onLoad: function (options) {
         this.setData({
-            cusNavHeight: app.globalData.sysInfo.statusBarHeight + 46
+            cusNavHeight: app.globalData.cusNavHeight
         })
     },
     onReady() {
@@ -72,6 +73,14 @@ Page({
         app.defaultCustomNavClick()
     }
     ,
+    doSubmit() {
+        wx.navigateTo({url: '/pages/invoice/invoiceSuccess/invoiceSuccess'})
+    },
+    closeSubmitPopup() {
+        this.setData({
+            showSubmitPopup: false
+        })
+    },
     showPopup() {
         this.setData({
             showInvoicePopup: true
@@ -131,11 +140,13 @@ Page({
             return;
         }
         // dosubmit
+        this.setData({
+            showSubmitPopup: true
+        })
     },
     checkInvoiceItem(e) {
         const item = e.currentTarget.dataset.item
         const obj = {...this.data.invoiceInfo, ...item}
-        console.log(item)
         this.setData({
             selectedItem: item,
             showInvoicePopup: false,
@@ -146,9 +157,10 @@ Page({
     add() {
         wx.navigateTo({url: '/pages/invoice/invoiceDetail/invoiceDetail'})
     },
+    addTT() {
+        wx.navigateTo({url: '/pages/invoice/invoiceTT/invoiceTT'})
+    },
     goDetail() {
         wx.navigateTo({url: '/pages/invoice/invoiceDetail/invoiceDetail'})
-    },
-    async computeNavHeight() {
     }
 });

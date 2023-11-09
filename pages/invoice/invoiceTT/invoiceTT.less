@@ -1,0 +1,133 @@
+@import "assets/css/common";
+
+.container {
+  .list-wrapper {
+    box-sizing: border-box;
+    padding-top: 16rpx;
+  }
+
+  .lists {
+    box-sizing: border-box;
+
+    .item {
+      margin-bottom: 16rpx;
+      width: 100%;
+      box-sizing: border-box;
+
+      .title {
+        font-size: @font-32;
+        color: @text-color-gray2;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      .value {
+        .arrow {
+          font-size: 30rpx;
+          color: @text-color-gray2;
+        }
+      }
+    }
+
+    .del {
+      background-color: #ee0a24;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: @font-30;
+      height: 100%;
+      text-align: center;
+      width: 65px
+    }
+  }
+
+  .empty-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .empty {
+      margin-top: 230rpx;
+      text-align: center;
+      width: 184rpx;
+      height: 168rpx;
+      font-size: 128rpx;
+      color: @text-color-gray2;
+    }
+
+    .t1 {
+      text-align: center;
+      color: @text-color-gray2;
+      font-size: @font-28;
+    }
+  }
+
+  .set-btn {
+    border: 1rpx solid @border-gray;
+    padding: 8rpx 16rpx;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    width: fit-content;
+    cursor: pointer;
+    color: @text-color-gray2;
+    font-size: @font-28;
+    background: #ffffff;
+  }
+
+  .btn-wrapper {
+    background: white;
+    height: 150rpx;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn1 {
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: rgb(74, 76, 91);
+      transition: .3s;
+    }
+  }
+
+}
+
+.default {
+  padding: 2rpx 4rpx;
+  border: solid 1rpx currentColor;
+  color: orangered;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+  display: inline-block;
+  line-height: 26rpx;
+  margin-left: 10rpx;
+  flex-shrink: 0;
+}
+
+.wrapper-s {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value-s {
+  flex: initial !important;
+  width: 30px !important;
+  flex-shrink: 0 !important;
+  text-align: center;
+}
+
+.title-s {
+  flex: initial !important;
+  flex-grow: 1;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,96 @@
+@import "assets/css/common";
+
+.container {
+  .wrapper {
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+  }
+
+  .order {
+    font-size: @font-32;
+    color: @text-color-gray2;
+    border-radius: 6rpx;
+    border: 1rpx solid @border-gray;
+    box-shadow: rgba(60, 64, 67, 0.1) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 2px -3px;
+    margin: 0 24rpx;
+    background: #ffffff;
+    padding: 24rpx;
+    margin-bottom: 16rpx;
+
+    .l1, .l3, l1 l, .des {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .l1, .l2, .l3 {
+      padding: 12rpx 0;
+    }
+
+    .des {
+      justify-content: flex-start;
+
+      .dot {
+        width: 14rpx;
+        height: 14rpx;
+        border-radius: 50%;
+        margin-right: 10rpx;
+        flex-shrink: 0;
+      }
+
+      .orange-bg {
+        background: orange;
+      }
+
+      .green-bg {
+        background: green;
+      }
+
+      .t {
+        font-size: @font-32;
+      }
+    }
+
+    .l1 {
+      .l {
+        display: flex;
+        align-items: center;
+
+        .t1 {
+          font-size: @font-28;
+        }
+
+        .t2 {
+          border: solid 1rpx @border-gray;
+          margin-left: 16rpx;
+          font-size: @font-26;
+          padding: 4rpx 8rpx;
+          border-radius: 8rpx;
+        }
+      }
+
+      .r {
+        color: @text-color-gray;
+        font-size: 24rpx;
+      }
+
+    }
+
+    .l3 {
+      .total {
+        flex-shrink: 0;
+        margin-left: 16rpx;
+      }
+
+      .price {
+        font-size: 40rpx;
+      }
+
+      .unit {
+        font-size: @font-30;
+      }
+    }
+
+
+  }
+}

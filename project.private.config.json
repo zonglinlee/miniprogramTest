@@ -9,6 +9,41 @@
     "miniprogram": {
       "list": [
         {
+          "name": "invoiceOrder",
+          "pathName": "pages/invoice/invoiceOrder/invoiceOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceHistoryDetail",
+          "pathName": "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceHistory",
+          "pathName": "pages/invoice/invoiceHistory/invoiceHistory",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceSuccess",
+          "pathName": "pages/invoice/invoiceSuccess/invoiceSuccess",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceTT",
+          "pathName": "pages/invoice/invoiceTT/invoiceTT",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "invoiceDetail",
           "pathName": "pages/invoice/invoiceDetail/invoiceDetail",
           "query": "",

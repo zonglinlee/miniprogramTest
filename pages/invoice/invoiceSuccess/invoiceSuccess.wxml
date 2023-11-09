@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="custom-nav c-height">
+        <van-nav-bar
+                fixed="{{true}}"
+                title="开具发票"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+    <view class="wrapper" style="margin-top:{{cusNavHeight}}px">
+
+        <view style="text-align:center">
+            <text class="l1 szs szs-successful"></text>
+        </view>
+        <view class="l2">提交成功</view>
+
+        <view class="tip">
+            <view class="inner">
+                <text class="i szs szs-icon_tips_normal"></text>
+                <text> 开票成功，请注意查收</text>
+            </view>
+        </view>
+
+        <view class="btn-wrapper">
+            <view class="btn btn1" catch:tap="invoiceHome">发票首页</view>
+        </view>
+        <view class="btn-wrapper">
+            <view class="btn btn1 btn2" catch:tap="invoiceHistory">开票历史</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,96 @@
+<view class="container">
+    <view class="custom-nav c-height">
+        <van-nav-bar
+                fixed="{{true}}"
+                title="发票详情"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+    <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight}}px;margin-top:{{cusNavHeight}}px"
+                 show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                 enhanced="{{true}}">
+        <view class="top">
+            <view class="l">电子发票</view>
+            <view class="r">
+                <text class="t orange">待验证 </text>
+                <text class="question-mark szs szs-wenhao"></text>
+            </view>
+        </view>
+        <view class="content">
+            <view class="line">
+                <view class="t">公司名称</view>
+                <view class="c">XXXXXXXXXX</view>
+            </view>
+            <view class="line">
+                <view class="t">公司税号</view>
+                <view class="c">XXXXXXXXXX</view>
+            </view>
+            <view class="line">
+                <view class="t">发票金额</view>
+                <view class="c">125.9 元</view>
+            </view>
+            <view class="line">
+                <view class="t">申请时间</view>
+                <view class="c">2023.11.03 周四 10:43</view>
+            </view>
+
+            <block wx:if="{{showMore}}">
+                <view class="line">
+                    <view class="t">公司地址</view>
+                    <view class="c">XXXXXXXXXX</view>
+                </view>
+                <view class="line">
+                    <view class="t">公司电话</view>
+                    <view class="c">XXXXXXXXXX</view>
+                </view>
+                <view class="line">
+                    <view class="t">公司开户行</view>
+                    <view class="c">XXXXXXXXXX</view>
+                </view>
+                <view class="line">
+                    <view class="t">公司开户账号</view>
+                    <view class="c">XXXXXXXXXX</view>
+                </view>
+                <view class="line">
+                    <view class="t">备注</view>
+                    <view class="c">XXXXXXXXXX</view>
+                </view>
+            </block>
+            <view class="more" catch:tap="showMoreClick">
+                <block wx:if="{{!showMore}}">
+                    展开更多信息
+                    <text class="triangle szs szs-triangledownfill"></text>
+                </block>
+                <block wx:else>
+                    收起
+                    <text class="triangle szs szs-triangleupfill"></text>
+                </block>
+            </view>
+        </view>
+
+        <view class="order">
+            <view class="l">
+                <view class="l1">1张发票，含1个订单</view>
+                <view class="l2">2023.2.03 19:23</view>
+            </view>
+            <view class="r" catch:tap="goInvoiceOrder">
+                <view class="t">查看</view>
+                <text class="arrow szs szs-arrow-right"></text>
+            </view>
+        </view>
+        <view class="email content">
+            <view class="title">接收信息</view>
+            <view class="line">
+                <view class="t">电子邮箱</view>
+                <view class="c">XXXXXXXXXX</view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view class="btn-wrapper">
+        <view class="btn btn1" catch:tap="setInvoice">重发发票和行程单</view>
+        <view class="btn btn1" catch:tap="setInvoice">申请重开发票</view>
+    </view>
+</view>

@@ -22,8 +22,10 @@ App({
         //    设备信息
         const sysInfo = wx.getSystemInfoSync()
         this.globalData.sysInfo = sysInfo
+        this.globalData.cusNavHeight = sysInfo.statusBarHeight + 46
     },
     globalData: {
+        cusNavHeight: 0,
         sysInfo: null,
         userInfo: null,
         mapSdk: null,

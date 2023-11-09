@@ -1,0 +1,63 @@
+@import "assets/css/common";
+
+.container {
+  .btn-wrapper {
+    background: white;
+    height: 150rpx;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn1 {
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: @btn-disabled;
+      transition: .3s;
+    }
+
+    .btn1.ok {
+      background: rgb(74, 76, 91);
+    }
+  }
+
+  .default-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16rpx;
+    background: white;
+    height: 100rpx;
+    padding: 0 24rpx;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .t1 {
+      font-size: @font-30;
+    }
+
+    .t2 {
+      font-size: 24rpx;
+      color: @text-color-gray;
+    }
+  }
+}
+
+.invoice-radio1 {
+  color: white;
+}
+
+.invoice-radio-label1 {
+  font-size: @font-28;
+}
+
+.label-class1, .input-class1, .title-cell1, .value-cell1 {
+  font-size: @font-28;
+}

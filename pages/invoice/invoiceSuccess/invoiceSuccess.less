@@ -1,0 +1,55 @@
+@import "assets/css/common";
+
+.container {
+  .wrapper {
+    background: white;
+    padding: 40rpx 0;
+  }
+
+  .l1 {
+    font-size: 66rpx;
+    color: darkorange;
+  }
+
+  .l2 {
+    font-size: @font-36;
+    color: @text-color-gray;
+    margin: 16rpx 0;
+    text-align: center;
+  }
+
+  .tip {
+    margin: 24rpx;
+    background: @page-bg-gray;
+    border-radius: 16rpx;
+
+    .inner {
+
+      font-size: @font-28;
+      //color: @text-color-gray;
+      padding: 24rpx;
+    }
+
+  }
+  .btn-wrapper {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn1 {
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: rgb(74, 76, 91);
+      transition: .3s;
+    }
+    .btn2 {
+      margin: 30rpx 0;
+      border-radius: 10rpx;
+      background: white;
+      border: solid 1rpx @border-gray;
+      color: @text-color-gray;
+      transition: .3s;
+    }
+  }
+}
