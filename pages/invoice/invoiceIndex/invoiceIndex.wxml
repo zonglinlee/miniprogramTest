@@ -24,12 +24,9 @@
                         <view class="tag" wx:if="{{tagNumber !==0}}">{{tagNumber}}</view>
                     </view>
                 </view>
-
-                <movable-area class="ma" style="height:{{listHeight}}px;width:100%;">
-                    <movable-view class="mv" direction="vertical" style="height:{{listHeight}}px;width:100%;" inertia
-                                  out-of-bounds
-                                  friction="{{1}}">
-
+                <swiper indicator-dots="{{false}}" style="height:{{listHeight}}px"
+                        autoplay="{{false}}" interval="{{interval}}" vertical="{{true}}" duration="{{1000}}">
+                    <swiper-item>
                         <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight}}px"
                                      show-scrollbar="{{false}}" lower-threshold="{{50}}"
                                      enhanced="{{true}}" bindscrolltolower="scrollToLower">
@@ -38,7 +35,8 @@
                                 <text class="t1">您还没有可开发票的订单</text>
                             </view>
                             <block wx:else>
-                                <view class="item-wrapper" wx:for="{{orderList}}" wx:key="index" data-order="{{item}}"
+                                <view class="item-wrapper" wx:for="{{orderList}}" wx:key="index"
+                                      data-order="{{item}}"
                                       data-orderindex="{{index}}" catch:tap="onSelectOrder">
                                     <van-checkbox
                                             value="{{ item.checked }}"
@@ -77,15 +75,16 @@
                                                  vertical>
                                         加载中...
                                     </van-loading>
-                                    <van-divider hairline wx:if="{{orderList.length>=total}}" contentPosition="center">
+                                    <van-divider hairline wx:if="{{orderList.length>=total}}"
+                                                 contentPosition="center">
                                         没有更多了
                                     </van-divider>
                                 </view>
                             </block>
 
                         </scroll-view>
-                    </movable-view>
-                </movable-area>
+                    </swiper-item>
+                </swiper>
 
                 <view class="tips">{{tips}}</view>
             </view>
