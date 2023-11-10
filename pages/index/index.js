@@ -85,6 +85,12 @@ Page({
         this.getCurrentPosition()
     },
     async onReady() {
+        setTimeout(() => {
+            this.computeHeight()
+        }, 500)
+
+    },
+    computeHeight() {
         const menuBtnRec = wx.getMenuButtonBoundingClientRect()
         const sysInfo = app.globalData.sysInfo
         const platform = sysInfo.platform;
@@ -93,19 +99,15 @@ Page({
             isPc = true
         }
         const query = wx.createSelectorQuery()
-        query.select('.top').boundingClientRect()
-        query.selectAll('.ch').boundingClientRect()
         query.select('.card1').boundingClientRect()
-        query.select('.items-wrapper').boundingClientRect()
         query.selectViewport().boundingClientRect()
         const that = this
         query.exec(function (res) {
-            const [top, cardRec, card1, itemsWrapper, viewPort] = res
-            const ht = cardRec.reduce((acc, item) => acc + item.height, 0)
-            // const mvDistance = Math.max(card1.bottom, itemsWrapper.bottom) - viewPort.height
-            const mvDistance = itemsWrapper.bottom - viewPort.height
+            const [card1, viewPort] = res
+            const ht = card1.height
+            const mvDistance = card1.bottom - viewPort.height
             that.setData({
-                card1Height: ht + 24,
+                card1Height: ht,
                 maHeight: ht + mvDistance,
                 maTop: mvDistance,
                 fixedHeight: menuBtnRec.bottom,
