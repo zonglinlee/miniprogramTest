@@ -1,0 +1,51 @@
+@import "assets/css/common.less";
+@import "../../assets/icon-font/iconfont.wxss";
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip-btn {
+  color: @text-color-gray;
+  font-size: 36rpx;
+}
+
+.tooltip-content {
+  @bgColor: #9c9c9c;
+  background: @bgColor;
+  position: absolute;
+  border-radius: 8rpx;
+  padding: 20rpx 50rpx 16rpx 16rpx;
+  font-size: 24rpx;
+  color: white;
+  box-sizing: border-box;
+  z-index: 99999;
+
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    width: 20rpx;
+    height: 20rpx;
+    transform: translateY(-50%) rotate(45deg);
+    background: @bgColor;
+  }
+
+  .close {
+    font-size: 36rpx;
+    color: white;
+    position: absolute;
+    right: 6rpx;
+    top: 6rpx;
+  }
+
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,16 @@
+<view class="tooltip">
+    <view id="tooltip-btn" class="tooltip-btn custom-btn" catch:tap="show">
+        <slot></slot>
+    </view>
+    <view class="tooltip-content" wx:if="{{visible}}" style="{{wrapperStyles}}">
+        <view class="arrow custom-arrow" style="{{arrowStyles}}"></view>
+        <view class="close custom-close" catch:tap="close">
+            <text class="close szs szs-close-bold"></text>
+        </view>
+        <view class="p-3 text-sm" wx:if="{{tips}}">{{ tips }}</view>
+        <block wx:else>
+            <slot name="content"/>
+        </block>
+    </view>
+
+</view>

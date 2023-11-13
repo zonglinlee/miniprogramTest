@@ -15,9 +15,12 @@
             <view class="l">电子发票</view>
             <view class="r">
                 <text class="t orange">待验证 </text>
-                <text class="question-mark szs szs-wenhao"></text>
+                <tooltip id="t1" tips="为保证您的发票安全，需您按邮件或短信提示进行身份信息确认，确认后我们将为您发送发票">
+                    <text id="tooltip" class="question-mark szs szs-wenhao"></text>
+                </tooltip>
             </view>
         </view>
+
         <view class="content">
             <view class="line">
                 <view class="t">公司名称</view>
