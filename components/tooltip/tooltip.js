@@ -7,8 +7,9 @@ Component({
         visible: false,
         wrapperStyles: "",
         arrowStyles: "",
+        classNames: ''
     },
-    externalClasses: ['custom-arrow', 'custom-close','custom-btn'],
+    externalClasses: ['custom-arrow', 'custom-close', 'custom-btn'],
     methods: {
         show() {
             let wrapperStyles = ''
@@ -42,11 +43,18 @@ Component({
                         res => {
                             const {height: heightContent} = res[0]
                             wrapperStyles += `top:-${(heightContent - height) / 2}px`
-                            // console.log(res)
+                            // 添加动画效果
                             that.setData({
-                                visible: true,
-                                wrapperStyles,
-                                arrowStyles,
+                                visible: false,
+                                classNames: 'scale-in'
+                            })
+                            // 计算高度之后再次进行渲染
+                            wx.nextTick(() => {
+                                that.setData({
+                                    visible: true,
+                                    wrapperStyles,
+                                    arrowStyles,
+                                })
                             })
                         }
                     )
@@ -56,6 +64,9 @@ Component({
         close() {
             this.setData({
                 visible: false,
+                classNames: '',
+                wrapperStyles: "",
+                arrowStyles: "",
             })
         }
     }
