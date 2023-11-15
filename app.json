@@ -29,7 +29,8 @@
     "pages/invoice/invoiceSuccess/invoiceSuccess",
     "pages/invoice/invoiceHistory/invoiceHistory",
     "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
-    "pages/invoice/invoiceOrder/invoiceOrder"
+    "pages/invoice/invoiceOrder/invoiceOrder",
+    "pages/carHistory/carHistory"
   ],
   "window": {
     "backgroundTextStyle": "light",

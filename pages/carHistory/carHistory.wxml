@@ -1,0 +1,141 @@
+<view class="container">
+    <wxs src="./carHistory.wxs" module="tools"/>
+    <van-nav-bar
+            title="历史订单"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+    >
+        <!--        <view slot="right">-->
+        <!--            <text class="icon  szs szs-filter-filling"></text>筛选-->
+        <!--        </view>-->
+    </van-nav-bar>
+
+    <view class="filter-btn" catch:tap="openFilter">
+        <text class="icon  szs szs-filter-filling"></text>
+        <!--        <text>订单筛选</text>-->
+        <view class="tag" wx:if="{{tagNumber !==0}}">{{tagNumber}}</view>
+    </view>
+    <swiper indicator-dots="{{false}}" style="height:{{listHeight}}px"
+            autoplay="{{false}}" interval="{{interval}}" vertical="{{true}}" duration="{{600}}">
+        <swiper-item>
+            <view wx:if="{{orderList.length === 0}}" class="empty-wrapper">
+                <image class="empty" src="../../assets/images/empty_order_list.png"></image>
+            </view>
+            <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight-12}}px"
+                         show-scrollbar="{{false}}"
+                         enhanced="{{true}}" bindscrolltolower="scrollToLower">
+                <view class="item" wx:for="{{orderList}}" wx:key="index">
+                    <view class="h">
+                        <view class="l">
+                            <image class="car" mode="widthFix" src="../../assets/images/red_car.png"></image>
+                            <text class="t1 bold" overflow="ellipsis">{{item.type}}</text>
+                        </view>
+                        <text class="orange t1">已取消</text>
+                    </view>
+                    <view class="lc">
+                        <image class="icon" mode="widthFix" src="../../assets/images/depart_clock.png"></image>
+                        <text class="t2" overflow="ellipsis">{{item.departureTime}}</text>
+                    </view>
+                    <view class="lc">
+                        <image class="icon" mode="widthFix" src="../../assets/images/green_dot.png"></image>
+                        <text class="t2" overflow="ellipsis">{{item.from}}</text>
+                    </view>
+                    <view class="lc">
+                        <image class="icon" mode="widthFix" src="../../assets/images/blue_dot.png"></image>
+                        <text class="t2" overflow="ellipsis">{{item.to}}</text>
+                    </view>
+                    <view class="lc">
+                        <image class="icon" mode="widthFix" src="../../assets/images/wechat_pay.png"></image>
+                        <text class="t2" overflow="ellipsis">{{item.price}}</text>
+                    </view>
+                </view>
+                <view class="bottom-divider" style="padding: 15rpx 0;">
+                    <van-loading wx:if="{{refresh && orderList.length<total}}" size="24px" type="spinner"
+                                 color="#1989fa"
+                                 vertical>
+                        加载中...
+                    </van-loading>
+                    <van-divider hairline wx:if="{{orderList.length>=total}}" contentPosition="center">没有更多了
+                    </van-divider>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+
+
+    <van-popup show="{{ show }}"
+               custom-style="top:{{filterTop}}px;bottom:0;transform:translateY(0)"
+               overlay-style="top:{{filterTop}}px;"
+               custom-class="invoice-filter-popup"
+               root-portal="{{false}}"
+               overlay="{{true}}"
+               bind:close="cancel" round="{{false}}" position="left"
+               bind:after-enter="computeHeight"
+               safe-area-tab-bar="{{false}}">
+        <view class="filter-pop">
+            <view class="title">订单日期</view>
+            <view class="time-btn-wrapper group-wrapper">
+                <view class="time-btn" catch:tap="selectTime" data-start="{{true}}">{{startTime}}</view>
+                <view class="line"></view>
+                <view class="time-btn" catch:tap="selectTime" data-start="{{false}}">{{endTime}}</view>
+            </view>
+            <!--            <view class="title">订单价格</view>-->
+            <!--            <view class="input-wrapper group-wrapper">-->
+            <!--                <van-field-->
+            <!--                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"-->
+            <!--                        value="{{ value1 }}"-->
+            <!--                        type="number"-->
+            <!--                        placeholder="最低价"-->
+            <!--                        placeholder-style="text-align:center;color:initial"-->
+            <!--                        border="{{ false }}"-->
+            <!--                        bind:change="onChange1"-->
+            <!--                />-->
+            <!--                <view class="line"></view>-->
+            <!--                <van-field-->
+            <!--                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"-->
+            <!--                        placeholder-style="text-align:center;color:initial"-->
+            <!--                        value="{{ value2 }}"-->
+            <!--                        type="number"-->
+            <!--                        placeholder="最高价"-->
+            <!--                        border="{{ false }}"-->
+            <!--                        bind:change="onChange2"-->
+            <!--                />-->
+            <!--            </view>-->
+            <view class="title">订单类型</view>
+            <view class="input-wrapper">
+                <view class="btn-filter {{tools.isSelected('1',orderTypes)?'selected':''}}" catch:tap="selectOrderType"
+                      data-type="1">小程序订单
+                </view>
+                <view class="line line1"></view>
+                <view class="btn-filter {{tools.isSelected('2',orderTypes)?'selected':''}}" catch:tap="selectOrderType"
+                      data-type="2">小程序订单
+                </view>
+            </view>
+            <view class="btn-group">
+                <view class="btn" bind:tap="resetFilter">重置</view>
+                <view class="btn btn1" catch:tap="confirmFilter">确定</view>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ showTimePicker }}" z-index="{{200}}"
+               root-portal="{{false}}"
+               bind:close="cancel" round="{{false}}" position="bottom"
+               duration="{{100}}"
+               bind:after-enter="computeHeight"
+               safe-area-tab-bar="{{false}}">
+        <van-datetime-picker
+                type="date"
+                value="{{ currentDate }}"
+                min-date="{{minDate}}"
+                max-date="{{maxDate}}"
+                title="{{dateTitle}}"
+                show-toolbar
+                bind:input="onInput"
+                bind:confirm="confirmTime"
+                bind:cancel="closeTimePicker"
+                formatter="{{ formatter }}"
+        />
+    </van-popup>
+    <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
+</view>

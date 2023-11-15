@@ -1,0 +1,6 @@
+var isSelected = function (type, data) {
+    return data.indexOf(type) !== -1
+}
+module.exports = {
+    isSelected: isSelected
+};
