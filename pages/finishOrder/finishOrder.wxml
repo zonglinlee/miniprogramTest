@@ -4,6 +4,8 @@
             left-arrow
             class="custom-nav c-height"
             bind:click-left="goBack"
+            fixed
+            z-index="{{9999}}"
     />
     <view class="content">
         <map class="map" style="height:{{contentHeight}}px" markers="{{markers}}" latitude="{{destination.latitude}}"

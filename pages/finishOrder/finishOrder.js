@@ -52,9 +52,10 @@ Page({
             const mvDistance = res[0].bottom - viewPort.height
             const winHeight = that.data.winHeight
             that.setData({
-                contentHeight: res[2].height - res[1][0].height - safeBottom,
+                // contentHeight: res[2].height - res[1][0].height - safeBottom,
+                contentHeight: res[2].height/2,
                 cardHeight: res[0].height,
-                maHeight: res[0].height + mvDistance + winHeight * 0.7,
+                maHeight: res[0].height + mvDistance + winHeight * 0.48,
                 mvDistance
             })
         })
