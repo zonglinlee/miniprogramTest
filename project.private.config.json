@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "carHistory",
+          "pathName": "pages/carHistory/carHistory",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "invoiceOrder",
           "pathName": "pages/invoice/invoiceOrder/invoiceOrder",
           "query": "",
