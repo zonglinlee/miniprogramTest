@@ -5,7 +5,6 @@ import Toast from '@vant/weapp/toast/toast';
 Page({
     data: {
         cusNavHeight: 0,
-        show: false,
         showTimePicker: false,
         startTime: '起始日期',
         endTime: '终止日期',
@@ -25,43 +24,8 @@ Page({
         isStart: false,
         value1: '',
         value2: '',
-        tagNumber: 0,
-        filterTop: 0,
         listHeight: 0,
-        orderTypes: [],
-        orderList: [
-            {
-                type: '定制班线',
-                departureTime: '2023-10-11 16:30',
-                from: '金凤区宁夏迪安乐嘉医学检验中心有限责任公司（五里台路口）',
-                to: '银川科技厅1',
-                price: 45.00
-            }, {
-                type: '定制班线',
-                departureTime: '2023-10-11 16:30',
-                from: '金凤区中海国际社区龙湾南门',
-                to: '育成中心5',
-                price: 15.00
-            }, {
-                type: '定制班线',
-                departureTime: '2023-10-11 16:30',
-                from: '金凤区中海国际社区龙湾南门',
-                to: '育成中心5',
-                price: 15.00
-            }, {
-                type: '定制班线',
-                departureTime: '2023-10-11 16:30',
-                from: '金凤区中海国际社区龙湾南门',
-                to: '育成中心5',
-                price: 15.00
-            }, {
-                type: '定制班线',
-                departureTime: '2023-10-11 16:30',
-                from: '金凤区中海国际社区龙湾南门',
-                to: '育成中心5',
-                price: 15.00
-            }
-        ],
+        orderList: [],
         total: 12
     },
     onReachBottom() {
@@ -107,30 +71,50 @@ Page({
         app.defaultCustomNavClick()
     }
     ,
-    cancel() {
-        this.setData({show: false})
-        this.setTagNumber()
-    }
-    ,
-    openFilter() {
-        this.setData({show: !this.data.show})
-    }
-    ,
-    selectOrderType(e) {
-        const type = e.currentTarget.dataset.type
-        let types = this.data.orderTypes
-        if (types.includes(type)) {
-            types = types.filter(t => t != type)
-        } else {
-            types.push(type)
-        }
-        this.setData({
-            orderTypes: types
-        })
+
+    doSearch() {
+        wx.showLoading({title:'加载中...'})
+        const that = this
+        setTimeout(function () {
+            that.setData({
+                orderList: [
+                    {
+                        type: '定制班线',
+                        departureTime: '2023-10-11 16:30',
+                        from: '金凤区宁夏迪安乐嘉医学检验中心有限责任公司（五里台路口）',
+                        to: '银川科技厅1',
+                        price: 45.00
+                    }, {
+                        type: '定制班线',
+                        departureTime: '2023-10-11 16:30',
+                        from: '金凤区中海国际社区龙湾南门',
+                        to: '育成中心5',
+                        price: 15.00
+                    }, {
+                        type: '定制班线',
+                        departureTime: '2023-10-11 16:30',
+                        from: '金凤区中海国际社区龙湾南门',
+                        to: '育成中心5',
+                        price: 15.00
+                    }, {
+                        type: '定制班线',
+                        departureTime: '2023-10-11 16:30',
+                        from: '金凤区中海国际社区龙湾南门',
+                        to: '育成中心5',
+                        price: 15.00
+                    }, {
+                        type: '定制班线',
+                        departureTime: '2023-10-11 16:30',
+                        from: '金凤区中海国际社区龙湾南门',
+                        to: '育成中心5',
+                        price: 15.00
+                    }
+                ]
+            })
+            wx.hideLoading()
+        }, 1200)
     },
-    isSelected(type) {
-        return this.data.orderTypes.includes(type)
-    },
+
     onReady() {
         setTimeout(() => {
             this.computeHeight()
@@ -178,39 +162,6 @@ Page({
         this.setData({
             currentDate: event.detail,
         });
-    }
-    ,
-    resetFilter() {
-        this.setData({
-            startTime: '起始日期',
-            endTime: '终止日期',
-            dateTitle: '',
-            minDate: dayjs().subtract(10, 'year').valueOf(),
-            maxDate: new Date().getTime(),
-            value1: '',
-            value2: '',
-            orderTypes: []
-        });
-        this.setTagNumber()
-    }
-    ,
-    confirmFilter() {
-        this.setData({show: false})
-        this.setTagNumber()
-    },
-    setTagNumber() {
-        const {startTime, endTime, value1, value2, orderTypes} = this.data
-        let num = 0
-        if (value1 !== '' || value2 !== '') {
-            num++;
-        }
-        if (orderTypes.length > 0) {
-            num++;
-        }
-        if (startTime !== '起始日期' || endTime !== '终止日期') {
-            num++;
-        }
-        this.setData({tagNumber: num})
     },
 
     onChange1(val) {

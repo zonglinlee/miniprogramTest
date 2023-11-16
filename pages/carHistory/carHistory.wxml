@@ -6,21 +6,20 @@
             class="custom-nav c-height"
             bind:click-left="goBack"
     >
-        <!--        <view slot="right">-->
-        <!--            <text class="icon  szs szs-filter-filling"></text>筛选-->
-        <!--        </view>-->
     </van-nav-bar>
-
-    <view class="filter-btn" catch:tap="openFilter">
-        <text class="icon  szs szs-filter-filling"></text>
-        <!--        <text>订单筛选</text>-->
-        <view class="tag" wx:if="{{tagNumber !==0}}">{{tagNumber}}</view>
+    <view class="search-wrapper c-height">
+        <view class="time-btn-wrapper group-wrapper">
+            <view class="time-btn" catch:tap="selectTime" data-start="{{true}}">{{startTime}}</view>
+            <view class="line"></view>
+            <view class="time-btn" catch:tap="selectTime" data-start="{{false}}">{{endTime}}</view>
+            <view class="search-btn" catch:tap="doSearch">查 询</view>
+        </view>
     </view>
     <swiper indicator-dots="{{false}}" style="height:{{listHeight}}px"
             autoplay="{{false}}" interval="{{interval}}" vertical="{{true}}" duration="{{600}}">
         <swiper-item>
             <view wx:if="{{orderList.length === 0}}" class="empty-wrapper">
-                <image class="empty" src="../../assets/images/empty_order_list.png"></image>
+                <image class="empty" src="../../assets/images/empty_order_list.png" mode="widthFix"></image>
             </view>
             <scroll-view class="list-wrapper" scroll-y="true" style="height: {{listHeight-12}}px"
                          show-scrollbar="{{false}}"
@@ -63,61 +62,6 @@
         </swiper-item>
     </swiper>
 
-
-    <van-popup show="{{ show }}"
-               custom-style="top:{{filterTop}}px;bottom:0;transform:translateY(0)"
-               overlay-style="top:{{filterTop}}px;"
-               custom-class="invoice-filter-popup"
-               root-portal="{{false}}"
-               overlay="{{true}}"
-               bind:close="cancel" round="{{false}}" position="left"
-               bind:after-enter="computeHeight"
-               safe-area-tab-bar="{{false}}">
-        <view class="filter-pop">
-            <view class="title">订单日期</view>
-            <view class="time-btn-wrapper group-wrapper">
-                <view class="time-btn" catch:tap="selectTime" data-start="{{true}}">{{startTime}}</view>
-                <view class="line"></view>
-                <view class="time-btn" catch:tap="selectTime" data-start="{{false}}">{{endTime}}</view>
-            </view>
-            <!--            <view class="title">订单价格</view>-->
-            <!--            <view class="input-wrapper group-wrapper">-->
-            <!--                <van-field-->
-            <!--                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"-->
-            <!--                        value="{{ value1 }}"-->
-            <!--                        type="number"-->
-            <!--                        placeholder="最低价"-->
-            <!--                        placeholder-style="text-align:center;color:initial"-->
-            <!--                        border="{{ false }}"-->
-            <!--                        bind:change="onChange1"-->
-            <!--                />-->
-            <!--                <view class="line"></view>-->
-            <!--                <van-field-->
-            <!--                        custom-style="background:#e5e9eb;padding:10rpx 30rpx;box-sizing:border-box;width:100px;border-radius:8rpx;text-align:center;"-->
-            <!--                        placeholder-style="text-align:center;color:initial"-->
-            <!--                        value="{{ value2 }}"-->
-            <!--                        type="number"-->
-            <!--                        placeholder="最高价"-->
-            <!--                        border="{{ false }}"-->
-            <!--                        bind:change="onChange2"-->
-            <!--                />-->
-            <!--            </view>-->
-            <view class="title">订单类型</view>
-            <view class="input-wrapper">
-                <view class="btn-filter {{tools.isSelected('1',orderTypes)?'selected':''}}" catch:tap="selectOrderType"
-                      data-type="1">小程序订单
-                </view>
-                <view class="line line1"></view>
-                <view class="btn-filter {{tools.isSelected('2',orderTypes)?'selected':''}}" catch:tap="selectOrderType"
-                      data-type="2">小程序订单
-                </view>
-            </view>
-            <view class="btn-group">
-                <view class="btn" bind:tap="resetFilter">重置</view>
-                <view class="btn btn1" catch:tap="confirmFilter">确定</view>
-            </view>
-        </view>
-    </van-popup>
     <van-popup show="{{ showTimePicker }}" z-index="{{200}}"
                root-portal="{{false}}"
                bind:close="cancel" round="{{false}}" position="bottom"
