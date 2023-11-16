@@ -1,6 +1,7 @@
 const app = getApp()
 Page({
     data: {
+        cusNavHeight: 0,
         contentHeight: 0,
         cardHeight: 0,
         markers: [
@@ -26,7 +27,9 @@ Page({
         mvDistance: 0
     },
     onLoad: function (options) {
-
+        this.setData({
+            cusNavHeight: app.globalData.sysInfo.statusBarHeight + 46
+        })
     },
     onReady() {
         setTimeout(() => {
@@ -37,25 +40,25 @@ Page({
         app.defaultCustomNavClick()
     },
     computeHeight() {
-        // console.log()
         const that = this
         const query = wx.createSelectorQuery()
         query.select('.cards').boundingClientRect()
-        query.selectAll('.c-height').boundingClientRect()
         query.selectViewport().boundingClientRect()
         query.exec(function (res) {
+            const [cardHeight, viewPort] = res
+            const winHeight = that.data.winHeight
+            const navHeight = that.data.cusNavHeight
+            const mapHeight = viewPort.height/2
+            const pageContentHeight = navHeight + mapHeight + cardHeight.height
             const {safeArea: {bottom}, screenHeight} = app.globalData.sysInfo
             const safeBottom = screenHeight - bottom
-            console.log(res)
-            const [cards, cHeight, viewPort] = res
-            const total = res[1].reduce((acc, nodeInfo) => acc + nodeInfo.height, 0)
-            const mvDistance = res[0].bottom - viewPort.height
-            const winHeight = that.data.winHeight
+            // console.log(res)
+            const mvDistance = pageContentHeight > viewPort.height ? pageContentHeight - viewPort.height : 0
             that.setData({
-                // contentHeight: res[2].height - res[1][0].height - safeBottom,
-                contentHeight: res[2].height/2,
-                cardHeight: res[0].height,
-                maHeight: res[0].height + mvDistance + winHeight * 0.48,
+                // contentHeight: viewPort.height - res[1][0].height - safeBottom,
+                contentHeight: mapHeight,
+                cardHeight: cardHeight.height,
+                maHeight: mvDistance > 0 ? cardHeight.height + mvDistance : cardHeight.height,
                 mvDistance
             })
         })

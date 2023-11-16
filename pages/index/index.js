@@ -105,7 +105,7 @@ Page({
         query.exec(function (res) {
             const [card1, viewPort] = res
             const ht = card1.height
-            const mvDistance = card1.bottom - viewPort.height
+            const mvDistance = (card1.bottom - viewPort.height)>0 ? card1.bottom - viewPort.height : 0
             that.setData({
                 card1Height: ht,
                 maHeight: ht + mvDistance,
