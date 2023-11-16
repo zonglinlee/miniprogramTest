@@ -7,7 +7,7 @@
             fixed
             z-index="{{9999}}"
     />
-    <view class="content">
+    <view class="content"  style="margin-top:{{cusNavHeight}}px">
         <map class="map" style="height:{{contentHeight}}px" markers="{{markers}}" latitude="{{destination.latitude}}"
              longitude="{{destination.longitude}}">
             <cover-view slot="callout">
@@ -20,9 +20,9 @@
 
 
         <movable-area class="ma"
-                      style="height:{{maHeight}}px;margin-top:{{-mvDistance}}px"
+                      style="height:{{maHeight}}px;margin-top:{{-mvDistance}}px;top:{{contentHeight}}px"
                       catch:touchmove="noop">
-            <movable-view class="mv" direction="vertical" y="{{mvDistance+(winHeight * 0.5)}}"
+            <movable-view class="mv" direction="vertical" y="{{mvDistance}}"
                           bind:vtouchmove="moveCardV"
                           bindchange="moveCard"
                           style="height:{{cardHeight}}px" inertia out-of-bounds
