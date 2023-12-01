@@ -99,13 +99,14 @@ Page({
             isPc = true
         }
         const query = wx.createSelectorQuery()
+        query.select('.top').boundingClientRect()
         query.select('.card1').boundingClientRect()
         query.selectViewport().boundingClientRect()
         const that = this
         query.exec(function (res) {
-            const [card1, viewPort] = res
+            const [topSec, card1, viewPort] = res
             const ht = card1.height
-            const mvDistance = (card1.bottom - viewPort.height)>0 ? card1.bottom - viewPort.height : 0
+            const mvDistance = (ht + topSec.height) > viewPort.height ? (ht + topSec.height) - viewPort.height : 0
             that.setData({
                 card1Height: ht,
                 maHeight: ht + mvDistance,
