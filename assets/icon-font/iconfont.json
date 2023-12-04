@@ -6,6 +6,34 @@
   "description": "石嘴山出行,内蒙（包头）用，微信小程序，https://juejin.cn/post/7165458111283593247",
   "glyphs": [
     {
+      "icon_id": "2832365",
+      "name": "查看",
+      "font_class": "chakan",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "13646179",
+      "name": "评价",
+      "font_class": "pingjia",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "22258592",
+      "name": "非常不满意",
+      "font_class": "daochu1024-31",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "22258594",
+      "name": "非常满意",
+      "font_class": "daochu1024-35",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
       "icon_id": "1418242",
       "name": "已取消",
       "font_class": "yiquxiao",

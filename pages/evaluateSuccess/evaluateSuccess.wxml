@@ -1,0 +1,28 @@
+<view class="container">
+    <van-nav-bar
+            title="评价成功"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+    />
+
+    <view class="card">
+        <view class="sec sec1">
+            <view class="evaluate-panel">
+                <view class="et">
+                    <text class=" szs szs-pingjia"></text>
+                    <text class="t1">评价成功</text>
+                    <text class="t2">匿名</text>
+                </view>
+                <view class="sub-title">感谢您的反馈，如有其它问题，请致电客服。</view>
+                <view class="evaluate-btn-group">
+                    <view class="btn" catch:tap="gotoEvaluate">
+                        <view class="btn1"><text class=" szs szs-chakan"></text>查看评价</view>
+                    </view>
+                </view>
+
+            </view>
+
+        </view>
+    </view>
+</view>

@@ -30,7 +30,8 @@
     "pages/invoice/invoiceHistory/invoiceHistory",
     "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
     "pages/invoice/invoiceOrder/invoiceOrder",
-    "pages/carHistory/carHistory"
+    "pages/carHistory/carHistory",
+    "pages/evaluateSuccess/evaluateSuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",
