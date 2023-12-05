@@ -1,4 +1,19 @@
 <view>
-    <custom-nav navTitle="{{navTitle}}"></custom-nav>
-    <image-page imageUrl="{{imageUrl}}"></image-page>
+    <view>
+        <van-nav-bar
+                fixed="{{true}}"
+                title="{{navTitle}}"
+                left-arrow
+                class="cutom-nav"
+                bind:click-left="goBack"
+        />
+    </view>
+    <view style="margin-top:{{cusNavHeight}}px" class="content">
+
+        <image wx:if="{{showImage}}" class="img" src="{{imageUrl}}" mode="widthFix"></image>
+
+        <view wx:if="{{!showImage}}" class="text">
+            {{textContent}}
+        </view>
+    </view>
 </view>

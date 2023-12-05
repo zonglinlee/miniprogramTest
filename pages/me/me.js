@@ -54,7 +54,7 @@ Page({
             label: '约车规则',
             key: 'rule',
             src: '../../assets/images/rule.png',
-            imgUrl: "http://s2z4nayoc.hb-bkt.clouddn.com/temp/test.png",
+            imgUrl: "http://s56kfc63a.hn-bkt.clouddn.com/temp/test.png",
         }, {
             label: '联系客服',
             key: 'customer_service',

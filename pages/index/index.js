@@ -11,7 +11,7 @@ Page({
         fixedHeight: 56,
         isPc: false,
         showSelectPositionPopup: false,
-        swiperList: [{url: 'http://s2z4nayoc.hb-bkt.clouddn.com/outer/swiper3.jpg'}],
+        swiperList: [{url: 'http://s56kfc63a.hn-bkt.clouddn.com/outer/swiper3.jpg'}],
         currentPositionStart: {
             latitude: 39.90,
             longitude: 116.40,
@@ -201,7 +201,7 @@ Page({
                 longitude: pl[0].longitude,
                 title: 'start',
                 // iconPath: '../../assets/images/start_position.png',
-                iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/start_position.png',
+                iconPath: 'http://s56kfc63a.hn-bkt.clouddn.com/start_position.png',
                 width: 20,
                 height: 20
             }, {
@@ -210,7 +210,7 @@ Page({
                 longitude: pl[pl.length - 1].longitude,
                 title: 'end',
                 // iconPath: '../../assets/images/end_position.png',
-                iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/end_position.png',
+                iconPath: 'http://s56kfc63a.hn-bkt.clouddn.com/end_position.png',
                 width: 20,
                 height: 20
             }]

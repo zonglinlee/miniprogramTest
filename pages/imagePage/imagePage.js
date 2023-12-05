@@ -1,67 +1,35 @@
+const app = getApp()
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         navTitle: "",
         imageUrl: "",
+        textContent: "",
+        cusNavHeight: 0,
+        showImage: false,
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad(options) {
+        this.setData({
+            cusNavHeight: app.globalData.cusNavHeight
+        })
         const {navTitle, imageUrl} = options // 获取路由传参
-        this.setData({navTitle, imageUrl})
+        let showImage = false
+        if (imageUrl !== 'undefined') {
+            showImage = true
+        }
+        let textContent = ''
+        switch (navTitle) {
+            case '购票/退票规则':
+                textContent = '而对于顺风车而言，市内订单在出发前10分钟取消会扣除不低于2元，不高于15元的取消费用。而跨市订单在出发前20分钟及之后取消会扣取订单金额10%的取消费。在出发前40-20分钟之内取消的，则会收取订单金额5%的取消费，但跨市订单取消费的金额最高不得超过25元。而对于顺风车而言，市内订单在出发前10分钟取消会扣除不低于2元，不高于15元的取消费用。而跨市订单在出发前20分钟及之后取消会扣取订单金额10%的取消费。在出发前40-20分钟之内取消的，则会收取订单金额5%的取消费，但跨市订单取消费的金额最高不得超过25元。'
+                break
+            case '温馨提示':
+                textContent = '温馨提示占位'
+                break
+        }
+        this.setData({showImage, navTitle, imageUrl, textContent})
+    },
+    goBack() {
+        app.defaultCustomNavClick()
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })

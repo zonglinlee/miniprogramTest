@@ -36,7 +36,7 @@
 
         <view class="l1">
             <text class="t">亲，请在上车后向司机出检票码完成上车检票</text>
-            <image class="qr-img" mode="widthFix" src="http://s2z4nayoc.hb-bkt.clouddn.com/outer/quick_response_code.png"></image>
+            <image class="qr-img" mode="widthFix" src="http://s56kfc63a.hn-bkt.clouddn.com/outer/quick_response_code.png"></image>
         </view>
 
     </view>

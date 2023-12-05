@@ -17,7 +17,7 @@ Component({
                 longitude: 116.40,
                 // iconPath: '../../assets/images/start_position.png',
                 // iconPath: '../../assets/images/select_position.svg',
-                iconPath: 'http://s2z4nayoc.hb-bkt.clouddn.com/select_position.png',
+                iconPath: 'http://s56kfc63a.hn-bkt.clouddn.com/select_position.png',
                 width: 20,
                 height: 20,
                 customCallout: {

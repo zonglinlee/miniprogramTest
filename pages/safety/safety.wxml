@@ -7,41 +7,51 @@
                 <view>安全工具</view>
             </view>
             <view class="content-wrapper">
-                <view class="item">
-                    <view class="left">
-                        <view class="t">紧急联系人</view>
-                        <view class="b">已设置</view>
-                    </view>
-                    <image class="right" src="../../assets/images/safety_people.png" mode="widthFix"></image>
-                </view>
+                <!--                <view class="item">-->
+                <!--                    <view class="left">-->
+                <!--                        <view class="t">紧急联系人</view>-->
+                <!--                    </view>-->
+                <!--                    <image class="right" src="../../assets/images/safety_people.png" mode="widthFix"></image>-->
+                <!--                </view>-->
 
-                <view class="item">
+                <view class="item" catch:tap="itemClick" data-title="实名认证">
                     <view class="left">
                         <view class="t">实名认证</view>
-                        <view class="b">已完成</view>
                     </view>
                     <image class="right" src="../../assets/images/safety_people.png" mode="widthFix"></image>
                 </view>
 
-                <view class="item">
+                <view class="item" catch:tap="itemClick" data-title="温馨提示">
                     <view class="left">
                         <view class="t">温馨提示</view>
-                        <view class="b">已设置</view>
                     </view>
                     <image class="right" src="../../assets/images/safety_tips.png" mode="widthFix"></image>
                 </view>
 
-                <view class="item">
+                <view class="item" catch:tap="itemClick" data-title="约车规则"
+                      data-imgurl="https://intercity-car-hailing.oss-cn-beijing.aliyuncs.com/xcxycgz.jpg">
                     <view class="left">
-                        <view class="t">约车流程</view>
-                        <view class="b">已完成</view>
+                        <view class="t">约车规则</view>
+                    </view>
+                    <image class="right" src="../../assets/images/safety_cycle.png" mode="widthFix"></image>
+                </view>
+                <view class="item" catch:tap="itemClick" data-title="购票/退票规则">
+                    <view class="left">
+                        <view class="t">购票/退票规则</view>
+                    </view>
+                    <image class="right" src="../../assets/images/safety_cycle.png" mode="widthFix"></image>
+                </view>
+                <view class="item" catch:tap="itemClick" data-title="法律条款"
+                      data-imgurl="https://intercity-car-hailing.oss-cn-beijing.aliyuncs.com/xcxfl.jpg">
+                    <view class="left">
+                        <view class="t">法律条款</view>
                     </view>
                     <image class="right" src="../../assets/images/safety_cycle.png" mode="widthFix"></image>
                 </view>
             </view>
         </view>
     </view>
-    <view class="bottom">
-        <image class="img-110" src="../../assets/images/110.png" mode="widthFix"></image>
-    </view>
+    <!--    <view class="bottom">-->
+    <!--        <image class="img-110" src="../../assets/images/110.png" mode="widthFix"></image>-->
+    <!--    </view>-->
 </view>

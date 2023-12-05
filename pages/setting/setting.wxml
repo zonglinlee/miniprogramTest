@@ -78,11 +78,10 @@
                 </view>
                 <text class="arrow szs szs-arrow-right"></text>
             </view>
-            <view class="item" catch:tap="gotoPage" data-url="/pages/imagePage/imagePage"
-                  data-imgUrl="http://s2z4nayoc.hb-bkt.clouddn.com/temp/test.png" data-title="约车规则">
+            <view class="item" catch:tap="gotoPage" data-url="/pages/safety/safety" data-title="安全中心">
                 <view class="l">
                     <image src="../../assets/images/me_setting.png" mode="widthFix" class="icon"></image>
-                    <text class="t">约车规则</text>
+                    <text class="t">安全中心</text>
                 </view>
                 <text class="arrow szs szs-arrow-right"></text>
             </view>
