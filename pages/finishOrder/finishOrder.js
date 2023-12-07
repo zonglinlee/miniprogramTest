@@ -52,8 +52,7 @@ Page({
             const pageContentHeight = navHeight + mapHeight + cardHeight.height
             const {safeArea: {bottom}, screenHeight} = app.globalData.sysInfo
             const safeBottom = screenHeight - bottom
-            // console.log(res)
-            const mvDistance = pageContentHeight > viewPort.height ? pageContentHeight - viewPort.height : 0
+            const mvDistance = pageContentHeight > (viewPort.height-safeBottom) ? pageContentHeight - viewPort.height+safeBottom : 0
             that.setData({
                 // contentHeight: viewPort.height - res[1][0].height - safeBottom,
                 contentHeight: mapHeight,

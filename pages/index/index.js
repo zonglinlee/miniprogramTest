@@ -31,6 +31,7 @@ Page({
         swiperLoaded: false,
         card1Height: 777,
         maHeight: 2000,
+        mapHeight: 0,
         showBg: false,
         hotBtn: [{
             label: '定制班线',
@@ -99,15 +100,20 @@ Page({
             isPc = true
         }
         const query = wx.createSelectorQuery()
-        query.select('.top').boundingClientRect()
         query.select('.card1').boundingClientRect()
+        query.selectAll('.dep').boundingClientRect()
         query.selectViewport().boundingClientRect()
         const that = this
         query.exec(function (res) {
-            const [topSec, card1, viewPort] = res
+            const [card1, deps, viewPort] = res
+            const {safeArea: {bottom}, screenHeight} = app.globalData.sysInfo
+            const safeBottom = screenHeight - bottom
+            const depsHeight = deps.reduce((acc, item) => acc + item.height, 0)
             const ht = card1.height
-            const mvDistance = (ht + topSec.height) > viewPort.height ? (ht + topSec.height) - viewPort.height : 0
+            let mapHeight = viewPort.height - depsHeight
+            const mvDistance = (ht + mapHeight) > (viewPort.height - safeBottom) ? (ht + mapHeight) - viewPort.height + safeBottom : 0
             that.setData({
+                mapHeight,
                 card1Height: ht,
                 maHeight: ht + mvDistance,
                 maTop: mvDistance,

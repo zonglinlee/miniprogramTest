@@ -12,7 +12,8 @@
                 </view>
             </view>
         </view>
-        <map class="map" latitude="{{currentPositionStart.latitude}}" longitude="{{currentPositionStart.longitude}}"
+        <map class="map" style="height:{{mapHeight}}px" latitude="{{currentPositionStart.latitude}}"
+             longitude="{{currentPositionStart.longitude}}"
              polyline="{{polyline}}" bind:tap="getClickPoint" include-points="{{includePoints}}" markers="{{markers}}"
              show-location></map>
         <view class="shield" bind:tap="navigateTo" data-url="/pages/safety/safety">
@@ -29,7 +30,7 @@
                       style="height:{{card1Height}}px" inertia out-of-bounds
                       friction="{{10}}">
             <view class="card1">
-                <view class="middle ch">
+                <view class="middle ch dep">
                     <view class="bg-car-container">
                         <image class="bg-car" mode="widthFix" src="../../assets/images/outer/bg_car.png"></image>
                     </view>
@@ -58,7 +59,7 @@
                         </block>
                     </swiper>
                 </view>
-                <view class="sec items-wrapper ch">
+                <view class="sec items-wrapper ch dep">
                     <view class="items">
                         <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="hotBtnClick"
                               data-item="{{item}}">
