@@ -1,39 +1,60 @@
 <view class="container">
-    <custom-nav class="custom-nav" leftText="石嘴山出行"></custom-nav>
-    <view class="sec sec1">
+    <van-nav-bar
+            fixed
+            title="石嘴山出行"
+            left-arrow
+            class="cutom-nav"
+            bind:click-left="goBack"
+    />
+    <view class="sec sec1" style="margin-top:{{cusNavHeight+12}}px">
         <view class="destination">
             <view class="l">
-                <view class="mark mark-blue"></view>
+                <image class="stop" src="../../assets/images/start_stop.png" mode="widthFix"></image>
                 <view class="dash-line"></view>
-                <view class="mark mark-orange"></view>
+                <image class="stop" src="../../assets/images/end_stop.png" mode="widthFix"></image>
             </view>
             <view class="r">
-                <view class="loc">大武口汽车站</view>
-                <view class="loc">银川河东机场</view>
+                <view class="loc">
+                    <text>大武口汽车站</text>
+                </view>
+                <view class="loc">
+                    <text>银川河东机场</text>
+                </view>
             </view>
         </view>
-        <view class="tip">请在04分37秒内完成订单，超时未支付订单将被取消</view>
-        <view class="time-l">
-            <image class="clock" src="../../assets/images/depart_clock.png" mode="widthFix"></image>
+        <view class="time-l time-l1">
+            <text class="clock szs szs-clock-filling"></text>
             <text class="time">出发时间: 2023-09-13</text>
         </view>
         <view class="time-l">
-            <image class="clock" src="../../assets/images/ali_pay_clock.png" mode="widthFix"></image>
-            <text class="time">出发时间: 2023-09-13</text>
+            <text class="clock szs szs-qichebanci"></text>
+            <text class="time">班次信息: NDGY1230</text>
         </view>
-        <view class="pas">乘客</view>
+        <view class="time-l">
+            <text class="clock szs szs-Home_icon_chepaiquer-copy"></text>
+            <text class="time">车牌号码: 宁AXG145D</text>
+        </view>
+        <view class="time-l">
+            <text class="clock szs szs-daikaifapiao"></text>
+            <text class="time">余票数量: 99 张</text>
+        </view>
+
+
+    </view>
+    <view class="sec sec3">
+        <view class="pas">乘客信息</view>
         <view class="pas-wrapper">
             <block wx:if="{{passengerList.length>0}}">
                 <view class="item" wx:for="{{passengerList}}" wx:key="index">
-
                     <view class="l1">
-                        <view class="circle"/>
+                        <text class="circle szs szs-line-userconfirmation"></text>
                         <view class="name">{{item.name}}</view>
                     </view>
 
                     <view class="l2">
                         手机号：{{item.mobile}}
                     </view>
+                    <text class="delete szs szs-sq-delete" data-item="{{item}}" catch:tap="deletePassenger"></text>
                 </view>
             </block>
             <view class="empty" wx:else>
@@ -42,11 +63,12 @@
 
         </view>
         <view class="add" catch:tap="openPopup">
-            <image class="add-orange" src="../../assets/images/add_orange.png" mode="widthFix"></image>
+            <text class="add-orange szs szs-add"></text>
             <text class="add-txt">添加乘客</text>
         </view>
         <view class="remark-wrapper">
-            <textarea placeholder-style="color:black;font-size:28rpx;" maxlength="{{140}}" show-confirm-bar="{{false}}"
+            <textarea placeholder-style="color:black;font-size:28rpx;" maxlength="{{140}}"
+                      show-confirm-bar="{{false}}"
                       confirm-type="done" cursor-spacing="{{50}}" placeholder="备注"/>
         </view>
     </view>
@@ -57,7 +79,6 @@
         </view>
         <view class="line"></view>
         <view class="bottom">
-            <view class="t">明细</view>
             <view class="gross">
                 <text class="t">合计：</text><text class="red">￥ 75.00</text>
             </view>
@@ -65,5 +86,6 @@
         </view>
     </view>
 
-    <select-passenger  bind:closePopup="getSelectedPassenger" show="{{showPopup}}"></select-passenger>
+    <select-passenger bind:closePopup="getSelectedPassenger" selectedList="{{passengerList}}"
+                      show="{{showPopup}}"></select-passenger>
 </view>

@@ -2,25 +2,41 @@
 
 .container {
 
-  .map {
-    width: 100%;
-    height: 560rpx;
-  }
 
   .content {
     position: relative;
+
+  }
+
+  .map-wrapper {
+    position: relative;
+
+    .map {
+      width: 100%;
+      height: 560rpx;
+    }
+
+    .tip {
+      position: absolute;
+      top: 16rpx;
+      left: 24rpx;
+      right: 24rpx;
+      font-size: 24rpx;
+      background: rgba(141, 141, 141, 0.37);
+      z-index: 1;
+      color: #d81e06;
+      padding: 8rpx 12rpx;
+      border-radius: 24rpx;
+      text-align: center;
+    }
   }
 
   .con {
-    position: absolute;
-    top: 300rpx;
-    left: 0;
-    right: 0;
-    padding-bottom: 60rpx;
+    position: relative;
   }
 
   .sec1 {
-    margin: 22rpx 24rpx 0 24rpx;
+    margin: -10px 24rpx 0 24rpx;
     padding-bottom: 20rpx;
 
     .destination {
@@ -34,7 +50,7 @@
         align-items: center;
         justify-content: space-between;
         width: 22rpx;
-        height: 90rpx;
+        height: 100rpx;
 
         .dash-line {
           width: 22rpx;
@@ -46,18 +62,9 @@
           margin: 2rpx 0;
         }
 
-        .mark {
-          width: 26rpx;
-          height: 26rpx;
-          border-radius: 50%;
-        }
-
-        .mark-blue {
-          background: @blue-bg;
-        }
-
-        .mark-orange {
-          background: #f7a10c;
+        .stop {
+          width: 30rpx;
+          flex-shrink: 0;
         }
       }
 
@@ -66,35 +73,39 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 90rpx;
+        height: 110rpx;
 
         .loc {
-          font-size: @font-32;
+          font-size: @font-34;
         }
       }
     }
 
-    .tip {
-      font-size: @font-26;
-      margin: 30rpx 0 45rpx 42rpx;
-    }
 
     .time-l {
       color: @text-color-gray;
-      padding-left: 42rpx;
+      padding-left: 36rpx;
       display: flex;
       align-items: center;
-      margin-bottom: 34rpx;
+      margin-top: 10rpx;
+      margin-bottom: 10rpx;
+
 
       .time {
-        font-size: @font-28;
+        font-size: @font-30;
       }
 
-      .clock, .tickets {
+      .clock {
         margin-right: 22rpx;
         width: 30rpx;
+        font-size: 30rpx;
+        color: @blue-bg;
       }
 
+    }
+
+    .time-l1 {
+      margin-top: 24rpx;
     }
   }
 
@@ -138,7 +149,8 @@
   }
 
   .btn-group {
-    margin-top: 60rpx;
+    padding-top: 40rpx;
+    padding-bottom: 10rpx;
     display: flex;
     align-items: center;
     justify-content: space-around;

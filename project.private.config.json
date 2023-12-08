@@ -9,6 +9,41 @@
     "miniprogram": {
       "list": [
         {
+          "name": "",
+          "pathName": "pages/orderDetail/orderDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/confirmPay/confirmPay",
+          "pathName": "pages/confirmPay/confirmPay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/confirmOrder/confirmOrder",
+          "pathName": "pages/confirmOrder/confirmOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "dedicatedLine",
+          "pathName": "pages/dedicatedLine/dedicatedLine",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "lineSchedule",
+          "pathName": "pages/lineSchedule/lineSchedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "评价成功",
           "pathName": "pages/evaluateSuccess/evaluateSuccess",
           "query": "",

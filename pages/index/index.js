@@ -138,15 +138,6 @@ Page({
         }
     },
 
-    async moveCard(e) {
-        const res = await app.computeRec('.mv')
-        this.setData({
-            mvOffsetTop: res[0].top,
-            showBg: res[0].top <= 60
-        })
-    },
-    moveCardV(e) {
-    },
     hotBtnClick(e) {
         let item = e.currentTarget.dataset.item
         const {imgUrl, pageUrl, label, isTabPage} = item

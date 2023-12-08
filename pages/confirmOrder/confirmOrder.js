@@ -3,10 +3,13 @@ Page({
     data: {
         showPopup: false,
         agreement: true,
-        passengerList: []
+        passengerList: [],
+        cusNavHeight: 0,
     },
     onLoad: function (options) {
-
+        this.setData({
+            cusNavHeight: app.globalData.cusNavHeight
+        })
     },
     openPopup() {
         this.setData({
@@ -24,8 +27,15 @@ Page({
             passengerList: selectedPassenger
         })
     },
-    toggleAgreement(){
+    toggleAgreement() {
         const agreement = !this.data.agreement
         this.setData({agreement})
+    },
+    deletePassenger(e) {
+        const item = e.currentTarget.dataset.item
+        const passengerList = this.data.passengerList.filter(_item => item.idCard !== _item.idCard)
+        this.setData({
+            passengerList
+        })
     }
 });

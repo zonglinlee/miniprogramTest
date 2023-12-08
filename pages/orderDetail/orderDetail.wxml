@@ -1,23 +1,43 @@
 <view class="container">
-    <custom-nav class="custom-nav" leftText="石嘴山出行"></custom-nav>
-    <view class="sec sec1">
+    <van-nav-bar
+            fixed
+            title="石嘴山出行"
+            left-arrow
+            class="cutom-nav"
+            bind:click-left="goBack"
+    />
+    <view class="sec sec1" style="margin-top:{{cusNavHeight}}px">
+        <view class="destination">
+            <view class="l">
+                <image class="stop" src="../../assets/images/start_stop.png" mode="widthFix"></image>
+                <view class="dash-line"></view>
+                <image class="stop" src="../../assets/images/end_stop.png" mode="widthFix"></image>
+            </view>
+            <view class="r">
+                <view class="loc">
+                    <text>大武口汽车站</text>
+                </view>
+                <view class="loc">
+                    <text>银川河东机场</text>
+                </view>
+            </view>
+        </view>
         <view class="item">
-            <image class="img-clock img" mode="widthFix" src="../../assets/images/depart_clock.png"></image>
+            <text class="clock szs szs-clock-filling"></text>
             <text class="t1">出发时间: 2023-09-13 11：30</text>
         </view>
-        <view class="des">大武口汽车站</view>
-        <view class="des">银川河东机场</view>
+
         <view class="item">
-            <image class="img" mode="widthFix" src="../../assets/images/passenger_orange.png"></image>
+            <text class="clock szs szs-chuhangrenyuan"></text>
             <text class="t1">成人票1张、儿童票0张、行程价格:33元</text>
         </view>
         <view class="item">
-            <image class="img-clock img" mode="widthFix" src="../../assets/images/license.png"></image>
-            <text class="t1">车牌号: 宁A1111 </text>
+            <text class="clock szs szs-Home_icon_chepaiquer-copy"></text>
+            <text class="t1">车牌号码: 宁A1111 </text>
         </view>
         <view class="item">
-            <image class="img-clock img" mode="widthFix" src="../../assets/images/wechat.png"></image>
-            <text class="t1">打发打发反对法士大夫</text>
+            <text class="clock szs szs-qichebanci"></text>
+            <text class="t1">班次信息: NDGY1230</text>
         </view>
 
     </view>
@@ -36,7 +56,8 @@
 
         <view class="l1">
             <text class="t">亲，请在上车后向司机出检票码完成上车检票</text>
-            <image class="qr-img" mode="widthFix" src="http://s56kfc63a.hn-bkt.clouddn.com/outer/quick_response_code.png"></image>
+            <image class="qr-img" mode="widthFix"
+                   src="http://s56kfc63a.hn-bkt.clouddn.com/outer/quick_response_code.png"></image>
         </view>
 
     </view>

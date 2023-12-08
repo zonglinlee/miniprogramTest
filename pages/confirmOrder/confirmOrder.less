@@ -1,11 +1,8 @@
 @import "assets/css/common";
 
 .container {
-  padding-bottom: 50rpx;
-
   .sec1 {
     margin: 22rpx 24rpx 0 24rpx;
-    min-height: 754rpx;
     padding-bottom: 20rpx;
 
     .destination {
@@ -13,13 +10,14 @@
       align-items: center;
       padding: 42rpx 0 0 36rpx;
 
+
       .l {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 22rpx;
-        height: 90rpx;
+        width: 30rpx;
+        height: 100rpx;
 
         .dash-line {
           width: 22rpx;
@@ -31,18 +29,9 @@
           margin: 2rpx 0;
         }
 
-        .mark {
-          width: 26rpx;
-          height: 26rpx;
-          border-radius: 50%;
-        }
-
-        .mark-blue {
-          background: @blue-bg;
-        }
-
-        .mark-orange {
-          background: #f7a10c;
+        .stop {
+          width: 30rpx;
+          flex-shrink: 0;
         }
       }
 
@@ -51,10 +40,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 90rpx;
+        height: 110rpx;
 
         .loc {
-          font-size: @font-32;
+          font-size: @font-34;
         }
       }
     }
@@ -64,28 +53,46 @@
       margin: 30rpx 0 45rpx 42rpx;
     }
 
+
     .time-l {
       color: @text-color-gray;
-      padding-left: 42rpx;
+      padding-left: 36rpx;
       display: flex;
       align-items: center;
-      margin-bottom: 34rpx;
+      margin-top: 12rpx;
+      margin-bottom: 12rpx;
+
 
       .time {
-        font-size: @font-28;
+        font-size: @font-30;
       }
 
       .clock {
         margin-right: 22rpx;
         width: 30rpx;
+        font-size: 30rpx;
+        color: @blue-bg;
       }
 
     }
 
+    .time-l1 {
+      margin-top: 24rpx;
+    }
+
+
+  }
+
+  .sec3 {
+    padding: 20rpx 0;
+    margin-top: 20rpx;
+
     .pas {
-      padding-left: 42rpx;
-      margin-bottom: 16rpx;
-      font-size: @font-28;
+      padding-left: 36rpx;
+      padding-right: 36rpx;
+      font-weight: bold;
+      margin: 20rpx 0;
+      font-size: @font-32;
     }
 
     .pas-wrapper {
@@ -104,6 +111,7 @@
       .item {
         border-bottom: 1rpx solid @border-gray;
         padding-top: 20rpx;
+        position: relative;
 
         .l1 {
           display: flex;
@@ -111,10 +119,8 @@
           margin-bottom: 12rpx;
 
           .circle {
-            width: 24rpx;
-            height: 24rpx;
-            border: 1px solid #71dfbb;
-            border-radius: 50%;
+            font-size: 36rpx;
+            color: #71dfbb;
             margin-right: 12rpx;
           }
 
@@ -129,18 +135,29 @@
           color: @text-color-gray;
           margin-bottom: 16rpx;
         }
+
+        .delete {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          font-size: 46rpx;
+          color: rgb(252, 146, 35);
+        }
       }
     }
 
     .add {
-      padding-left: 60rpx;
+      padding-left: 36rpx;
       display: flex;
       align-items: center;
       margin: 26rpx 0;
 
       .add-orange {
-        width: 36rpx;
+        font-size: 46rpx;
+        color: rgb(252, 146, 35);
         margin-right: 12rpx;
+
       }
 
       .add-txt {
@@ -166,7 +183,7 @@
   .sec2 {
     margin-top: 22rpx;
     padding: 40rpx;
-    height: 260rpx;
+    height: 240rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -193,7 +210,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .t{
+
+      .t {
         font-size: @font-30;
       }
 
@@ -201,6 +219,7 @@
         .red {
           color: red;
           font-size: @font-36;
+          font-weight: bold;
         }
       }
 

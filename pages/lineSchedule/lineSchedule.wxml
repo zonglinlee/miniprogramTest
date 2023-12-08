@@ -1,6 +1,6 @@
 <view class="container">
     <view class="nav c-height">
-        <image class="back" src="../../assets/images/back_gray.png" mode="widthFix" bind:tap="goBack"></image>
+        <text class="nav-back szs szs-arrow1-left" bind:tap="goBack"></text>
         <text class="nav-title">大武口-银川</text>
     </view>
     <view class="days c-height">

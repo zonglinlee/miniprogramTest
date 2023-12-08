@@ -6,6 +6,62 @@
   "description": "石嘴山出行,内蒙（包头）用，微信小程序，https://juejin.cn/post/7165458111283593247",
   "glyphs": [
     {
+      "icon_id": "1350506",
+      "name": "sq-delete",
+      "font_class": "sq-delete",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "24242668",
+      "name": "出行人员",
+      "font_class": "chuhangrenyuan",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "15811209",
+      "name": "line-user confirmation",
+      "font_class": "line-userconfirmation",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "151331",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "2419832",
+      "name": "汽车班次",
+      "font_class": "qichebanci",
+      "unicode": "e8e2",
+      "unicode_decimal": 59618
+    },
+    {
+      "icon_id": "10017427",
+      "name": "车牌确认",
+      "font_class": "Home_icon_chepaiquer-copy",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "23226996",
+      "name": "代开发票",
+      "font_class": "daikaifapiao",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "484483",
+      "name": "arrow1L",
+      "font_class": "arrow1-left",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
       "icon_id": "2832365",
       "name": "查看",
       "font_class": "chakan",

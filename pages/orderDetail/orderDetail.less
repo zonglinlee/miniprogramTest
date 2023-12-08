@@ -1,6 +1,50 @@
 @import "assets/css/common";
 
 .container {
+  padding-top: 16rpx;
+
+  .destination {
+    display: flex;
+    align-items: center;
+
+    .l {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 30rpx;
+      height: 100rpx;
+      flex-shrink: 0;
+
+      .dash-line {
+        width: 22rpx;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAALCAYAAAC6ezfSAAAACXBIWXMAAAuJAAALiQE3ycutAAAANElEQVQImWP8//8/AwywHDtxWpqBgaGOgYHhDgsDA4MQAwNDGgMDwxEmBiRAMYcR2VIUGQBU0gsdg3ZW9QAAAABJRU5ErkJggg==');
+        background-repeat: repeat-y;
+        background-position: top center;
+        background-size: 3rpx 11rpx;
+        flex-grow: 1;
+        margin: 2rpx 0;
+      }
+
+      .stop {
+        width: 30rpx;
+        flex-shrink: 0;
+      }
+    }
+
+    .r {
+      margin-left: 24rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 110rpx;
+
+      .loc {
+        font-size: @font-34;
+      }
+    }
+  }
+
   .sec1 {
     margin-top: 22rpx;
     margin-bottom: 22rpx;
@@ -14,15 +58,18 @@
       color: @text-color-gray;
       font-size: @font-26;
 
-      .img {
-        margin-right: 16rpx;
-        width: 32rpx;
-      }
-    }
+      .t1 {
+        font-size: @font-30;
 
-    .des {
-      font-size: @font-30;
-      margin: 26rpx 0;
+      }
+
+      .clock {
+        margin-right: 16rpx;
+        width: 30rpx;
+        flex-shrink: 0;
+        font-size: 32rpx;
+        color: @blue-bg;
+      }
     }
   }
 
@@ -31,7 +78,7 @@
     margin-bottom: 22rpx;
 
     .title {
-      font-size: @font-32;
+      font-size: @font-34;
     }
 
     .success-wrapper {
@@ -70,7 +117,7 @@
     padding: 16rpx 30rpx;
 
     .title {
-      font-size: @font-32;
+      font-size: @font-34;
     }
 
     .l1 {

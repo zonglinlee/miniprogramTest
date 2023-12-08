@@ -4,12 +4,12 @@
             <view class="title">请确认乘车人</view>
             <view class="sub-title">温馨提示:儿童票需1.2米以下才能购买，若有携带婴儿也需计入乘客人数。</view>
 
-
             <view class="people">
                 <scroll-view scroll-y="true" style="height: 380rpx;" show-scrollbar="{{false}}" enhanced="{{true}}">
                     <view class="item" wx:for="{{passengerList}}" wx:key="index">
                         <view class="left">
-                            <view class="l" catch:tap="selectPassenger" data-passenger="{{item}}" data-index="{{index}}">
+                            <view class="l" catch:tap="selectPassenger" data-passenger="{{item}}"
+                                  data-index="{{index}}">
                                 <radio checked="{{selectedPassenger[index]}}" color="#1a87f6"/>
                             </view>
 
@@ -23,7 +23,7 @@
 
                         </view>
                         <view class="right">
-                            <image class="edit" src="../../assets/images/edit.png" mode="widthFix"></image>
+                            <text class="edit szs szs-edit"></text>
                         </view>
                     </view>
                 </scroll-view>
@@ -31,19 +31,17 @@
 
             <view class="btn-group">
                 <view class="add-btn" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
-                    <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
+                    <text class="add-blue szs szs-add"></text>
                     <view class="add-text">添加乘客</view>
                 </view>
                 <view class="add-btn" catch:tap="gotoPage" data-url="/pages/addPassenger/addPassenger">
-                    <image class="add-blue" src="../../assets/images/add_blue.png" mode="widthFix"></image>
+                    <text class="add-blue szs szs-add"></text>
                     <view class="add-text">添加儿童票</view>
                 </view>
             </view>
 
             <button class="confirm-btn" type="primary" catch:tap="confirmSelect">确定</button>
             <!--            <van-button type="info">信息按钮</van-button>-->
-
-
             <slot></slot>
         </view>
     </van-popup>

@@ -1,27 +1,33 @@
 <view class="container">
-
     <view class="top">
-        <image class="back" src="../../assets/images/back_white.png" mode="widthFix" bind:tap="goBack"></image>
+        <text class="nav-back szs szs-arrow1-left" bind:tap="goBack"></text>
         <view class="tab">定制班线</view>
         <view class="box">
-            <view class="content-wrapper">
-                <view class="item" wx:for="{{lines}}" wx:key="index">
-                    <view class="l1">
-                        <view class="loc">{{item.from}}</view>
-                        <image class="img" src="../../assets/images/arrow_right.png" mode="widthFix"></image>
-                        <view class="loc">{{item.to}}</view>
-                    </view>
-                    <view class="l2">
-                        <text>出发时间 : {{item.departureTime}} </text>
-                    </view>
-                    <view class="l3">
-                        <view class="m">
-                            <text class="red">￥ {{item.price}}</text>
+            <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px"
+                         show-scrollbar="{{false}}" lower-threshold="{{50}}"
+                         enhanced="{{true}}">
+                <view class="content-wrapper">
+                    <view class="item" wx:for="{{lines}}" wx:key="index">
+                        <view class="l0">{{item.label}} [{{item.No}}]</view>
+                        <view class="l1">
+                            <view class="loc">{{item.from}}</view>
+                            <image class="img" src="../../assets/images/arrow_right.png" mode="widthFix"></image>
+                            <view class="loc">{{item.to}}</view>
                         </view>
-                        <view class="btn" bind:tap="gotoPage" data-item="{{item}}" data-url="/pages/lineSchedule/lineSchedule">进入</view>
+                        <view class="l2">
+                            <text class="tag">{{item.type}} </text>
+                        </view>
+                        <view class="l3">
+                            <view class="m">
+                                <text class="red">￥ {{item.price}}</text>
+                            </view>
+                            <view class="btn" bind:tap="gotoPage" data-item="{{item}}"
+                                  data-url="/pages/lineSchedule/lineSchedule">进入
+                            </view>
+                        </view>
                     </view>
                 </view>
-            </view>
+            </scroll-view>
         </view>
     </view>
 </view>
