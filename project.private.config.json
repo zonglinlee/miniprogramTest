@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/busStop/busStop",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/orderDetail/orderDetail",
           "query": "",
           "launchMode": "default",

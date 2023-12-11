@@ -16,7 +16,7 @@
     align-items: center;
 
     .nav-back {
-      font-size: 34rpx;
+      font-size: 30rpx;
       padding: 0 10rpx;
     }
 
@@ -68,7 +68,9 @@
     align-items: center;
     flex-direction: column;
 
-    .s-wrapper {}
+    .s-wrapper {
+      //background: #ffffff;
+    }
 
     .item {
       box-sizing: border-box;
@@ -144,6 +146,27 @@
         justify-content: space-between;
         color: @text-color-gray;
       }
+    }
+  }
+
+  .empty-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 160rpx;
+    background: #ffffff;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 16rpx;
+
+    .empty-icon {
+      font-size: 94rpx;
+    }
+
+    .t {
+      font-size: @font-28;
+      margin-top: 20rpx;
+      color: @text-color-gray;
     }
   }
 }

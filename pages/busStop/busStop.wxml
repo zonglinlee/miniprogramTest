@@ -57,8 +57,15 @@
         </view>
     </view>
     <view class="btn-wrapper" style="bottom:{{safeBottom}}px">
-        <view class="btn" wx:if="{{showStop1}}" catch:tap="confirmStop1">确认上车点</view>
-        <view class="btn" wx:else catch:tap="gotoPage" data-url="/pages/confirmOrder/confirmOrder">确认下车点</view>
+        <block wx:if="{{showStop1}}">
+            <view class="btn" catch:tap="confirmStop1">确认上车点</view>
+        </block>
+        <block wx:else>
+            <view class="btn-group1">
+                <view class="btn btn-back" catch:tap="pickStop1">选择上车点</view>
+                <view class="btn" catch:tap="gotoPage" data-url="/pages/confirmOrder/confirmOrder">确认下车点</view>
+            </view>
+        </block>
     </view>
     <van-popup show="{{ show }}" bind:close="onClose" position="right" safe-area-tab-bar="{{false}}">
         <view style="width:750rpx">
