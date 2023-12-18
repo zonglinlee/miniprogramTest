@@ -57,7 +57,8 @@
 
 
         <view class="btn-wrapper">
-            <view class="btn btn-back" catch:tap="showReservationPopup">立即预约</view>
+            <!--            <view class="btn btn-back" catch:tap="showReservationPopup">立即预约</view>-->
+            <button type="primary" style="width:90%" catch:tap="showReservationPopup">立即预约</button>
         </view>
 
     </view>
@@ -67,6 +68,13 @@
                safe-area-tab-bar="{{false}}">
         <view>
             <cus-time-picker bind:confirm="getTimeRange"></cus-time-picker>
+        </view>
+    </van-popup>
+    <van-popup show="{{ confirmSubmit }}" bind:close="hideConfirm" close-on-click-overlay round="{{true}}"
+               position="bottom"
+               safe-area-tab-bar="{{false}}">
+        <view>
+            <cus-confirm-order orderInfo="{{orderInfo}}" bind:confirm="doSubmit"></cus-confirm-order>
         </view>
     </van-popup>
     <select-passenger bind:closePopup="getSelectedPassenger" selectedList="{{orderInfo.passengerList}}"

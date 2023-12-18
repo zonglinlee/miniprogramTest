@@ -20,9 +20,12 @@ Page({
             },
             departTime: '出行时间',
             passengerList: [],
+            price1: 33,
+            price2: 66,
         },
         reservationPopup: false,
         showPassengerPopup: true,
+        confirmSubmit: false,
         mapCenter: {
             latitude: 38.492019,
             longitude: 106.174037,
@@ -129,13 +132,23 @@ Page({
             return
         }
         this.setData(
-            {reservationPopup: true}
+            {confirmSubmit: true}
         )
     },
     hideReservationPopup() {
         this.setData(
             {reservationPopup: false}
         )
+    },
+    hideConfirm() {
+        this.setData(
+            {confirmSubmit: false}
+        )
+    },
+    doSubmit(e) {
+        const {checkTransportation, transferDepartureTime, check1, check2} = e.detail
+        this.setData({confirmSubmit: false})
+        // dosubmit
     },
     getTimeRange(e) {
         console.log(e)

@@ -1,0 +1,106 @@
+<view class="wrapper">
+    <view class="header">
+        <view class="t1" catch:tap="showTipDialog">
+            <text class="ellipsis">温馨提示：1.安全第一，驾驶员、车辆发出车站前严格进行安全检车</text>
+            <text class="szs szs-arrow-right orange"></text>
+        </view>
+    </view>
+
+    <view class="card">
+        <view class="item {{check1 ? 'item-selected' : ''}}" catch:tap="checkPrice1">
+            <view class="left">
+                <view class="top">拼车</view>
+                <view class="bottom">专职司机，上门接送，安全便利</view>
+            </view>
+            <view class="right">
+                <text class="question-mark szs szs-wenhao"></text>
+                <text class="t1">一口价</text>
+                <text class="t1 orange">{{orderInfo.price1}} 元</text>
+                <radio class="radio" color="#2d93ff" checked="{{check1}}"/>
+            </view>
+        </view>
+
+        <view class="item item2 {{check2 ? 'item-selected' : ''}}" catch:tap="checkPrice2">
+            <view class="left">
+                <view class="top">包车</view>
+                <view class="bottom">专职司机，上门接送，安全便利</view>
+            </view>
+            <view class="right">
+                <text class="question-mark szs szs-wenhao"></text>
+                <text class="t1">一口价</text>
+                <text class="t1 orange">{{orderInfo.price2}} 元</text>
+                <radio class="radio" color="#2d93ff" checked="{{check2}}"/>
+            </view>
+        </view>
+
+    </view>
+    <view class="btn-wrapper">
+        <!--        <view class="btn btn-back" catch:tap="confirmSelect">确定预约</view>-->
+        <button type="primary" catch:tap="confirmSelect">确定预约</button>
+    </view>
+
+    <van-popup show="{{ showTip }}" bind:close="onCloseTip" round closeable>
+        <view class="tip-wrapper">
+            <view class="title">温馨提示</view>
+            <view class="row">1.安全第一，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车</view>
+            <view class="row">1.安全第一，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车</view>
+            <view class="row">1.安全第一，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车</view>
+            <view class="row">1.安全第一，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车，驾驶员、车辆发出车站前严格进行安全检车</view>
+            <view class="btn-wrapper">
+                <view class="btn btn-back btn1" catch:tap="goPage">约车规则</view>
+            </view>
+        </view>
+    </van-popup>
+
+    <van-popup show="{{ showTransferInfo }}" bind:close="onCloseTransfer" round closeable>
+        <view class="transfer-wrapper">
+            <view class="title">温馨提示</view>
+            <view class="row row1">尊敬的用户您好，您的目的地为<text class="orange">{{orderInfo.end.name}}</text>,为了方便您用车，请将行程信息备注在司机留言栏中。
+            </view>
+            <view class="row row2">请选择您是否要去乘坐{{transportation}}</view>
+            <view class="item">
+                <view class="select-radio" catch:tap="tapCheckTransportation" data-check="1">
+                    <view class="t">是，需要乘坐</view>
+                    <view class="radio">
+                        <radio class="radio" color="#2d93ff" checked="{{checkTransportation}}"/>
+                    </view>
+                </view>
+                <view class="select-radio" catch:tap="tapCheckTransportation" data-check="0">
+                    <view class="t">否，不需要乘坐</view>
+                    <view class="radio">
+                        <radio class="radio" color="#2d93ff" checked="{{!checkTransportation}}"/>
+                    </view>
+                </view>
+            </view>
+            <view class="info-sec" wx:if="{{checkTransportation}}">
+                <view class="row row11">
+                    <view class="t1">{{transportation}}出发时间：</view>
+                    <view class="t2" catch:tap="onShowTimePicker">请选择出发时间</view>
+                </view>
+                <view class="row">
+                    <view class="t1" style="align-self:flex-start">相关信息留言：</view>
+                    <textarea class="textarea" placeholder-style="color:#ccc;font-size:30rpx;" confirm-type="done"
+                              cursor-spacing="{{50}}"
+                              maxlength="{{200}}"/>
+                </view>
+            </view>
+
+            <view class="btn-wrapper">
+                <!--                <view class="btn btn-back btn1" catch:tap="submit">确定提交</view>-->
+                <button type="primary" catch:tap="submit">确定提交</button>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ showTimePicker }}" bind:close="onCloseTimePicker" close-on-click-overlay="{{false}}"
+               round="{{false}}"
+               position="bottom"
+               safe-area-tab-bar="{{false}}">
+        <van-datetime-picker
+                type="time"
+                bind:cancel="onCloseTimePicker"
+                bind:confirm="getTimeFormPicker"
+        />
+    </van-popup>
+    <van-toast id="van-toast1" class="page-toast" style="--toast-max-width: 85%;"/>
+</view>
+

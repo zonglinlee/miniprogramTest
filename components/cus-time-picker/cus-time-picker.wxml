@@ -15,7 +15,7 @@
     <view class="divider">
         <view class="slider" style="transform:{{sliderSlide}};"></view>
     </view>
-    <scroll-view class="list-wrapper" scroll-y="true" style="height:240px" show-scrollbar="{{false}}"
+    <scroll-view class="list-wrapper" scroll-y="true" style="height:300px" show-scrollbar="{{false}}"
                  scrollTop="{{scrollTop}}"
                  enhanced="{{true}}">
         <block wx:for="{{days}}" wx:key="numIndex" wx:for-item="num" wx:for-index="numIndex">
@@ -39,7 +39,8 @@
 
     </scroll-view>
     <view class="btn-wrapper">
-        <view class="btn btn-back" catch:tap="confirmSelect">确定</view>
+        <!--        <view class="btn btn-back" catch:tap="confirmSelect">确定</view>-->
+        <button type="primary" catch:tap="confirmSelect">确定</button>
     </view>
 </view>
 

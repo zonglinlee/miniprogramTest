@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "cus-time-picker": "../../components/cus-time-picker/cus-time-picker",
+    "cus-confirm-order": "../../components/cus-confirm-order/cus-confirm-order",
     "select-passenger": "../../components/select-passenger/select-passenger"
   },
   "navigationStyle": "custom"

@@ -1,0 +1,205 @@
+@import "assets/css/common";
+@import "../../assets/icon-font/iconfont.wxss";
+
+.wrapper {
+  margin: 24rpx;
+
+  .header {
+    border-bottom: solid 1rpx @border-gray;
+
+    .t1 {
+      font-size: @font-26;
+      color: @text-color-orange;
+      margin-bottom: 24rpx;
+      display: flex;
+      align-items: center;
+
+      .ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .szs-arrow-right {
+        width: fit-content;
+        flex-shrink: 0;
+        margin-left: 6rpx;
+        font-size: 24rpx;
+      }
+    }
+  }
+
+  .card {
+
+    padding-top: 30rpx;
+
+    .item {
+      //background: #background: rgb(241, 245, 249);;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 12rpx;
+      padding: 12rpx 16rpx;
+      transition: .15s;
+    }
+
+    .item-selected {
+      background: rgb(241, 245, 249);
+    }
+
+    .item2 {
+      margin-top: 24rpx;
+      margin-bottom: 30rpx;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .top {
+        color: black;
+        font-size: @font-32;
+        margin-bottom: 10rpx;
+      }
+
+      .bottom {
+        font-size: 24rpx;
+        color: @text-color-gray;
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .question-mark {
+        font-size: @font-30;
+        margin-right: 10rpx;
+      }
+
+      .t1 {
+        font-size: @font-28;
+        margin: 0 8rpx;
+      }
+
+      .radio {
+        margin-left: 10rpx;
+      }
+    }
+  }
+
+
+  .btn-wrapper {
+    padding: 20rpx 0 0 0;
+  }
+
+  .btn {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: @font-32;
+    font-weight: bold;
+    background: @blue-bg;
+    color: white;
+    border-radius: 6rpx;
+  }
+
+  .btn1 {
+    width: 50%;
+  }
+
+  .tip-wrapper {
+    width: 90vw;
+    box-sizing: border-box;
+    padding: 24rpx 36rpx;
+
+    .title {
+      text-align: center;
+      font-size: @font-34;
+      font-weight: bold;
+      margin-bottom: 16rpx;
+    }
+
+    .row {
+      font-size: @font-28;
+      font-weight: bold;
+      line-height: 1.8;
+      margin-bottom: 10rpx;
+    }
+  }
+
+  .transfer-wrapper {
+    width: 90vw;
+    //min-height: 350px;
+    box-sizing: border-box;
+    padding: 24rpx 36rpx;
+
+    .title {
+      font-size: @font-34;
+      font-weight: bold;
+      margin-bottom: 16rpx;
+    }
+
+    .row {
+      font-size: @font-30;
+      color: @text-color-gray;
+    }
+
+    .row1 {
+      border-bottom: 1rpx solid @border-gray;
+      margin-bottom: 24rpx;
+      padding-bottom: 24rpx;
+    }
+
+    .row2 {
+      margin-bottom: 12rpx;
+    }
+
+    .item {
+      margin-bottom: 20rpx;
+
+      .select-radio {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10rpx;
+
+        .t {
+          font-size: @font-30;
+        }
+      }
+    }
+
+    .info-sec {
+      .row11 {
+        margin-bottom: 12rpx;
+      }
+
+      .row {
+        font-size: @font-30;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .t1 {
+          margin-right: 16rpx;
+          width: fit-content;
+          flex-shrink: 0;
+        }
+
+        .t2 {
+          color: @text-color-gray;
+        }
+
+        .textarea {
+          height: 100rpx;
+        }
+      }
+    }
+
+  }
+}
