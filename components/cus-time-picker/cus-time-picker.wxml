@@ -1,0 +1,45 @@
+<wxs src="./cus-time-picker.wxs" module="tools"/>
+<view class="wrapper">
+    <view class="header">
+        <view class="t1">请确认出发时间</view>
+        <view class="t2">在所选出发时间段内，司机接上您</view>
+    </view>
+
+    <view class="days">
+        <view class="item" wx:key="index" wx:for="{{days}}" bind:tap="changeDay" data-day="{{item}}"
+              data-index="{{index}}">
+            <view class="label {{index==dayIndex ? 'selected' : ''}}">{{item.label}}</view>
+            <view class="date {{index==dayIndex ? 'selected' : ''}}">{{item.date}}</view>
+        </view>
+    </view>
+    <view class="divider">
+        <view class="slider" style="transform:{{sliderSlide}};"></view>
+    </view>
+    <scroll-view class="list-wrapper" scroll-y="true" style="height:240px" show-scrollbar="{{false}}"
+                 scrollTop="{{scrollTop}}"
+                 enhanced="{{true}}">
+        <block wx:for="{{days}}" wx:key="numIndex" wx:for-item="num" wx:for-index="numIndex">
+            <view class="times" wx:if="{{dayIndex===numIndex}}">
+                <view class="item" wx:for="{{timeRanges}}" wx:key="index" catch:tap="selectTimeRange"
+                      data-time="{{item}}" data-index="{{index}}">
+                    <view class="left">
+                        <view class="time">{{item}}</view>
+                        <view class="tags">
+                            <view class="tag">拼车有座</view>
+                            <view class="tag">包车有座</view>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <radio color="#2d93ff"
+                               checked="{{timeRange===item && num.date===currentSelectDate && timeRangeIndex===numIndex}}"/>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </scroll-view>
+    <view class="btn-wrapper">
+        <view class="btn btn-back" catch:tap="confirmSelect">确定</view>
+    </view>
+</view>
+

@@ -1,0 +1,130 @@
+@import "assets/css/common";
+
+.divider {
+  height: 16rpx;
+}
+
+.top {
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+}
+
+.sec1 {
+  padding: 16rpx 24rpx;
+  margin-bottom: 16rpx;
+
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .r1 {
+        display: flex;
+        align-items: center;
+        padding: 6rpx 0;
+
+        .icon-c1 {
+          font-size: 28rpx;
+          //color: rgb(160, 164, 185);
+          margin-right: 16rpx;
+        }
+
+        .szs-qidian {
+          color: green;
+        }
+
+        .szs-zhongdian1 {
+          color: red;
+        }
+
+        .t1 {
+          font-size: @font-34;
+        }
+      }
+    }
+
+    .right {
+      .icon-c1 {
+        font-size: 36rpx;
+        color: #ffffff;
+        padding: 6rpx;
+        background: @blue-bg;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.sec2 {
+  padding: 26rpx 24rpx;
+
+  .card {
+    .row1 {
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+        width: 49%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: 16rpx 12rpx;
+        background: rgb(241, 245, 249);
+        border-radius: 12rpx;
+
+
+        .icon-c1 {
+          font-size: 28rpx;
+          //color: rgb(160, 164, 185);
+          color: @blue-bg;
+          margin-right: 12rpx;
+        }
+
+        .t2 {
+          font-size: @font-30;
+        }
+      }
+
+      .item-left {
+        width: 39%;
+      }
+
+      .item-right {
+        width: 59%;
+      }
+
+      .item2 {
+        width: 100%;
+        margin-top: 24rpx;
+      }
+    }
+
+  }
+}
+
+.map {
+  width: 100%;
+}
+
+.btn-wrapper {
+  padding: 12rpx 0 2rpx 0;
+}
+
+.btn {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: @font-32;
+  font-weight: bold;
+  background: @blue-bg;
+  color: white;
+  border-radius: 6rpx;
+}

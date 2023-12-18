@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cus-time-picker": "../../components/cus-time-picker/cus-time-picker",
+    "select-passenger": "../../components/select-passenger/select-passenger"
+  },
+  "navigationStyle": "custom"
+}

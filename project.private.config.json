@@ -10,6 +10,20 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/reserveDriver/reserveDriver",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "confirmPay2",
+          "pathName": "pages/confirmPay2/confirmPay2",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/busStop/busStop",
           "query": "",
           "launchMode": "default",

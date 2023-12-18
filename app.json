@@ -31,7 +31,9 @@
     "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
     "pages/invoice/invoiceOrder/invoiceOrder",
     "pages/carHistory/carHistory",
-    "pages/evaluateSuccess/evaluateSuccess"
+    "pages/evaluateSuccess/evaluateSuccess",
+    "pages/reserveDriver/reserveDriver",
+    "pages/confirmPay2/confirmPay2"
   ],
   "window": {
     "backgroundTextStyle": "light",

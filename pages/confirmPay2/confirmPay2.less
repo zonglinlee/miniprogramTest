@@ -1,0 +1,167 @@
+@import "assets/css/common";
+
+.container {
+
+
+  .content {
+    position: relative;
+  }
+
+  .tip {
+    //position: absolute;
+    //top: 16rpx;
+    //left: 24rpx;
+    //right: 24rpx;
+    font-size: 26rpx;
+    background: rgba(141, 141, 141, 0.37);
+    z-index: 1;
+    background: #d81e06;
+    color: #ffffff;
+    margin: 0 24rpx 0 24rpx;
+    padding: 8rpx 12rpx;
+    border-radius: 24rpx;
+    text-align: center;
+  }
+
+  .map-wrapper {
+    position: relative;
+    margin: 0 24rpx 0 24rpx;
+    padding-top: 12rpx;
+    height: 150px;
+    box-sizing: border-box;
+
+    .map {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .con {
+    position: relative;
+  }
+
+  .card {
+    padding-top: 6rpx;
+    box-sizing: border-box;
+  }
+
+  .sec1 {
+    margin: 10rpx 24rpx 16rpx 24rpx;
+    padding-bottom: 20rpx;
+
+
+    .time-l {
+      color: @text-color-gray;
+      padding-left: 36rpx;
+      padding-right: 36rpx;
+      display: flex;
+      align-items: center;
+      margin-top: 10rpx;
+      margin-bottom: 10rpx;
+
+
+      .time {
+        font-size: @font-30;
+      }
+
+
+      .clock {
+        margin-right: 22rpx;
+        width: 30rpx;
+        font-size: 30rpx;
+        color: @blue-bg;
+      }
+
+      .szs-qidian {
+        color: green;
+      }
+
+      .szs-zhongdian1 {
+        color: red;
+      }
+
+      .szs-daikaifapiao {
+        color: orangered;
+      }
+
+      .des {
+        //font-size: @font-34;
+      }
+    }
+
+    .time-l1 {
+      //margin-top: 24rpx;
+      padding-top: 24rpx;
+    }
+  }
+
+  .sec2 {
+    margin: 22rpx 24rpx 0 24rpx;
+    padding: 36rpx;
+    padding-bottom: 12rpx;
+
+    .title {
+      font-size: @font-34;
+      margin-bottom: 22rpx;
+    }
+
+    .l {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 28rpx;
+
+      .left {
+        color: @text-color-gray;
+        font-size: @font-30;
+      }
+
+      .right {
+        color: @text-color-gray;
+        font-size: @font-30;
+
+        .orange {
+          color: @text-color-orange;
+        }
+
+        .t,.szs-arrow-right {
+          font-size: @font-30;
+        }
+      }
+    }
+
+    .sum {
+      border-top: solid 1rpx @border-gray;
+      padding: 20rpx;
+      color: @text-color-orange;
+      font-size: @font-36;
+      text-align: center;
+    }
+  }
+
+  .btn-group {
+    padding-top: 20rpx;
+    padding-bottom: 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .btn {
+      border-radius: 8rpx;
+      width: 266rpx;
+      height: 66rpx;
+      text-align: center;
+      line-height: 66rpx;
+      color: #ffffff;
+      font-size: @font-36;
+    }
+
+    .gray-btn {
+      background-color: #cfd2d5;
+    }
+
+    .primary-btn {
+      background-color: @blue-bg;
+    }
+  }
+}

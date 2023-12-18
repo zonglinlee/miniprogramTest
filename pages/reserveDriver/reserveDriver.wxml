@@ -1,0 +1,75 @@
+<view class="container">
+    <van-nav-bar
+            title="石嘴山出行"
+            left-arrow
+            class="custom-nav c-height"
+            bind:click-left="goBack"
+            fixed
+            z-index="{{9999}}"
+    />
+    <view class="content" style="margin-top:{{cusNavHeight}}px">
+        <view class="top">
+            <view class="sec sec1">
+                <view class="card">
+                    <view class="left">
+                        <view class="r1">
+                            <text class="icon-c1 szs szs-qidian"></text>
+                            <text class="t1">{{orderInfo.start.name}}</text>
+                        </view>
+                        <view class="r1">
+                            <text class="icon-c1 szs szs-zhongdian1"></text>
+                            <text class="t1">{{orderInfo.end.name}}</text>
+                        </view>
+
+                    </view>
+                    <view class="right">
+                        <text class="icon-c1 szs szs-paixu" catch:tap="swapPosition"></text>
+                    </view>
+                </view>
+            </view>
+            <view class="sec sec2">
+                <view class="card">
+                    <view class="row1">
+                        <view class="item item-left" catch:tap="pickPassenger">
+                            <text class="icon-c1 szs szs-contact"></text>
+                            <text class="t2">出行人数{{orderInfo.passengerList.length}}人</text>
+                        </view>
+                        <view class="item item-right" catch:tap="pickTime">
+                            <text class="icon-c1 szs szs-clock-filling"></text>
+                            <text class="t2">{{orderInfo.departTime}}</text>
+                        </view>
+                    </view>
+                    <view class="row1 row2">
+                        <view class="item item2" catch:tap="leaveAMessage">
+                            <text class="icon-c1 szs szs-liuyan"></text>
+                            <text class="t2">给司机留言</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="sec  sec3">
+            <map class="map" style="height:{{mapHeight}}px" scale="{{mapScale}}" longitude="{{mapCenter.longitude}}"
+                 latitude="{{mapCenter.latitude}}"
+                 polyline="{{polyline}}" include-points="{{includePoints}}" markers="{{markers}}"
+                 show-location></map>
+        </view>
+
+
+        <view class="btn-wrapper">
+            <view class="btn btn-back" catch:tap="showReservationPopup">立即预约</view>
+        </view>
+
+    </view>
+
+    <van-popup show="{{ reservationPopup }}" bind:close="hideReservationPopup" close-on-click-overlay round="{{true}}"
+               position="bottom"
+               safe-area-tab-bar="{{false}}">
+        <view>
+            <cus-time-picker bind:confirm="getTimeRange"></cus-time-picker>
+        </view>
+    </van-popup>
+    <select-passenger bind:closePopup="getSelectedPassenger" selectedList="{{orderInfo.passengerList}}"
+                      show="{{showPassengerPopup}}"></select-passenger>
+    <van-toast id="van-toast" class="page-toast" style="--toast-max-width: 85%;"/>
+</view>

@@ -1,0 +1,7 @@
+function isSelected(maps, currentSelectDate, item) {
+
+    var key = item + '::' + currentSelectDate
+    return maps[key]
+}
+
+module.exports.isSelected = isSelected;
