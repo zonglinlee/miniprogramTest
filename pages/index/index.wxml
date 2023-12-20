@@ -59,6 +59,54 @@
                         </block>
                     </swiper>
                 </view>
+                <view class="sec items-wrapper ch schedule-type" style="margin-bottom:12px">
+                    <view class="header">
+                        <view class="left"><text class="icon-c1 szs szs-hangcheng"></text>当前行程
+                        </view>
+                        <view class="right">
+                            <view class="label-wrapper">
+                                <view class="item" wx:key="index" wx:for="{{scheduleTypes}}" bind:tap="changeTypes"
+                                      data-type="{{item}}"
+                                      data-index="{{index}}">
+                                    <view class="label {{index==scheduleTypeIndex ? 'selected' : ''}}">{{item.label}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="divider">
+                                <view class="slider-p" style="transform:{{sliderSlide}};">
+                                    <view class="slider"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="content">
+                        <swiper indicator-dots="{{false}}" style="height:{{swiper1Height}}px" 	indicator-color="#999999" 	indicator-active-color="#1a87f6"
+                                autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+                            <block wx:for="{{scheduleMap[currentSelectedType]}}" wx:key="index">
+                                <swiper-item>
+                                    <view class="swiper-item">
+                                        <view class="line">
+                                            <image class="img" src="../../assets/images/green_dot.png"
+                                                   mode="widthFix"></image>
+                                            <view>{{item.start}}</view>
+                                        </view>
+                                        <view class="line">
+                                            <image class="img" src="../../assets/images/end_stop.png"
+                                                   mode="widthFix"></image>
+                                            <view>{{item.end}}</view>
+                                        </view>
+                                        <view class="line">
+                                            <text class="icon szs szs-clock-filling"></text>
+                                            <view>{{item.date}} {{item.time}}</view>
+                                        </view>
+                                        <view class="status">{{item.status}}</view>
+                                    </view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                </view>
                 <view class="sec items-wrapper ch dep">
                     <view class="items">
                         <view class="item" wx:for="{{hotBtn}}" wx:key="key" bindtap="hotBtnClick"

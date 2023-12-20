@@ -73,6 +73,42 @@ Page({
             key: 'customer_service',
             src: '../../assets/images/index/customer_service.png',
         }],
+        swiper1Height: 120,
+        scheduleTypes: [{label: '定制班线', name: 'dzbx'}, {label: '城际出行', name: 'cjcx'}],
+        sliderSlide: `translateX(0)`,
+        scheduleTypeIndex: 0,
+        currentSelectedType: 'dzbx',
+        scheduleMap: {
+            dzbx: [{
+                start: '河东机场',
+                end: '银川火车站',
+                date: '2023-12-20',
+                time: '15:30',
+                status: '待出行'
+            }],
+            cjcx: [{
+                start: '中海国际社区橙郡',
+                end: '金凤区万达广场',
+                date: '2023-12-20',
+                time: '15:30',
+                status: '待支付'
+            }, {
+                start: '金凤区教育局',
+                end: '旅游汽车站',
+                date: '2023-12-25',
+                time: '07:30',
+                status: '待出行'
+            }],
+        }
+    },
+    changeTypes(e) {
+        const type = e.currentTarget.dataset.type
+        const index = e.currentTarget.dataset.index
+        this.setData({
+            sliderSlide: `translateX(${index * 100}%)`,
+            scheduleTypeIndex: index,
+            currentSelectedType: type.name
+        })
     },
     // 事件处理函数
     navigateTo(e) {
@@ -102,10 +138,11 @@ Page({
         const query = wx.createSelectorQuery()
         query.select('.card1').boundingClientRect()
         query.selectAll('.dep').boundingClientRect()
+        query.select('.swiper-item').boundingClientRect()
         query.selectViewport().boundingClientRect()
         const that = this
         query.exec(function (res) {
-            const [card1, deps, viewPort] = res
+            const [card1, deps, swiper1, viewPort] = res
             const {safeArea: {bottom}, screenHeight} = app.globalData.sysInfo
             const safeBottom = screenHeight - bottom
             const depsHeight = deps.reduce((acc, item) => acc + item.height, 0)
@@ -119,7 +156,8 @@ Page({
                 maTop: mvDistance,
                 fixedHeight: menuBtnRec.bottom,
                 sysInfo,
-                isPc
+                isPc,
+                swiper1Height: swiper1.height
             })
         })
     },

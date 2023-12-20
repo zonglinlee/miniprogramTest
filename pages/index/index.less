@@ -266,6 +266,134 @@ page {
     }
   }
 
+  .schedule-type {
+    padding: 24rpx 24rpx 16rpx 24rpx;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: @font-32;
+
+        .szs-hangcheng {
+          font-size: 42rpx;
+          margin-right: 6rpx;
+          color: orangered;
+        }
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .label-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex: 1;
+
+          .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            margin: 0 24rpx;
+
+            .label {
+              font-size: @font-30;
+              color: @text-color-gray;
+              margin-bottom: 6rpx;
+              text-align: center;
+            }
+
+            .selected {
+              color: @blue-bg;
+            }
+          }
+        }
+
+        .divider {
+          width: 100%;
+          height: 1rpx;
+          //background: @border-gray;
+          background: transparent;
+
+          .slider-p {
+            width: 50%;
+            height: 4rpx;
+            background: transparent;
+            transition: .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .slider {
+              width: 50%;
+              height: 4rpx;
+              background: @blue-bg;
+              transition: .3s;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      margin-top: 24rpx;
+
+      .swiper-item {
+        position: relative;
+        background: rgb(241, 245, 249);
+        border-radius: 8rpx;
+        padding: 16rpx 32rpx;
+        overflow: hidden;
+
+        .status {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 120rpx;
+          height: 50rpx;
+          color: #ffffff;
+          font-size: @font-30;
+          font-weight: bold;
+          background: @blue-bg;
+          text-align: center;
+          line-height: 50rpx;
+
+        }
+
+        .line {
+          display: flex;
+          align-items: center;
+          line-height: 1.9;
+          color: @text-color-gray;
+          font-size: @font-30;
+
+          .img {
+            margin-right: 12rpx;
+            width: 32rpx;
+            flex-shrink: 0;
+          }
+
+          .icon {
+            flex-shrink: 0;
+            margin-right: 12rpx;
+            font-size: 32rpx;
+            color: @blue-bg;
+          }
+        }
+      }
+    }
+  }
+
   #van-toast {
     --toast-max-width: 85%;
   }
