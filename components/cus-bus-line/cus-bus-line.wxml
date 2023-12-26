@@ -1,0 +1,67 @@
+<view class="sec">
+    <view class="container">
+        <view class="top">
+            <view class="left">
+                <view class="l1">{{carInfo.name}}</view>
+                <view class="l2">车辆位置：<text class="start">{{carInfo.currentPosition}}</text>
+                </view>
+                <view class="l3">候车站点：<text class="end">{{carInfo.waitStop}}</text>
+                </view>
+            </view>
+            <view class="right">
+                <view class="l1">
+                    <view class="time">
+                        <text>{{carInfo.waitingTime}}</text>
+                        <view class="wifi">
+                            <view class="wifi__symbol">
+                                <view class="wifi__row"></view>
+                                <view class="wifi__row"></view>
+                                <view class="wifi__row"></view>
+                                <view class="wifi__row"></view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="unit">
+                        <text>分钟</text>
+                    </view>
+                </view>
+                <view class="l2">
+                    {{carInfo.stopsFromCur}}站/{{carInfo.distances}}km
+                </view>
+            </view>
+        </view>
+        <view class="bottom">
+            <text class="map-icon icon-c1 szs szs-map" catch:tap="clickMap"></text>
+            <text class="refresh-icon icon-c1 szs szs-arrow-repeat" catch:tap="refreshStops"></text>
+        </view>
+    </view>
+</view>
+<van-popup show="{{ showMap }}" bind:close="onClose" position="right" safe-area-tab-bar="{{false}}">
+    <view style="width:750rpx;padding-top:{{mt}}px" class="map-container">
+        <map class="map" style="height:{{mapHeight-mt}}px;width:100%;" id="mymap"
+             latitude="{{mapCenter.latitude}}" longitude="{{mapCenter.longitude}}"
+             polyline="{{polyline}}" include-points="{{includePoints}}" markers="{{markers}}"
+             show-location>
+            <cover-view slot="callout">
+                <cover-view marker-id="{{100}}" class="marker-wrapper">
+                    <cover-view class="line1">{{markerInfo.title}}</cover-view>
+                    <cover-view class="line2">{{markerInfo.subtitle}}</cover-view>
+                </cover-view>
+            </cover-view>
+        </map>
+        <view class="icon-p back" style="top:{{mt+10}}px">
+            <text class="icon-c1 szs szs-arrow1-left" catch:tap="hideMap"></text>
+        </view>
+        <view class="actions">
+            <view class="icon-p icon-p1">
+                <text class="luxian icon-c1 szs szs-jiaoliuxianluduandian" catch:tap="toggleRouteView"></text>
+            </view>
+            <view class="icon-p icon-p2">
+                <text class="position icon-c1 szs szs-a-dingwei2" catch:tap="positioning"></text>
+            </view>
+            <view class="icon-p">
+                <text class="refresh icon-c1 szs szs-arrow-repeat" catch:tap="refreshRoute"></text>
+            </view>
+        </view>
+    </view>
+</van-popup>

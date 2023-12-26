@@ -33,7 +33,8 @@
     "pages/carHistory/carHistory",
     "pages/evaluateSuccess/evaluateSuccess",
     "pages/reserveDriver/reserveDriver",
-    "pages/confirmPay2/confirmPay2"
+    "pages/confirmPay2/confirmPay2",
+    "pages/temp/temp"
   ],
   "window": {
     "backgroundTextStyle": "light",

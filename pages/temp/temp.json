@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cus-bus-line": "../../components/cus-bus-line/cus-bus-line"
+  },
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,221 @@
+@import "assets/css/common";
+@import "../../assets/icon-font/iconfont.wxss";
+@import "../../app";
+
+.container {
+  .top, .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top {
+    padding: 16rpx 24rpx 6rpx 24rpx;
+  }
+
+  .left, .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .left {
+    view {
+      margin-bottom: 12rpx;
+    }
+
+    .l1 {
+      border-left: solid 1rpx @border-gray;
+      border-top: solid 1rpx @border-gray;
+      border-right: solid 1rpx @border-gray;
+      border-bottom: solid 4rpx @border-blue;
+      border-radius: 6rpx;
+      padding: 4rpx 8rpx;
+      text-align: center;
+      font-size: @font-32;
+      width: fit-content;
+      align-self: center;
+    }
+
+    .l2, .l3 {
+      font-size: @font-30;
+    }
+
+    .start, .end {
+      color: @border-blue;
+    }
+
+  }
+
+  .right {
+    .l1 {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 8rpx;
+
+      .time {
+        position: relative;
+        font-size: 54rpx;
+        color: @border-blue;
+        margin-right: 8rpx;
+      }
+
+      .wifi {
+        position: absolute;
+        align-self: flex-start;
+        justify-self: flex-end;
+        top: -20px;
+        right: -28px;
+        transform: rotate(45deg) scale(0.4);
+
+        &__symbol {
+          display: flex;
+          flex-direction: column-reverse;
+          align-items: center;
+          overflow: hidden;
+          position: relative;
+          width: 36px;
+          height: 36px;
+          transform: rotate(45deg);
+        }
+
+        &__row {
+          border-style: solid;
+          border-color: @border-blue;
+          border-width: 4px 0 0 4px;
+          border-radius: 100% 0 0 0;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          animation: wifianimation 2.5s infinite;
+          transform: translate(5px, 5px);
+
+          &:nth-child(1) {
+            width: 9px;
+            height: 9px;
+            animation-delay: 200ms;
+          }
+
+          &:nth-child(2) {
+            width: 18px;
+            height: 18px;
+            animation-delay: 400ms;
+          }
+
+          &:nth-child(3) {
+            width: 27px;
+            height: 27px;
+            animation-delay: 600ms;
+          }
+
+          &:nth-child(4) {
+            width: 36px;
+            height: 36px;
+            animation-delay: 800ms;
+          }
+
+          &:nth-child(1) {
+            width: 4px;
+            height: 4px;
+            background: @border-blue;
+            animation: none;
+            transform: translate(0, 0);
+          }
+        }
+      }
+
+      .unit {
+        font-size: @font-30;
+        color: @border-blue;
+      }
+    }
+
+    .l2 {
+      font-size: @font-28;
+      color: @border-blue;
+    }
+  }
+
+  .bottom {
+    border-top: 1rpx solid @border-gray;
+    padding: 16rpx 36rpx;
+
+    .szs {
+      font-size: 42rpx;
+      color: @text-color-gray;
+    }
+  }
+}
+
+.map-container {
+  position: relative;
+
+  .back {
+    position: absolute;
+    left: 24rpx;
+  }
+
+  .icon-p {
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12rpx;
+
+    .icon-c1 {
+      font-size: 42rpx;
+      color: black;
+    }
+  }
+
+  .actions {
+    position: absolute;
+    bottom: 200rpx;
+    right: 24rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .icon-p1, .icon-p2 {
+      margin-bottom: 30rpx;
+    }
+
+
+  }
+}
+
+.marker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 10rpx 20rpx;
+  border-radius: 12rpx;
+  z-index: 9999999;
+
+  .line1 {
+    margin-bottom: 12rpx;
+    font-size: 26rpx;
+    color: red;
+  }
+
+  .line2 {
+    margin-bottom: 12rpx;
+    font-size: 26rpx;
+  }
+}
+
+@keyframes wifianimation {
+  0% {
+    opacity: 25%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 25%;
+  }
+}

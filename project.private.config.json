@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/temp/temp",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/reserveDriver/reserveDriver",
           "query": "",
           "launchMode": "default",
