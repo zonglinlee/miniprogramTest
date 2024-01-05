@@ -2,8 +2,19 @@ const app = getApp()
 import Toast from '@vant/weapp/toast/toast';
 
 const mapBehavior = require("../../assets/js/qqmap-wx-jssdk1.2/mapBehavior")
-
-
+const throttle = (fn, delay = 60) => {
+    let timer = null
+    const newFn = (...args) => {
+        if (!timer) {
+            timer = setTimeout(() => {
+                fn.apply(this, args)
+                timer = null
+            }, delay)
+        }
+    }
+    return newFn
+}
+let globalThat = null
 Page({
     behaviors: [mapBehavior],
     data: {
@@ -120,6 +131,7 @@ Page({
 
     async onLoad() {
         this.getCurrentPosition()
+        globalThat = this
     },
     async onReady() {
         setTimeout(() => {
@@ -127,6 +139,14 @@ Page({
         }, 500)
 
     },
+    moveCardThrottle: throttle(function (...arg) {
+        // console.log(14321434, globalThat)
+        app.computeRec('.mv').then(res => {
+            globalThat.setData({
+                showBg: res[0].top <= 60
+            })
+        })
+    }, 80),
     computeHeight() {
         const menuBtnRec = wx.getMenuButtonBoundingClientRect()
         const sysInfo = app.globalData.sysInfo

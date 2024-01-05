@@ -26,7 +26,7 @@
 
     <movable-area class="ma" style="height:{{maHeight}}px;margin-top:-{{maTop+10}}px"
                   catch:touchmove="noop">
-        <movable-view class="mv" direction="vertical" y="{{maTop}}"
+        <movable-view class="mv" direction="vertical" y="{{maTop}}" bindchange="moveCardThrottle"
                       style="height:{{card1Height}}px" inertia out-of-bounds
                       friction="{{10}}">
             <view class="card1">
