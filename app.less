@@ -1,13 +1,28 @@
 /**app.wxss**/
 @import "assets/css/common";
+@import "assets/icon-font/iconfont.wxss";
 
 page {
+  --nav-bar-text-color: init;
+  --nav-bar-icon-color: init;
+  --toast-max-width: 85%;
   background: #f1f4f9;
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
 }
+
 
 view {
   color: @text-color-default;
-  font-size: 24rpx;
+  //font-size: 24rpx;
+}
+
+image {
+  height: auto;
+}
+
+view.van-button__text {
+  //color: #d81e06;
 }
 
 .container {
@@ -19,4 +34,39 @@ view {
   width: 0;
   height: 0;
   color: transparent;
+}
+
+button[type=primary] {
+  background-color: @blue-bg !important;
+}
+
+.sec {
+  border-radius: 16rpx;
+  background-color: #ffffff;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+
+.van-nav-bar__text {
+  font-size: @font-32;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: @font-34;
+    font-weight: bold;
+    background: @blue-bg;
+    color: white;
+    border-radius: 30rpx;
+  }
 }

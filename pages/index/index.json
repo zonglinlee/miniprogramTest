@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "add-passenger": "../../components/add-passenger/add-passenger"
+    "chat": "plugin://chatbot/chat",
+    "customoperateCard": "../../components/customoperateCard/customoperateCard"
   },
   "navigationStyle": "custom"
 }

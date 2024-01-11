@@ -4,7 +4,9 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        navTitle: String
+        navTitle: String,
+        leftText: String,
+        rightText: String
     },
 
     /**

@@ -1,49 +1,19 @@
-<!--index.wxml-->
-<view class="container">
-    <view class="top">
-        <map class="map"></map>
-        <view class="gf"></view>
-        <view class="shield" bind:tap="navigateTo" data-url="/pages/safety/safety">
-            <image src="../../assets/images/shield.png"></image>
-        </view>
-        <view class="position">
-            <image src="../../assets/images/shield.png"></image>
-        </view>
+<view class="container" wx:if="{{flag}}">
+    <van-nav-bar
+            fixed="{{false}}"
+            title="智能客服"
+            left-arrow
+            class="cutom-nav"
+            bind:click-left="goBack"
+    />
+
+
+    <view class="" style="height:{{chatHeight}}px">
+        <chat
+                bind:queryCallback="getQueryCallback"
+                bind:openWebview="openWebview"
+                bind:openMiniProgram="openMiniProgram"
+                generic:operateCard="customoperateCard"
+        />
     </view>
-    <view class="middle">
-        <view class="tab">
-            <text class="item">城际出行</text>
-            <text class="item">定制班线</text>
-            <text class="item">货物代送</text>
-        </view>
-        <view class="content">
-            <view class="line1">
-                <image class="dot item1" src="../../assets/images/blue_dot.png"></image>
-                <text class="item2">当前定位位置</text>
-                <image class="item3" src="../../assets/images/next.png"></image>
-            </view>
-            <view class="line2">
-                <input class="des" placeholder="请输入打车目的地"/>
-                <image class="dot item1" src="../../assets/images/green_dot.png"></image>
-            </view>
-        </view>
-
-    </view>
-
-
-    <!--    <view class="gf" style="background-image: url('../../assets/images/gift_box_bg.png');">
-            <view class="info">
-                <text class="l">免费领取10元 </text>
-                <text class="r">打车立减券</text>
-            </view>
-            <view class="btn">
-                    立即领取
-            </view>
-        </view>-->
-
-    <view style="display:flex;align-items:center">
-        <button type="primary" bind:tap="openPopup">乘车人信息</button>
-    </view>
-
-    <add-passenger show="{{showPopup}}"></add-passenger>
 </view>

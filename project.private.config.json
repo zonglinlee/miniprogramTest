@@ -4,5 +4,207 @@
   "setting": {
     "compileHotReLoad": true,
     "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/temp/temp",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/reserveDriver/reserveDriver",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "confirmPay2",
+          "pathName": "pages/confirmPay2/confirmPay2",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/busStop/busStop",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/orderDetail/orderDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/confirmPay/confirmPay",
+          "pathName": "pages/confirmPay/confirmPay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/confirmOrder/confirmOrder",
+          "pathName": "pages/confirmOrder/confirmOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "dedicatedLine",
+          "pathName": "pages/dedicatedLine/dedicatedLine",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "lineSchedule",
+          "pathName": "pages/lineSchedule/lineSchedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "评价成功",
+          "pathName": "pages/evaluateSuccess/evaluateSuccess",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "carHistory",
+          "pathName": "pages/carHistory/carHistory",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceOrder",
+          "pathName": "pages/invoice/invoiceOrder/invoiceOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceHistoryDetail",
+          "pathName": "pages/invoice/invoiceHistoryDetail/invoiceHistoryDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceHistory",
+          "pathName": "pages/invoice/invoiceHistory/invoiceHistory",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceSuccess",
+          "pathName": "pages/invoice/invoiceSuccess/invoiceSuccess",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceTT",
+          "pathName": "pages/invoice/invoiceTT/invoiceTT",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceDetail",
+          "pathName": "pages/invoice/invoiceDetail/invoiceDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoiceForm",
+          "pathName": "pages/invoice/invoiceForm/invoiceForm",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "invoice",
+          "pathName": "pages/invoice/invoiceIndex/invoiceIndex",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "finishOrder",
+          "pathName": "pages/finishOrder/finishOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "coupons",
+          "pathName": "pages/coupons/coupons",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "lineSchedule",
+          "pathName": "pages/lineSchedule/lineSchedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "paymentResult",
+          "pathName": "pages/paymentResult/paymentResult",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "站点选择",
+          "pathName": "pages/busStop/busStop",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "添加乘客",
+          "pathName": "pages/addPassenger/addPassenger",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "支付订单",
+          "pathName": "pages/confirmPay/confirmPay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "提交订单",
+          "pathName": "pages/confirmOrder/confirmOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

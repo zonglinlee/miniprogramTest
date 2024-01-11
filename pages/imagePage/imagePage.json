@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "image-page": "../../components/image-page/image-page"
-  },
-  "navigationStyle": "custom"
-}
